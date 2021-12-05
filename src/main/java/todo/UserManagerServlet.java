@@ -14,7 +14,7 @@ public class UserManagerServlet extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "Hello World!";
+        message = "Hello Todo!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
