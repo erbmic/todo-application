@@ -4,11 +4,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import todo.model.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "userManagerServlet", value = "/user-manager")
 public class UserManagerServlet extends HttpServlet {
     private String message;
 
@@ -29,6 +30,7 @@ public class UserManagerServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("user");
         String password = request.getParameter("password");
+//        User user =
 
     }
 
