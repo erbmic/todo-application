@@ -1,36 +1,41 @@
-package todo;
+package todo.controller;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import todo.model.Account;
 import todo.model.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "userManagerServlet", value = "/user-manager")
+@WebServlet(name = "userManagerServlet", value = "/userManager")
 public class UserManagerServlet extends HttpServlet {
     private String message;
+
+    Account account = null;
 
     public void init() {
         message = "Hello Todo!";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
-
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = request.getParameter("user");
+
+        String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-//        User user =
+
+        if (userName != null) {
+            account.registerUser(userName, password);
+        } else {
+            System.out.println("lorem");
+            response.sendRedirect("index.jsp");
+        }
 
     }
 

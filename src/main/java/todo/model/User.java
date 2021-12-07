@@ -2,24 +2,25 @@ package todo.model;
 
 public class User {
 
-    private static String userName;
-    private static String password;
-    private static String email;
-    private static ToDo[] toDos;
+    private String userName;
+    private String password;
+    private String email;
+    private TodoList[] toDos;
 
-    public User() {
+    public User(String userName, String password) {
+        userName = userName;
+        password = password;
+    }
+
+    public void login() {
 
     }
 
-    private void login() {
+    public void register() {
 
     }
 
-    private void register() {
-
-    }
-
-    private void updateProfile() {
+    public void updateProfile() {
 
     }
 
