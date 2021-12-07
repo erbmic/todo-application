@@ -6,20 +6,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import todo.model.Account;
-import todo.model.User;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "userManagerServlet", value = "/userManager")
 public class UserManagerServlet extends HttpServlet {
-    private String message;
 
-    Account account = null;
-
-    public void init() {
-        message = "Hello Todo!";
-    }
+    Account account = Account.getAccountInstance();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
@@ -29,14 +22,16 @@ public class UserManagerServlet extends HttpServlet {
 
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
+        String button = request.getParameter("button");
 
-        if (userName != null) {
-            account.registerUser(userName, password);
-        } else {
-            System.out.println("lorem");
-            response.sendRedirect("index.jsp");
+
+        switch (button) {
+            case "register":
+                account.registerUser(userName, password);
+                account.loginUser(userName, password);
+            case "login":
+                account.loginUser(userName, password);
         }
-
     }
 
     public void destroy() {

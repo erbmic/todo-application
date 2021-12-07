@@ -8,8 +8,32 @@ public class User {
     private TodoList[] toDos;
 
     public User(String userName, String password) {
-        userName = userName;
-        password = password;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public TodoList[] getToDos() {
+        return toDos;
+    }
+
+    public void setToDos(TodoList[] toDos) {
+        this.toDos = toDos;
     }
 
     public void login() {
