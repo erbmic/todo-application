@@ -33,9 +33,10 @@ public class UserManagerServlet extends HttpServlet {
         }
         else if (button.equals("login")) {
             if (account.loginUser(userName, password)) {
-                System.out.println("yes");
-            } else System.out.println("no");
-            response.sendRedirect("index.jsp");
+                response.sendRedirect("todoList.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
         }
 
 

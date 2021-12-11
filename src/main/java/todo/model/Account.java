@@ -35,10 +35,11 @@ public class Account {
                 System.out.println("login succeeded");
                 return true;
             } else {
+                System.out.println("wrong password");
                 return false;
             }
         } else {
-            System.out.println("This user doesnt exist");
+            System.out.println("The user doesnt exist");
             return false;
         }
 
@@ -47,7 +48,6 @@ public class Account {
     // https://stackoverflow.com/questions/17526608/how-to-find-an-object-in-an-arraylist-by-property
     public static User findByUserName(Set<User> userAccounts , String userName) {
         return userAccounts.stream().filter(user -> userName.equals(user.getUserName())).findFirst().orElse(null);
-
 
 //        for(userAccounts : userName) {
 //            if(carnet.getCodeIsIn().equals(codeIsIn)) {
