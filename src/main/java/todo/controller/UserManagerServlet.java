@@ -26,14 +26,30 @@ public class UserManagerServlet extends HttpServlet {
         String password = request.getParameter("password");
         String button = request.getParameter("button");
 
-
-        switch (button) {
-            case "register":
-                user = account.registerUser(userName, password);
-                account.loginUser(user);
-            case "login":
-                account.loginUser(user);
+        if (button.equals("register")) {
+            user = account.registerUser(userName, password);
+//                account.loginUser(user);
+            response.sendRedirect("index.jsp");
         }
+        else if (button.equals("login")) {
+            if (account.loginUser(userName, password)) {
+                System.out.println("yes");
+            } else System.out.println("no");
+            response.sendRedirect("index.jsp");
+        }
+
+
+//        switch (button) {
+//            case "register":
+//                user = account.registerUser(userName, password);
+////                account.loginUser(user);
+//                response.sendRedirect("index.jsp");
+//            case "login":
+//                if (account.loginUser(userName, password)) {
+//                    System.out.println("yes");
+//                } System.out.println("no");
+//                response.sendRedirect("index.jsp");
+//        }
     }
 
     public void destroy() {

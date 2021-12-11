@@ -5,7 +5,7 @@ import java.util.*;
 public class Account {
 
     private static final Account accountInstance = new Account();
-    private static final List<User> userAccounts = new ArrayList<>();
+    private static final Set<User> userAccounts = new HashSet<>();
 
     private Account() {
     }
@@ -21,20 +21,40 @@ public class Account {
         return user;
     }
 
-    public boolean loginUser(User user) {
+    public boolean loginUser(String userName, String password) {
 
-        return userAccounts.contains(user);
+        //        return userAccounts.contains(user);
 
-//        List<User> listUser = userAccounts.stream()
-//                .filter(userAccounts -> userAccounts.equals(userName))
-//                .findAny()
-//                .orElse(null);
-//
-//
-//        if (userAccounts.stream().filter(userAccounts -> userName.equals(userAccounts.getUserName())).findAny().orElse(null)) {
-//
+        boolean userExists = userAccounts.stream().anyMatch(user -> user.getUserName().equals(userName));
+
+        if (userExists) {
+            User userAccount = findByUserName(userAccounts, userName);
+            String userAccountPassword = userAccount.getPassword();
+
+            if (userAccountPassword.equals(password)) {
+                System.out.println("login succeeded");
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            System.out.println("This user doesnt exist");
+            return false;
+        }
+
+    }
+
+    // https://stackoverflow.com/questions/17526608/how-to-find-an-object-in-an-arraylist-by-property
+    public static User findByUserName(Set<User> userAccounts , String userName) {
+        return userAccounts.stream().filter(user -> userName.equals(user.getUserName())).findFirst().orElse(null);
+
+
+//        for(userAccounts : userName) {
+//            if(carnet.getCodeIsIn().equals(codeIsIn)) {
+//                return carnet;
+//            }
 //        }
-
+//        return null;
     }
 
     public void deleteUser() {
