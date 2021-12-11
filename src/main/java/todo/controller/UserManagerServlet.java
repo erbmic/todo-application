@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import todo.model.Account;
+import todo.model.User;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class UserManagerServlet extends HttpServlet {
 
     Account account = Account.getAccountInstance();
+    User user = null;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
@@ -27,10 +29,10 @@ public class UserManagerServlet extends HttpServlet {
 
         switch (button) {
             case "register":
-                account.registerUser(userName, password);
-                account.loginUser(userName, password);
+                user = account.registerUser(userName, password);
+                account.loginUser(user);
             case "login":
-                account.loginUser(userName, password);
+                account.loginUser(user);
         }
     }
 

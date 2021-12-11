@@ -36,18 +36,6 @@ public class User {
         this.toDos = toDos;
     }
 
-    public void login() {
-
-    }
-
-    public void register() {
-
-    }
-
-    public void updateProfile() {
-
-    }
-
 
 
 }
