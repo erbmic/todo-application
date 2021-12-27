@@ -2,29 +2,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1><%= "ToDo Webapplication" %>
-</h1>
-<br/>
-<%--<a href="hello-servlet">Hello Servlet</a>--%>
-<%--<form action="userManager" method="post">--%>
-<%--    <label for="userName">First name:</label><br>--%>
-<%--    <input type="text" id="userName" name="userName" value="John"><br>--%>
-<%--    <label for="password">Last name:</label><br>--%>
-<%--    <input type="text" id="password" name="password" value="Doe"><br><br>--%>
-<%--    <input type="submit" value="Submit">--%>
-<%--</form>--%>
+<header>
+<%--    <h1>--%>
+<%--        <%= "ToDo App" %>--%>
+<%--    </h1>--%>
+</header>
 
+<main>
+<%--    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>--%>
 
-<form action="userManager" method="post">
-    <input type="text" id="userName" name="userName" placeholder="Username" required><br><br>
-    <input type="text" id="password" name="password" placeholder="Password" required><br><br>
+    <div class="loginbox">
+        <h1>
+            <%= "ToDo App" %>
+        </h1>
+        <form action="userManager" method="post">
+            <input type="text" id="userName" name="userName" placeholder="Email" required><br><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
 
-    <button name="button" value="login">Login</button>
-    <button name="button" value="register">Register</button>
-</form>
+            <button name="button" value="login">Login</button>
+            <button name="button" value="register">Register</button>
+        </form>
+    </div>
+</main>
 
 </body>
 </html>
