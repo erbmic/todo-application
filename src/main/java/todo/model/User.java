@@ -2,27 +2,39 @@ package todo.model;
 
 public class User {
 
-    private static String userName;
-    private static String password;
-    private static String email;
-    private static ToDo[] toDos;
+    private String userName;
+    private String password;
+    private TodoList toDos;
 
-    public User() {
-
+    //call method readToDos() directly to initially read the xml file
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        this.toDos = new TodoList().readToDos();
+        System.out.println("read todos");
     }
 
-    private void login() {
-
+    public String getUserName() {
+        return userName;
     }
 
-    private void register() {
-
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    private void updateProfile() {
-
+    public String getPassword() {
+        return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public TodoList getToDos() {
+        return toDos;
+    }
 
+    public void setToDos(TodoList toDos) {
+        this.toDos = toDos;
+    }
 }

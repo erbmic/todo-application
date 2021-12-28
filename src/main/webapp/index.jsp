@@ -1,21 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>JSP - Hello World</title>
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="css/css_style.css">
 </head>
+
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-<form action="/action_page.php">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="John"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    <input type="submit" value="Submit">
-</form>
+
+<header>
+
+</header>
+
+<main>
+<%--    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>--%>
+
+    <div class="loginbox">
+        <h1>
+            <%= "ToDo App" %>
+        </h1>
+        <form action="userManager" method="post">
+            <input type="text" id="userName" name="userName" placeholder="Email" required><br><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+
+            <button name="button" value="login">Login</button>
+            <button name="button" value="register">Register</button>
+        </form>
+    </div>
+</main>
 
 </body>
 </html>
