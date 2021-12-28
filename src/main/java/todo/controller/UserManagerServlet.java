@@ -31,8 +31,9 @@ public class UserManagerServlet extends HttpServlet {
 
         if (button.equals("register")) {
             user = account.registerUser(userName, password);
-//                account.loginUser(user);
-            response.sendRedirect("index.jsp");
+            session.setAttribute("user", user);
+            response.sendRedirect("todoList.jsp");
+//            response.sendRedirect("index.jsp");
         }
         else if (button.equals("login")) {
             if (account.loginUser(userName, password)) {

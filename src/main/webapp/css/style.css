@@ -7,6 +7,7 @@ body {
     border: none;
 }
 
+
 .loginbox {
     width: 300px;
     padding: 40px;
@@ -15,10 +16,8 @@ body {
     top: 50%;
     transform: translate(-50%, -70%);
     /*background: #666666;*/
-    background: white;
     text-align: center;
 }
-
 
 input {
     box-sizing: border-box;
@@ -29,7 +28,6 @@ input {
     height: 50px;
     padding: 14px;
     width: 100%;
-
 }
 
 button {
@@ -53,8 +51,7 @@ h1 {
     font-size: 3em;
     font-weight: bold;
     text-align: center;
-    margin: 10px 10px 70px 10px;
-    text-transform: capitalize;
+    margin: 10px 10px 60px 10px;
 }
 
 h2 {

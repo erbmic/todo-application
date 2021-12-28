@@ -18,7 +18,7 @@
 
 <main>
     <div class="todolist">
-        <h1>Listo of ${user.userName}</h1>
+        <h1>Listo of "${user.userName}"</h1>
         <c:forEach items = "${user.toDos.todos}" var="todo">
             <c:out value = "${todo.title}"/><p>
         </c:forEach>
