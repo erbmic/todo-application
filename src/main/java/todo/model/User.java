@@ -6,19 +6,13 @@ public class User {
     private String password;
     private TodoList toDos;
 
+    //call method readToDos() directly to initially read the xml file
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
         this.toDos = new TodoList().readToDos();
-//        System.out.println("read todos");
-//        toDos.readToDos();
-//        this.toDos = toDos.readToDos();
+        System.out.println("read todos");
     }
-
-    //    public User(String userName, String password) {
-//        this.userName = userName;
-//        this.password = password;
-//    }
 
     public String getUserName() {
         return userName;

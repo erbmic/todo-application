@@ -40,9 +40,10 @@ public class UserManagerServlet extends HttpServlet {
                 response.sendRedirect("todoList.jsp");
             } else {
                 response.sendRedirect("index.jsp");
+                destroy();
+                System.out.println("destroyed");
             }
         }
-
 
 //        switch (button) {
 //            case "register":

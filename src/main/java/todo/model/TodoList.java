@@ -29,16 +29,7 @@ public class TodoList {
         this.todos = todos;
     }
 
-//    public void readToDos() {
-//        ObjectMapper mapper = new XmlMapper();
-//        LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
-//        try (InputStream reader = new FileInputStream(xmlInputFileName)) {
-//            mapper.readValue(reader, TodoList.class);
-//        } catch (IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
-
+    //method to initially read the xml file
     public TodoList readToDos() {
         ObjectMapper mapper = new XmlMapper();
         LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
