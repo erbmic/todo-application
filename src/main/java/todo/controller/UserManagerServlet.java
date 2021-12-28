@@ -44,7 +44,11 @@ public class UserManagerServlet extends HttpServlet {
                 destroy();
                 System.out.println("destroyed");
             }
-        }
+        } // else if logout und destroy
+
+
+
+
 
 //        switch (button) {
 //            case "register":
