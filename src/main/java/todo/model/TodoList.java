@@ -1,17 +1,60 @@
 package todo.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.logging.Logger;
 
 public class TodoList {
 
-    private static ToDo[] todos;
-    private static CatList[] categories;
+    @JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlProperty(localName = "todo")
+    private List<ToDo> todos;
+    private CatList[] categories;
+
+    private static final String xmlInputFileName = System.getProperty("user.home") + "/data.xml";
+    private static final Logger LOGGER = Logger.getLogger(TodoList.class.getName());
+
 
     public TodoList() {
-
     }
 
-    private void getTodos() {
+    public TodoList(List<ToDo> todos) {
+        this.todos = todos;
+    }
 
+//    public void readToDos() {
+//        ObjectMapper mapper = new XmlMapper();
+//        LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
+//        try (InputStream reader = new FileInputStream(xmlInputFileName)) {
+//            mapper.readValue(reader, TodoList.class);
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
+
+    public TodoList readToDos() {
+        ObjectMapper mapper = new XmlMapper();
+        LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
+        try (InputStream reader = new FileInputStream(xmlInputFileName)) {
+            return mapper.readValue(reader, TodoList.class);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public void setTodos(List<ToDo> todos) {
+        this.todos = todos;
+    }
+
+    public List<ToDo> getTodos() {
+        return todos;
     }
 
     private void sortTodos() {

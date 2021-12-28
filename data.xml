@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <todos>
-  <todo category="cooking">
-    <title lang="en">first todo</title>
-    <author>Giada De Laurentiis</author>
-    <date>2005</date>
-    <idDone>x</idDone>
-    <isImportatnt>x</isImportatnt>
+  <todo id="0">
+<!--     <title lang="en">first todo</title> -->
+    <title>first todo</title>
+<!--     <date>2005</date> -->
+    <done>false</done>
+    <important>true</important>
   </todo>
 </todos>

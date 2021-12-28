@@ -32,6 +32,7 @@ public class Account {
             String userAccountPassword = userAccount.getPassword();
 
             if (userAccountPassword.equals(password)) {
+
                 System.out.println("login succeeded");
                 return true;
             } else {

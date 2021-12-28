@@ -4,13 +4,21 @@ public class User {
 
     private String userName;
     private String password;
-    private String email;
-    private TodoList[] toDos;
+    private TodoList toDos;
 
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+        this.toDos = new TodoList().readToDos();
+//        System.out.println("read todos");
+//        toDos.readToDos();
+//        this.toDos = toDos.readToDos();
     }
+
+    //    public User(String userName, String password) {
+//        this.userName = userName;
+//        this.password = password;
+//    }
 
     public String getUserName() {
         return userName;
@@ -28,14 +36,11 @@ public class User {
         this.password = password;
     }
 
-    public TodoList[] getToDos() {
+    public TodoList getToDos() {
         return toDos;
     }
 
-    public void setToDos(TodoList[] toDos) {
+    public void setToDos(TodoList toDos) {
         this.toDos = toDos;
     }
-
-
-
 }

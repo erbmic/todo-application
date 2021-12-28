@@ -1,29 +1,72 @@
 package todo.model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.time.LocalDate;
 
 public class ToDo {
 
-    private static String title;
-    private static Boolean done;
-    private static Boolean important;
-    private static LocalDate dueDate;
-    private static Category category;
+    @JacksonXmlProperty(isAttribute = true)
+    private long id;
+    private String title;
+    private Boolean done;
+    private Boolean important;
+//    private LocalDate dueDate;
+    @JacksonXmlProperty(isAttribute = true)
+    private Category category;
 
 //    private enum Category {
 //        house, job
 //    }
 
+    public ToDo() {
+    }
 
-    public static String getTitle() {
+    public ToDo(long id, String title, Boolean done, Boolean important, Category category) {
+        this.id = id;
+        this.title = title;
+        this.done = done;
+        this.important = important;
+        this.category = category;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public static LocalDate getDueDate() {
-        return dueDate;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public static Category getCategory() {
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
+
+    public Boolean getImportant() {
+        return important;
+    }
+
+    public void setImportant(Boolean important) {
+        this.important = important;
+    }
+
+    public Category getCategory() {
         return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

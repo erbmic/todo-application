@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import todo.model.Account;
 import todo.model.User;
 
@@ -22,6 +23,8 @@ public class UserManagerServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        HttpSession session=request.getSession();
+
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String button = request.getParameter("button");
@@ -33,6 +36,7 @@ public class UserManagerServlet extends HttpServlet {
         }
         else if (button.equals("login")) {
             if (account.loginUser(userName, password)) {
+                session.setAttribute("user", user);
                 response.sendRedirect("todoList.jsp");
             } else {
                 response.sendRedirect("index.jsp");
