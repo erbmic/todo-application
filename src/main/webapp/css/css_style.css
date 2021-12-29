@@ -23,14 +23,14 @@ body {
 
 /* ----------- nav ----------- */
 nav {
-    background: cornsilk;
+    /*background: cornsilk;*/
     grid-area: nav;
 }
 
 
 /* ----------- headbox ----------- */
 .headbox {
-    background: burlywood;
+    /*background: burlywood;*/
     grid-area: headbox;
 }
 
@@ -45,14 +45,14 @@ nav {
 
 /* ----------- main ----------- */
 main {
-    background: antiquewhite;
+    /*background: antiquewhite;*/
     grid-area: main;
 }
 
 
 /* ----------- footer ----------- */
 footer {
-    background: aquamarine;
+    /*background: aquamarine;*/
     grid-area: footer;
 }
 
@@ -161,6 +161,10 @@ button:hover {
     text-align: center;
 }
 
+#th-title{
+    column-width: 400px;
+}
+
 /* ----------- checkbox in todos ----------- */
 .todolist .checkbox {
     /*zoom: 0.5;*/
@@ -192,7 +196,7 @@ input[type=checkbox]:after {
 }
 
 input[type=checkbox]:hover {
-    background-color: #888888;
+    /*background-color: #888888;*/
 }
 
 input[type=checkbox]:checked {

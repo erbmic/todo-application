@@ -19,7 +19,7 @@
 
 <div class="container">
 
-    <nav>Navbar</nav>
+    <nav></nav>
 
     <div class="headbox">
         <h1>Listo of "${user.userName}"</h1>
@@ -37,20 +37,20 @@
             <table>
                 <thead>
                 <tr>
-                    <th></th>
-                    <th colspan="2">Title</th>
-                    <th class="center">Category</th>
-                    <th>Date</th>
+                    <th id="th-check"></th>
+                    <th id="th-title">Title</th>
+                    <th class="center" id="th-category">Category</th>
+                    <th  id="th-date">Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${user.toDos.todos}" var="todo">
                     <tr>
-                        <td class="center"><input class="checkbox" type="checkbox"
+                        <td class="center" id="td-check"><input class="checkbox" type="checkbox"
                                                   <c:if test="${todo.done}">checked</c:if>/></td>
-                        <td colspan="2">${todo.title}</td>
-                        <td class="center">${todo.done}</td>
-                        <td>${todo.important}</td>
+                        <td id="td-title">${todo.title}</td>
+                        <td class="center" id="td-done">${todo.done}</td>
+                        <td id="td-important">${todo.important}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -59,7 +59,7 @@
         </div>
 
     </main>
-    <footer>footer</footer>
+    <footer></footer>
 </div>
 
 </body>
