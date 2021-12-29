@@ -1,3 +1,15 @@
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 3fr 0.2fr;
+    grid-template-areas:
+            "nav nav nav"
+            "headbox headbox headbox"
+            "main main main"
+            "footer footer footer";
+}
+
 body {
     background-color: white;
     color: black;
@@ -21,6 +33,7 @@ body {
 input {
     box-sizing: border-box;
     border: solid 1px;
+    color: blueviolet;
     display: block;
     font: inherit;
     border-radius: 5px;
@@ -45,7 +58,6 @@ button:hover {
     font-weight: bold;
 }
 
-
 h1 {
     font-size: 3em;
     font-weight: bold;
@@ -60,13 +72,70 @@ h2 {
     margin: 0 0 10px 0;
 }
 
-.todolist {
+nav {
+    background: cornsilk;
+    grid-area: nav;
+}
+
+.headbox {
+    background: burlywood;
+    grid-area: headbox;
+}
+
+main {
     background: antiquewhite;
-    padding: 60px;
-    position: absolute;
-    left: 60px;
-    right: 60px;
-    top: 110px;
-    bottom: 30px;
+    grid-area: main;
+}
+
+footer {
+    background: aquamarine;
+    grid-area: footer;
+}
+
+.todolist table {
+    color: blue;
+    /*border-collapse: collapse;*/
+    margin: 25px 0;
+    min-width: 70%;
+    border-collapse:separate;
+    border-spacing:0 15px;
+    text-align: left;
+}
+
+.todolist th {
+    color: #555555;
+    padding: 0 15px;
+}
+
+.todolist td {
+    background: white;
+    padding: 12px 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.todolist td:last-child {
+    border-radius: 0 5px 5px 0;
+    border-right: 1px solid black;
+}
+
+.todolist td:first-child {
+    border-radius: 5px 0 0 5px;
+    border-left: 1px solid black;
+}
+
+.todolist .center {
     text-align: center;
 }
+
+
+/*.todolist {*/
+/*    background: antiquewhite;*/
+/*    padding: 60px;*/
+/*    position: absolute;*/
+/*    left: 60px;*/
+/*    right: 60px;*/
+/*    top: 110px;*/
+/*    bottom: 30px;*/
+/*    text-align: center;*/
+/*}*/

@@ -16,19 +16,48 @@
 </head>
 <body>
 
-<main>
-
-    <h1>Listo of "${user.userName}"</h1>
-
-    <div class="todolist">
-        <c:forEach items = "${user.toDos.todos}" var="todo">
-            <c:out value = "${todo.title}"/><p>
-            <c:out value = "${todo.done}"/><p>
-            <c:out value = "${todo.important}"/><p>
-        </c:forEach>
+<div class="container">
+    <nav>Navbar</nav>
+    <div class="headbox">
+        <h1>Listo of "${user.userName}"</h1>
     </div>
+    <main>
 
-</main>
+        <div class="todolist">
+
+            <div class="tableHeadings">
+                <span class="heading">Title</span>
+                <span class="heading">Category</span>
+                <span class="heading">Date</span>
+            </div>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th class="center">Category</th>
+                        <th class="center">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${user.toDos.todos}" var="todo">
+                    <tr>
+                        <td>${todo.title}</td>
+                        <td class="center">${todo.done}</td>
+                        <td class="center">${todo.important}</td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <%--            <c:out value="${todo.title}"/><p>--%>
+                <%--            <c:out value="${todo.done}"/><p>--%>
+                <%--            <c:out value="${todo.important}"/><p>--%>
+        </div>
+
+    </main>
+    <footer>footer</footer>
+</div>
 
 </body>
 </html>

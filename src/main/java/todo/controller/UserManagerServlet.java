@@ -33,14 +33,14 @@ public class UserManagerServlet extends HttpServlet {
             user = account.registerUser(userName, password);
             session.setAttribute("user", user);
             response.sendRedirect("todoList.jsp");
-//            response.sendRedirect("index.jsp");
+//            response.sendRedirect("login.jsp");
         }
         else if (button.equals("login")) {
             if (account.loginUser(userName, password)) {
                 session.setAttribute("user", user);
                 response.sendRedirect("todoList.jsp");
             } else {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("login.jsp");
                 destroy();
                 System.out.println("destroyed");
             }
@@ -54,12 +54,12 @@ public class UserManagerServlet extends HttpServlet {
 //            case "register":
 //                user = account.registerUser(userName, password);
 ////                account.loginUser(user);
-//                response.sendRedirect("index.jsp");
+//                response.sendRedirect("login.jsp");
 //            case "login":
 //                if (account.loginUser(userName, password)) {
 //                    System.out.println("yes");
 //                } System.out.println("no");
-//                response.sendRedirect("index.jsp");
+//                response.sendRedirect("login.jsp");
 //        }
     }
 
