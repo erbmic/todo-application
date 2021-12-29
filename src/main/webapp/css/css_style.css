@@ -33,10 +33,10 @@ body {
 input {
     box-sizing: border-box;
     border: solid 1px;
-    color: blueviolet;
+    color: black;
     display: block;
     font: inherit;
-    border-radius: 5px;
+    border-radius: 6px;
     height: 50px;
     padding: 14px;
     width: 100%;
@@ -48,7 +48,7 @@ button {
     cursor: pointer;
     border: 0;
     font: inherit;
-    border-radius: 5px;
+    border-radius: 6px;
     min-width: 120px;
     margin: 3px;
     height: 40px;
@@ -62,7 +62,7 @@ h1 {
     font-size: 3em;
     font-weight: bold;
     text-align: center;
-    margin: 10px 10px 60px 10px;
+    margin: 30px 10px 40px 10px;
 }
 
 h2 {
@@ -73,59 +73,86 @@ h2 {
 }
 
 nav {
-    background: cornsilk;
+    /*background: cornsilk;*/
     grid-area: nav;
 }
 
 .headbox {
-    background: burlywood;
+    /*background: burlywood;*/
     grid-area: headbox;
 }
 
+.headtext {
+    text-align: center;
+    font-size: 1.3em;
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 main {
-    background: antiquewhite;
+    /*background: antiquewhite;*/
     grid-area: main;
 }
 
 footer {
-    background: aquamarine;
+    /*background: aquamarine;*/
     grid-area: footer;
 }
 
+.todolist {
+    display: flex;
+    justify-content: center;
+}
+
 .todolist table {
-    color: blue;
+    color: black;
     /*border-collapse: collapse;*/
     margin: 25px 0;
-    min-width: 70%;
+    min-width: 80%;
     border-collapse:separate;
     border-spacing:0 15px;
     text-align: left;
+    box-shadow: #555555;
 }
 
 .todolist th {
     color: #555555;
-    padding: 0 15px;
+    padding: 0 25px;
 }
 
 .todolist td {
     background: white;
-    padding: 12px 15px;
+    font-size: 1.2em;
+    padding: 15px 25px;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
 }
 
 .todolist td:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 6px 6px 0;
     border-right: 1px solid black;
 }
 
 .todolist td:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 6px 0 0 6px;
     border-left: 1px solid black;
 }
 
 .todolist .center {
     text-align: center;
+}
+
+.checkbox {
+    zoom: 0.5;
+}
+
+@media(max-width: 500px) {
+    .todolist th {
+        display: none;
+    }
+
+
 }
 
 

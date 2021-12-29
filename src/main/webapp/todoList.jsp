@@ -17,42 +17,42 @@
 <body>
 
 <div class="container">
+
     <nav>Navbar</nav>
+
     <div class="headbox">
         <h1>Listo of "${user.userName}"</h1>
+        <div class="headtext">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                rebum.</p>
+        </div>
     </div>
+
     <main>
 
         <div class="todolist">
-
-            <div class="tableHeadings">
-                <span class="heading">Title</span>
-                <span class="heading">Category</span>
-                <span class="heading">Date</span>
-            </div>
-
-                <table>
-                    <thead>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="2">Title</th>
+                    <th class="center">Category</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${user.toDos.todos}" var="todo">
                     <tr>
-                        <th>Title</th>
-                        <th class="center">Category</th>
-                        <th class="center">Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${user.toDos.todos}" var="todo">
-                    <tr>
-                        <td>${todo.title}</td>
+                        <td class="center"><input class="checkbox" type="checkbox" <c:if test="${todo.done}">checked</c:if>/></td>
+                        <td colspan="2">${todo.title}</td>
                         <td class="center">${todo.done}</td>
-                        <td class="center">${todo.important}</td>
+                        <td>${todo.important}</td>
                     </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                </c:forEach>
+                </tbody>
+            </table>
 
-                <%--            <c:out value="${todo.title}"/><p>--%>
-                <%--            <c:out value="${todo.done}"/><p>--%>
-                <%--            <c:out value="${todo.important}"/><p>--%>
         </div>
 
     </main>
