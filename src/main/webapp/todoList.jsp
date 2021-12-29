@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <title>ToDo App</title>
     <link rel="stylesheet" href="css/css_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
 
@@ -31,6 +32,7 @@
 
     <main>
 
+
         <div class="todolist">
             <table>
                 <thead>
@@ -44,7 +46,8 @@
                 <tbody>
                 <c:forEach items="${user.toDos.todos}" var="todo">
                     <tr>
-                        <td class="center"><input class="checkbox" type="checkbox" <c:if test="${todo.done}">checked</c:if>/></td>
+                        <td class="center"><input class="checkbox" type="checkbox"
+                                                  <c:if test="${todo.done}">checked</c:if>/></td>
                         <td colspan="2">${todo.title}</td>
                         <td class="center">${todo.done}</td>
                         <td>${todo.important}</td>
