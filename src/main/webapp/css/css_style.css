@@ -144,7 +144,7 @@ button:hover {
     padding: 20px 25px;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
-    border-left: 1px solid red;
+    /*border-left: 1px solid red;*/
 }
 
 .todolist td:last-child {
