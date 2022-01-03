@@ -116,17 +116,34 @@ button:hover {
 }
 
 
-/* ----------- list of todos ----------- */
+/* ----------- todo list box ----------- */
+.todolistBox {
+    /*background-color: #555555;*/
+    width: 80%;
+    max-width: 1500px;
+    margin: auto;
+}
+
+
+/* ----- edit menu ----- */
+.editMenu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* ----- list of todos ----- */
 .todolist {
     display: flex;
     justify-content: center;
+    /*background-color: blueviolet;*/
 }
 
 .todolist table {
     color: black;
     /*border-collapse: collapse;*/
     margin: 25px 0;
-    min-width: 80%;
+    width: 100%;
     border-collapse:separate;
     border-spacing:0 15px;
     text-align: left;
@@ -135,13 +152,14 @@ button:hover {
 
 .todolist th {
     color: #555555;
+    font-size: 0.9em;
     padding: 0 25px;
 }
 
 .todolist td {
     background: white;
     font-size: 1.2em;
-    padding: 20px 25px;
+    padding: 17px 25px;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     /*border-left: 1px solid red;*/
@@ -175,8 +193,8 @@ button:hover {
 input[type=checkbox] {
     appearance: none;
     -webkit-appearance: none;
-    height: 2.5em;
-    width: 2.5em;
+    height: 2.3em;
+    width: 2.3em;
     border: 1px solid black;
     background-color: white;
     border-radius: 5px;
@@ -190,7 +208,7 @@ input[type=checkbox]:after {
     font-family: "Font Awesome 5 Free";
     Font-weight: 900;
     content: "\f00c";
-    font-size: 1.6em;
+    font-size: 1.45em;
     color: black;
     display: none;
 }
@@ -212,6 +230,12 @@ input[type=checkbox]:checked:after {
 @media(max-width: 500px) {
     .todolist th {
         display: none;
+    }
+
+
+    button {
+        font-family: "Font Awesome 5 Free";
+        zoom: 0.5;
     }
 
 

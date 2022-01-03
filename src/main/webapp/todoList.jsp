@@ -19,8 +19,11 @@
 
 <div class="container">
 
+    <!-- MENU NAV -->
     <nav></nav>
+    <!-- END MENU NAV -->
 
+    <!-- HEADBOX -->
     <div class="headbox">
         <h1>Listo of "${user.userName}"</h1>
         <div class="headtext">
@@ -29,50 +32,63 @@
                 rebum.</p>
         </div>
     </div>
+    <!-- END HEADBOX -->
 
     <main>
 
+        <div class="todolistBox">
 
-        <div class="todolist">
-            <table>
-                <thead>
-                <tr>
-                    <th id="th-check"></th>
-                    <th id="th-title">Title</th>
-                    <th class="center" id="th-category">Category</th>
-                    <th id="th-date">Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${user.toDos.todos}" var="todo">
+            <div class="editMenu">
+                <form action="XXXXXXXX" method="post">
+                    <button name="button" value="login">Logout</button>
+                    <button name="button" value="register">Create</button>
+                </form>
+            </div>
+
+            <div class="todolist">
+                <table>
+                    <thead>
                     <tr>
-                        <td class="center" id="td-check"><input class="checkbox" type="checkbox"
-                                                                <c:if test="${todo.done}">checked</c:if>/></td>
-                        <td id="td-title">${todo.title}</td>
-
-                        <td class="center" id="td-done">
-                            <c:choose>
-
-                                <c:when test="${todo.title == 'house'}">
-                                    <i class="fas fa-home"></i>
-                                </c:when>
-
-                                <c:when test="${todo.title == 'work'}">
-                                    <i class="fas fa-briefcase"></i>
-                                </c:when>
-
-                                <c:otherwise>
-                                    No comment sir...
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-                        
-                        <td id="td-important">${todo.important}</td>
+                        <th id="th-check"></th>
+                        <th id="th-title">Title</th>
+                        <th class="center" id="th-category">Category</th>
+                        <th id="th-date">Date</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${user.toDos.todos}" var="todo">
+                        <tr>
+                            <td class="center" id="td-check"><input class="checkbox" type="checkbox"
+                                                                    <c:if test="${todo.done}">checked</c:if>/></td>
+                            <td id="td-title">${todo.title}</td>
 
+                            <c:set var="houseIcon" scope="session" value="fas fa-home"/>
+                            <c:set var="workIcon" scope="session" value="fas fa-briefcase"/>
+
+                            <td class="center" id="td-done">
+                                <c:choose>
+
+                                    <c:when test="${todo.title == 'house'}">
+                                        <i class="${houseIcon}"></i>
+                                    </c:when>
+
+                                    <c:when test="${todo.title == 'work'}">
+                                        <i class="${workIcon}"></i>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        No comment sir...
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+
+                            <td id="td-important">${todo.important}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
 
     </main>

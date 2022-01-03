@@ -21,8 +21,8 @@
             <%= "ToDo App" %>
         </h1>
         <form action="userManager" method="post">
-            <input type="text" id="userName" name="userName" placeholder="Email" required><br><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <input type="text" id="userName" name="userName" placeholder="Email"><br><br>
+            <input type="password" id="password" name="password" placeholder="Password"><br><br>
 
             <button name="button" value="login">Login</button>
             <button name="button" value="register">Register</button>
