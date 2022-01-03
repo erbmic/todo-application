@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/css_style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -40,16 +40,33 @@
                     <th id="th-check"></th>
                     <th id="th-title">Title</th>
                     <th class="center" id="th-category">Category</th>
-                    <th  id="th-date">Date</th>
+                    <th id="th-date">Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${user.toDos.todos}" var="todo">
                     <tr>
                         <td class="center" id="td-check"><input class="checkbox" type="checkbox"
-                                                  <c:if test="${todo.done}">checked</c:if>/></td>
+                                                                <c:if test="${todo.done}">checked</c:if>/></td>
                         <td id="td-title">${todo.title}</td>
-                        <td class="center" id="td-done">${todo.done}</td>
+
+                        <td class="center" id="td-done">
+                            <c:choose>
+
+                                <c:when test="${todo.title == 'house'}">
+                                    <i class="fas fa-home"></i>
+                                </c:when>
+
+                                <c:when test="${todo.title == 'work'}">
+                                    <i class="fas fa-briefcase"></i>
+                                </c:when>
+
+                                <c:otherwise>
+                                    No comment sir...
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        
                         <td id="td-important">${todo.important}</td>
                     </tr>
                 </c:forEach>
