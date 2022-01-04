@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles2.css">
+    <link rel="stylesheet" href="css/styles3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -40,13 +40,21 @@
 
             <div class="editMenu">
                 <form action="XXXXXXXX" method="post">
-                    <button name="button" value="login">Logout</button>
+                    <select class="categories" name="category">
+                        <option selected>Category</option>
+<%--                        <option>House</option>--%>
+<%--                        <option>Work</option>--%>
+                        <c:forEach items="${user.toDos.todos}" var="categories">
+                            <option value="${categories.title}">${categories.title}</option>
+                        </c:forEach>
+                    </select>
                     <button name="button" value="register">Create</button>
                 </form>
             </div>
 
             <div class="todolist">
                 <table>
+
                     <thead>
                     <tr>
                         <th id="th-check"></th>
@@ -55,6 +63,7 @@
                         <th id="th-date">Date</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     <c:forEach items="${user.toDos.todos}" var="todo">
                         <tr>
@@ -62,18 +71,16 @@
                                                                     <c:if test="${todo.done}">checked</c:if>/></td>
                             <td id="td-title">${todo.title}</td>
 
-                            <c:set var="houseIcon" scope="session" value="fas fa-home"/>
-                            <c:set var="workIcon" scope="session" value="fas fa-briefcase"/>
 
                             <td class="center" id="td-done">
                                 <c:choose>
 
                                     <c:when test="${todo.title == 'house'}">
-                                        <i class="${houseIcon}"></i>
+                                        <i class="fas fa-home"></i>
                                     </c:when>
 
                                     <c:when test="${todo.title == 'work'}">
-                                        <i class="${workIcon}"></i>
+                                        <i class="fas fa-briefcase"></i>
                                     </c:when>
 
                                     <c:otherwise>

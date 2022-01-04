@@ -133,8 +133,12 @@ button:hover {
     font-size: 0.9em;
 }
 
+.loginbox a:hover {
+    font-weight: bold;
+}
 
-/* ----------- todo list box ----------- */
+
+/* ----------- todolist box ----------- */
 .todolistBox {
     /*background-color: #555555;*/
     width: 80%;
@@ -147,6 +151,19 @@ button:hover {
 .editMenu {
     display: flex;
     justify-content: flex-end;
+    /*gap: 5px;*/
+}
+
+.editMenu .categories {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+    border-radius: 6px;
+    min-width: 120px;
+    height: 40px;
+    font: inherit;
+    text-align: center;
+
 }
 
 
