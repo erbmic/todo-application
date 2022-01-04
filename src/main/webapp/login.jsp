@@ -20,13 +20,15 @@
         <h1>
             <%= "ToDo App" %>
         </h1>
+
         <form action="userManager" method="post">
-            <input type="text" id="userName" name="userName" placeholder="Email" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
         </form>
+
         <p>Don't have an account?</p>
-        <a href="register.jsp">Sign Up</a>
+        <a href="register.jsp">Sign up</a>
     </div>
 </main>
 

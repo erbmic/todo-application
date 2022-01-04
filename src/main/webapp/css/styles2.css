@@ -93,7 +93,7 @@ button:hover {
 /* ----------- login box ----------- */
 .loginbox {
     width: 300px;
-    padding: 40px;
+    /*padding: 40px;*/
     position: absolute;
     left: 50%;
     top: 50%;
