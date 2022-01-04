@@ -11,7 +11,7 @@
 
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles2.css">
 </head>
 
 <body>
@@ -27,10 +27,10 @@
             <%= "ToDo App" %>
         </h1>
         <form action="userManager" method="post">
-            <input type="text" id="name" name="name" placeholder="Name" required><br><br>
-            <input type="text" id="lastName" name="lastName" placeholder="Lastname" required><br><br>
-            <input type="text" id="userName" name="userName" placeholder="Email" required><br><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Lastname" required>
+            <input type="text" id="userName" name="userName" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
 
             <button name="button" value="login">Login</button>
             <button name="button" value="register">Register</button>
