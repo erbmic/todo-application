@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles3.css">
+    <link rel="stylesheet" href="css/styles4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -39,63 +39,71 @@
         <div class="todolistBox">
 
             <div class="editMenu">
-                <form action="XXXXXXXX" method="post">
+                <form action="todoManager" method="post">
                     <select class="categories" name="category">
                         <option selected>Category</option>
-<%--                        <option>House</option>--%>
-<%--                        <option>Work</option>--%>
+                        <option value="sdf">sdf</option>
+                        <option>Work</option>
                         <c:forEach items="${user.toDos.todos}" var="categories">
                             <option value="${categories.title}">${categories.title}</option>
                         </c:forEach>
                     </select>
-                    <button name="button" value="register">Create</button>
+                    <button name="button" value="create">Create</button>
                 </form>
             </div>
 
-            <div class="todolist">
-                <table>
+            <form action="todoManager" method="post">
+                <div class="todolist">
+                    <table>
 
-                    <thead>
-                    <tr>
-                        <th id="th-check"></th>
-                        <th id="th-title">Title</th>
-                        <th class="center" id="th-category">Category</th>
-                        <th id="th-date">Date</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    <c:forEach items="${user.toDos.todos}" var="todo">
+                        <thead>
                         <tr>
-                            <td class="center" id="td-check"><input class="checkbox" type="checkbox"
-                                                                    <c:if test="${todo.done}">checked</c:if>/></td>
-                            <td id="td-title">${todo.title}</td>
-
-
-                            <td class="center" id="td-done">
-                                <c:choose>
-
-                                    <c:when test="${todo.title == 'house'}">
-                                        <i class="fas fa-home"></i>
-                                    </c:when>
-
-                                    <c:when test="${todo.title == 'work'}">
-                                        <i class="fas fa-briefcase"></i>
-                                    </c:when>
-
-                                    <c:otherwise>
-                                        No comment sir...
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-
-                            <td id="td-important">${todo.important}</td>
+                            <th class="center" id="th-check"></th>
+                            <th id="th-title">Title</th>
+                            <th class="center" id="th-category">Category</th>
+                            <th id="th-date">Date</th>
+                            <th class="center" id="th-edit"></th>
                         </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
 
-            </div>
+                        <tbody>
+                        <c:forEach items="${user.toDos.todos}" var="todo">
+                            <tr>
+                                <td class="center" id="td-check"><button class="checkedButton" name="test" value="${todo.title}"><c:if test="${todo.done}"><i class="fas fa-check"></i></c:if></button></td>
+
+<%--                                <td class="center" id="td-check"><input class="checkbox" type="checkbox" name="checkbox" value="${todo.done}"--%>
+<%--                                                                        <c:if test="${todo.done}">checked</c:if>/></td>--%>
+                                <td id="td-title">${todo.title}</td>
+
+                                <td class="center" id="td-done">
+                                    <c:choose>
+
+                                        <c:when test="${todo.title == 'house'}">
+                                            <i class="fas fa-home"></i>
+                                        </c:when>
+
+                                        <c:when test="${todo.title == 'work'}">
+                                            <i class="fas fa-briefcase"></i>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            No comment sir...
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+
+                                <td id="td-date">${todo.important}</td>
+                                <td class="center" id="td-edit"><a href="login.jsp">
+                                    <i class="fas fa-ellipsis-h"></i></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+
+                </div>
+            </form>
+
         </div>
 
     </main>

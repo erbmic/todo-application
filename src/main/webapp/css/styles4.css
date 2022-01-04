@@ -81,7 +81,8 @@ button {
     border: 0;
     font: inherit;
     border-radius: 6px;
-    min-width: 120px;
+    /*min-width: 120px;*/
+    width: 120px;
     height: 40px;
 }
 
@@ -163,8 +164,15 @@ button:hover {
     height: 40px;
     font: inherit;
     text-align: center;
-
 }
+
+.editMenu .categories:hover {
+    font-weight: bold;
+    cursor: pointer;
+    /*outline: none;*/
+    /*border: 5px solid red;*/
+}
+
 
 
 /* ----- list of todos ----- */
@@ -188,13 +196,12 @@ button:hover {
 .todolist th {
     color: #555555;
     font-size: 0.9em;
-    padding: 0 25px;
 }
 
 .todolist td {
     background: white;
     font-size: 1.2em;
-    padding: 17px 25px;
+    padding: 17px 0;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     /*border-left: 1px solid red;*/
@@ -203,20 +210,41 @@ button:hover {
 .todolist td:last-child {
     border-radius: 0 6px 6px 0;
     border-right: 1px solid black;
+    padding-right: 10px;
 }
 
 .todolist td:first-child {
     border-radius: 6px 0 0 6px;
     border-left: 1px solid black;
+    padding-left: 10px;
 }
 
 .todolist .center {
     text-align: center;
 }
 
-#th-title{
-    column-width: 400px;
+#th-title, #td-title {
+    column-width: 300px;
 }
+
+
+/* ----------- checkbox in todos ----------- */
+.checkedButton {
+    appearance: none;
+    background-color: white;
+    color: black;
+    height: 1.6em;
+    width: 1.6em;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 0 0 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 /* ----------- checkbox in todos ----------- */
 .todolist .checkbox {
@@ -262,9 +290,19 @@ input[type=checkbox]:checked:after {
 
 
 /* ----------- responsive ----------- */
-@media(max-width: 500px) {
+@media(max-width: 600px) {
     .todolist th {
         display: none;
+    }
+
+    .todolist #td-edit, #th-edit {
+        display: none;
+    }
+
+    .todolist #td-date {
+        border-radius: 0 6px 6px 0;
+        border-right: 1px solid black;
+        padding-right: 10px;
     }
 
 

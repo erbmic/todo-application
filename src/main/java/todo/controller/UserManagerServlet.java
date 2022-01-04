@@ -28,6 +28,8 @@ public class UserManagerServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String button = request.getParameter("button");
+        String checkbox = request.getParameter("checkbox");
+        String category = request.getParameter("category");
 
         if (button.equals("register")) {
             user = account.registerUser(userName, password);
