@@ -23,16 +23,6 @@ public class TodoServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-//        String userName = request.getParameter("userName");
-//        String password = request.getParameter("password");
-//        String button = request.getParameter("button");
-//        String checkbox = request.getParameter("checkbox");
-//        String category = request.getParameter("category");
-//
-//        if (button.equals("sdf")) {
-//            System.out.println(category);
-//        } // else if logout und destroy
-
         System.out.println("hello");
         response.sendRedirect("todoList.jsp");
 

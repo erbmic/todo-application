@@ -49,22 +49,6 @@ public class UserManagerServlet extends HttpServlet {
                 System.out.println("destroyed");
             }
         } // else if logout und destroy
-
-
-
-
-
-//        switch (button) {
-//            case "register":
-//                user = account.registerUser(userName, password);
-////                account.loginUser(user);
-//                response.sendRedirect("login.jsp");
-//            case "login":
-//                if (account.loginUser(userName, password)) {
-//                    System.out.println("yes");
-//                } System.out.println("no");
-//                response.sendRedirect("login.jsp");
-//        }
     }
 
     public void destroy() {
