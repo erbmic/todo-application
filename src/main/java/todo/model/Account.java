@@ -39,10 +39,17 @@ public class Account {
 
     public User registerUser(String userName, String password) {
 
-        User user = new User(userName, password);
-        userAccounts.add(user);
+        boolean userExists = userAccounts.stream().anyMatch(user -> user.getUserName().equals(userName));
 
-        return user;
+        if (!userExists) {
+            User user = new User(userName, password);
+            userAccounts.add(user);
+
+            return user;
+        } else {
+            return null;
+        }
+
     }
 
     public User loginUser(String userName, String password) {
