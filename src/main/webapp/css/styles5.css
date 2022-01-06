@@ -25,6 +25,7 @@ body {
 nav {
     /*background: cornsilk;*/
     grid-area: nav;
+    /*background-color: #555555;*/
 }
 
 
@@ -148,14 +149,14 @@ button:hover {
 }
 
 
-/* ----- edit menu ----- */
-.editMenu {
+/* ----- todolist menu ----- */
+.todoListMenuForm, .editMenuForm {
     display: flex;
     justify-content: flex-end;
-    /*gap: 5px;*/
+    gap: 10px;
 }
 
-.editMenu .categories {
+.todoMenu .categories {
     background-color: white;
     color: black;
     border: solid 2px black;
@@ -166,11 +167,33 @@ button:hover {
     text-align: center;
 }
 
-.editMenu .categories:hover {
+.todoMenu .categories:hover {
     font-weight: bold;
     cursor: pointer;
     /*outline: none;*/
     /*border: 5px solid red;*/
+}
+
+
+/* ----- editmenu buttons ----- */
+.editMenu button {
+    color: white;
+    background-color: black;
+    width: 40px;
+    font-size: 1.9em;
+}
+
+.editMenu #saveButton {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editMenu a {
+    text-decoration: none;
 }
 
 
