@@ -4,7 +4,7 @@
 
 <head>
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/css_style.css">
+    <link rel="stylesheet" href="css/styles4.css">
 </head>
 
 <body>
@@ -20,13 +20,15 @@
         <h1>
             <%= "ToDo App" %>
         </h1>
-        <form action="userManager" method="post">
-            <input type="text" id="userName" name="userName" placeholder="Email" required><br><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
 
+        <form action="userManager" method="post">
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
-            <button name="button" value="register">Register</button>
         </form>
+
+        <p>Don't have an account?</p>
+        <a href="register.jsp">Sign up</a>
     </div>
 </main>
 
