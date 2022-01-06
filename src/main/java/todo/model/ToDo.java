@@ -15,10 +15,6 @@ public class ToDo {
     @JacksonXmlProperty(isAttribute = true)
     private Category category;
 
-//    private enum Category {
-//        house, job
-//    }
-
     public ToDo() {
     }
 
