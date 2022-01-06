@@ -1,17 +1,28 @@
 package todo.model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.List;
+
 public class User {
 
+    @JacksonXmlProperty(localName = "userName")
     private String userName;
+    @JacksonXmlProperty(localName = "password")
     private String password;
-    private TodoList toDos;
+    @JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlProperty(localName = "todoList")
+    private TodoList todoList;
+
+    public User() {
+    }
 
     //call method readToDos() directly to initially read the xml file
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.toDos = new TodoList().readToDos();
-        System.out.println("read todos");
+        this.todoList = new TodoList();
     }
 
     public String getUserName() {
@@ -30,11 +41,12 @@ public class User {
         this.password = password;
     }
 
-    public TodoList getToDos() {
-        return toDos;
+    public TodoList getTodoList() {
+        return todoList;
     }
 
-    public void setToDos(TodoList toDos) {
-        this.toDos = toDos;
+    public void setTodoList(TodoList todoList) {
+        this.todoList = todoList;
     }
+
 }

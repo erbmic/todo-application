@@ -8,6 +8,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -25,20 +27,21 @@ public class TodoList {
     public TodoList() {
     }
 
+
     public TodoList(List<ToDo> todos) {
         this.todos = todos;
     }
 
     //method to initially read the xml file
-    public TodoList readToDos() {
-        ObjectMapper mapper = new XmlMapper();
-        LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
-        try (InputStream reader = new FileInputStream(xmlInputFileName)) {
-            return mapper.readValue(reader, TodoList.class);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+//    public TodoList readToDos() {
+//        ObjectMapper mapper = new XmlMapper();
+//        LOGGER.info(" - - - - Read from file " + xmlInputFileName + " - - - - ");
+//        try (InputStream reader = new FileInputStream(xmlInputFileName)) {
+//            return mapper.readValue(reader, TodoList.class);
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
 
     public void setTodos(List<ToDo> todos) {
         this.todos = todos;

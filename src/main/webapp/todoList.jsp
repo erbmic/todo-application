@@ -44,7 +44,7 @@
                         <option selected>Category</option>
                         <option value="sdf">sdf</option>
                         <option>Work</option>
-                        <c:forEach items="${user.toDos.todos}" var="categories">
+                        <c:forEach items="${user.todoList.todos}" var="categories">
                             <option value="${categories.title}">${categories.title}</option>
                         </c:forEach>
                     </select>
@@ -67,7 +67,7 @@
                         </thead>
 
                         <tbody>
-                        <c:forEach items="${user.toDos.todos}" var="todo">
+                        <c:forEach items="${user.todoList.todos}" var="todo">
                             <tr>
                                 <td class="center" id="td-check"><button class="checkedButton" name="test" value="${todo.title}"><c:if test="${todo.done}"><i class="fas fa-check"></i></c:if></button></td>
 

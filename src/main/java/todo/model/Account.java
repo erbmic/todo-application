@@ -1,17 +1,40 @@
 package todo.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class Account {
 
-    private static final Account accountInstance = new Account();
-    private static final Set<User> userAccounts = new HashSet<>();
+    private static final String XML_FILE = System.getProperty("user.home") + File.separator + "data2.xml";
+    private static final File FILE = new File(XML_FILE);
+
+    private static final Account accountInstance = new Account().loadXml();
+    @JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlProperty(localName = "user")
+    private Set<User> userAccounts = new HashSet<>();
 
     private Account() {
     }
 
     public static Account getAccountInstance() {
         return accountInstance;
+    }
+
+    public Account loadXml() {
+        ObjectMapper mapper = new XmlMapper();
+        try (InputStream reader = new FileInputStream(FILE)) {
+            return mapper.readValue(reader, Account.class);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public User registerUser(String userName, String password) {
@@ -23,7 +46,7 @@ public class Account {
         return user;
     }
 
-    public boolean loginUser(String userName, String password) {
+    public User loginUser(String userName, String password) {
 
         //        return userAccounts.contains(user);
         // user zurückgeben
@@ -36,14 +59,14 @@ public class Account {
 
             if (userAccountPassword.equals(password)) {
                 System.out.println("login succeeded");
-                return true;
+                return userAccount;
             } else {
                 System.out.println("wrong password");
-                return false;
+                return null;
             }
         } else {
             System.out.println("The user doesnt exist");
-            return false;
+            return null;
         }
     }
 

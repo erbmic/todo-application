@@ -38,7 +38,9 @@ public class UserManagerServlet extends HttpServlet {
 //            response.sendRedirect("register.jsp");
         }
         else if (button.equals("login")) {
-            if (account.loginUser(userName, password)) {
+            user = account.loginUser(userName, password);
+
+            if (!(user == null)) {
                 session.setAttribute("user", user);
                 response.sendRedirect("todoList.jsp");
             } else {
