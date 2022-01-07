@@ -4,7 +4,7 @@
 
 <head>
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles4.css">
+    <link rel="stylesheet" href="css/styles6.css">
 </head>
 
 <body>

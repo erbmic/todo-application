@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles5.css">
+    <link rel="stylesheet" href="css/styles6.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -39,15 +39,24 @@
 
             <div class="editMenu">
                 <form class="editMenuForm" action="todoManager" method="post">
-                    <a href="todoList.jsp"><button id="saveButton" name="button" value="close"><i class="far fa-save"></i></button></a>
-                    <a href="todoList.jsp"><button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button></a>
+                    <a href="todoList.jsp">
+                        <button id="saveButton" name="button" value="close"><i class="far fa-save"></i></button>
+                    </a>
+                    <a href="todoList.jsp">
+                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
+                    </a>
                 </form>
             </div>
 
-            <form action="todoManager" method="post">
-<%--                <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>--%>
-<%--                <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>--%>
-            </form>
+            <div class="createTodoForm">
+
+                <form action="todoManager" method="post">
+                    <label for="cf-name"></label><input type="text" id="cf-name" name="name" placeholder="Name" required>
+                    <label for="cf-password"></label><input type="password" id="cf-password" name="password" placeholder="Password" required>
+<%--                    <label for="cf-password"></label><input type="password" id="cf-password" name="password" placeholder="Password" required>--%>
+                </form>
+
+            </div>
 
         </div>
 
