@@ -53,32 +53,53 @@
                 <div class="editTodoForm">
 
                     <form action="todoManager" method="post">
-                        <label for="editImportant"></label><input class="checkbox" type="checkbox" id="editImportant"
-                                                                name="editImportant" value="editImportant"/>
-
-                        <label for="editTitle">Title</label><input type="text" id="editTitle" name="editTitle"
-                                                              placeholder="title" required>
 
                         <div class="oneLine">
-                            <label for="editDueDate"></label><input type="date" id="editDueDate" name="editDueDate"
-                                                                    value="2018-07-22"
-                                                                    min="2018-01-01" max="2018-12-31"
-                                                                    placeholder="due date">
-
-                            <label for="editCategoryDropdown"></label><select class="categoryDropdown"
-                                                                              id="editCategoryDropdown" name="category">
-                            <option selected>Category</option>
-                            <option>Work</option>
-                            <c:forEach items="${user.todoList.todos}" var="categories">
-                                <option value="${categories.title}">${categories.title}</option>
-                            </c:forEach>
-                             </select>
+                            <input class="checkbox" type="checkbox"
+                                   id="editImportant"
+                                   name="editImportant"
+                                   value="editImportant"/><label for="editImportant">Important</label>
                         </div>
 
 
-                        <label for="editDescription"></label><input type="text" id="editDescription"
-                                                                    name="editDescription" placeholder="description"
-                                                                    required>
+                        <%--                        <div class="oneLine">--%>
+                        <%--                            <label for="editImportant">Important</label><input class="checkbox" type="checkbox"--%>
+                        <%--                                                                               id="editImportant"--%>
+                        <%--                                                                               name="editImportant"--%>
+                        <%--                                                                               value="editImportant"/>--%>
+                        <%--                        </div>--%>
+
+
+                        <label for="editTitle">Title</label><input type="text" id="editTitle" name="editTitle"
+                                                                   placeholder="title" required>
+
+                        <div class="oneLine">
+                            <div id="editDueDate">
+                                <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
+                                                                                name="editDueDate"
+                                                                                value="2018-07-22"
+                                                                                min="2018-01-01" max="2018-12-31"
+                                                                                placeholder="due date">
+                            </div>
+
+                            <div id="editCategoryDropdown">
+                                <label for="editCategoryDropdownSelect">Category</label><select class="categoryDropdown"
+                                                                                                id="editCategoryDropdownSelect"
+                                                                                                name="category">
+                                <option selected>Category</option>
+                                <option>Work</option>
+                                <c:forEach items="${user.todoList.todos}" var="categories">
+                                    <option value="${categories.title}">${categories.title}</option>
+                                </c:forEach>
+                            </select>
+                            </div>
+                        </div>
+
+
+                        <label for="editDescription">Description</label><input type="text" id="editDescription"
+                                                                               name="editDescription"
+                                                                               placeholder="description"
+                                                                               required>
                     </form>
 
                 </div>

@@ -281,7 +281,7 @@ button:hover {
 
 
 
-.editTodoForm input, .editTodoForm .categoryDropdown {
+.editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
     box-sizing: border-box;
     border: solid 1px;
     color: black;
@@ -295,21 +295,28 @@ button:hover {
     text-align: left;
 }
 
-.oneLine {
+.oneLine2 {
     /*width: 100%;*/
     display:flex;
-    justify-content:flex-end;
+    justify-content: flex-start;
 
 }
 
-.editTodoForm #editDueDate {
-    margin-right: auto;
+.oneLine {
+    /*width: 100%;*/
+    display:flex;
+    justify-content:flex-start;
+
+}
+
+.editTodoForm #editCategoryDropdown {
+    margin-left: auto;
 }
 
 .editTodoForm .categoryDropdown  {
 }
 
-.editTodoForm #editDueDate,.editTodoForm .categoryDropdown {
+.editTodoForm #editDueDate,.editTodoForm #editCategoryDropdown {
     /*min-width: 120px;*/
     width: 48%;
 }
@@ -321,6 +328,21 @@ button:hover {
 .editTodoForm #editDescription {
     height: 200px;
     line-height: normal;
+}
+
+.editTodoForm label {
+    margin-bottom: 7px;
+    display: inline-block;
+}
+
+/*label[for="editImportant"] {*/
+/*    margin-top: 5px;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+label[for="editImportant"] {
+    margin-top: 7px;
+    margin-left: 10px;
 }
 
 
