@@ -41,9 +41,8 @@
 
                 <div class="editMenu">
                     <form class="editMenuForm" action="todoManager" method="post">
-                        <a href="todoList.jsp">
-                            <button id="saveButton" name="button" value="close"><i class="far fa-save"></i></button>
-                        </a>
+                        <button id="deleteButton" name="button" value="close"><i class="far fa-trash-alt"></i></button>
+                        <button id="saveButton" name="button" value="close"><i class="far fa-save"></i></button>
                         <a href="todoList.jsp">
                             <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
                         </a>

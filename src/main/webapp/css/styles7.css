@@ -182,16 +182,24 @@ button:hover {
     color: white;
     background-color: black;
     width: 40px;
-    font-size: 1.9em;
+    font-size: 1.8em;
 }
 
-.editMenu #saveButton {
+.editMenu #saveButton, .editMenu #deleteButton {
     background-color: white;
     color: black;
-    border: solid 2px black;
+    border: solid 3px black;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.editMenu #deleteButton {
+    font-size: 1.7em;
+}
+
+.editMenu #closeButton {
+    margin-left: 15px;
 }
 
 .editMenu a {

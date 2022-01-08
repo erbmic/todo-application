@@ -47,7 +47,7 @@
                             <option value="${categories.title}">${categories.title}</option>
                         </c:forEach>
                     </select>
-                    <button name="button" value="create">Create</button>
+                    <button name="button" value="add">Add todo</button>
                 </form>
             </div>
 
@@ -60,7 +60,7 @@
                             <th class="center" id="th-check"></th>
                             <th id="th-title">Title</th>
                             <th class="center" id="th-category">Category</th>
-                            <th id="th-date">Date</th>
+                            <th id="th-date">Due Date</th>
                             <th class="center" id="th-edit"></th>
                         </tr>
                         </thead>
@@ -86,7 +86,7 @@
                                         </c:when>
 
                                         <c:otherwise>
-                                            No comment sir...
+
                                         </c:otherwise>
                                     </c:choose>
                                 </td>
