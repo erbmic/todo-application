@@ -10,10 +10,7 @@ import todo.model.userExceptions.NoSuchUserException;
 import todo.model.userExceptions.UserAlreadyExistsException;
 import todo.model.userExceptions.WrongPasswordException;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +23,7 @@ public class Account {
     private static Account accountInstance = new Account();
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "user")
-    private final Set<User> userAccounts;
+    private Set<User> userAccounts;
 
     private Account() {
         this.userAccounts = new HashSet<>();
@@ -36,12 +33,24 @@ public class Account {
         return accountInstance;
     }
 
-    public Account loadXml() {
+    public void loadXml() {
+        if (FILE.canRead()) {
+            ObjectMapper mapper = new XmlMapper();
+            try (InputStream reader = new FileInputStream(FILE)) {
+                accountInstance = mapper.readValue(reader, Account.class);
+                userAccounts = accountInstance.userAccounts;
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    public void saveXml() {
         ObjectMapper mapper = new XmlMapper();
-        try (InputStream reader = new FileInputStream(FILE)) {
-            return mapper.readValue(reader, Account.class);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+        try(OutputStream writer = new FileOutputStream(FILE)) {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(writer, accountInstance);
+        }  catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -50,10 +59,12 @@ public class Account {
     public User registerUser(String firstName, String lastName, String userName, String password, String passwordC)
             throws InvalidCredentialsException, UserAlreadyExistsException {
         if (!validUserName(userName) || !validPassword(password, passwordC)) throw new InvalidCredentialsException();
+        loadXml();
         User user = new User(firstName, lastName, userName, password);
         if (userAccounts.add(user)){
+            saveXml();
             return user;
-        } else {
+        } else{
             throw new UserAlreadyExistsException();
         }
     }
@@ -69,11 +80,17 @@ public class Account {
             }
     }
 
-    public boolean deleteUser(String userName) throws NoSuchUserException {
-        return userAccounts.remove(findByUserName(userName));
+    public User deleteUser(String userName) throws NoSuchUserException {
+        User user = findByUserName(userName);
+        if (userAccounts.remove(user)){
+            saveXml();
+            return user;
+        }
+        return null;
     }
 
     private User findByUserName(String userName) throws NoSuchUserException {
+        loadXml();
         return userAccounts.stream()
                 .filter(user -> userName.equals(user.getUserName()))
                 .findAny()
