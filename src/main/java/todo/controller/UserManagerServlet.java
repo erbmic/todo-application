@@ -24,13 +24,11 @@ public class UserManagerServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         HttpSession session = request.getSession();
+        Account account = Account.getAccountInstance();
 
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-
         String button = request.getParameter("button");
-        String checkbox = request.getParameter("checkbox");
-        String category = request.getParameter("category");
 
         switch (button) {
             case "register":
@@ -38,7 +36,7 @@ public class UserManagerServlet extends HttpServlet {
                 String lastName = request.getParameter("lastName");
                 String passwordC = request.getParameter("passwordC");
                 try {
-                    session.setAttribute("user", Account.getAccountInstance().registerUser(firstName, lastName, userName, password, passwordC));
+                    session.setAttribute("user", account.registerUser(firstName, lastName, userName, password, passwordC));
                     response.sendRedirect("todoList.jsp");
                 } catch (InvalidCredentialsException | UserAlreadyExistsException e) {
                     // stay on register site and inform user
@@ -54,7 +52,7 @@ public class UserManagerServlet extends HttpServlet {
                 // if user not logged in call login method
                 if (session.getAttribute("user") == null) {
                     try {
-                        session.setAttribute("user", Account.getAccountInstance().loginUser(userName, password));
+                        session.setAttribute("user", account.loginUser(userName, password));
                         response.sendRedirect("todoList.jsp");
                     } catch (NoSuchUserException | WrongPasswordException e) {
                         // stay on login site and inform user about wrong userName or password
