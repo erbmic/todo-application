@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles6.css">
+    <link rel="stylesheet" href="css/styles7.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -40,7 +40,7 @@
 
             <div class="todoMenu">
                 <form class="todoListMenuForm" action="todoManager" method="post">
-                    <select class="categories" name="category">
+                    <select class="categoryDropdown" name="category">
                         <option selected>Category</option>
                         <option>Work</option>
                         <c:forEach items="${user.todoList.todos}" var="categories">
