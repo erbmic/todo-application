@@ -15,13 +15,21 @@ public class ToDo {
     @JacksonXmlProperty(isAttribute = true)
     private Category category;
 
-    public ToDo() {
+    public ToDo(String title) {
+        this(title, false, null);
     }
 
-    public ToDo(long id, String title, Boolean done, Boolean important, Category category) {
-        this.id = id;
+    public ToDo(String title, boolean important){
+        this(title, important, null);
+    }
+
+    public ToDo(String title, Category category){
+        this(title, false, category);
+    }
+
+    public ToDo(String title, Boolean important, Category category) {
+        this.id = TodoList.getNextId();
         this.title = title;
-        this.done = done;
         this.important = important;
         this.category = category;
     }

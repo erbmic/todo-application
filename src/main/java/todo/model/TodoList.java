@@ -3,56 +3,48 @@ package todo.model;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class TodoList {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
-    private CatList[] categories;
-
-    private static final String xmlInputFileName = System.getProperty("user.home") + "/data.xml";
-    private static final Logger LOGGER = Logger.getLogger(TodoList.class.getName());
-
+    private static long nextId;
 
     public TodoList() {
-    }
-
-    public TodoList(List<ToDo> todos) {
-        this.todos = todos;
-    }
-
-    public void setTodos(List<ToDo> todos) {
-        this.todos = todos;
+        this.todos = new ArrayList<>();
     }
 
     public List<ToDo> getTodos() {
         return todos;
     }
 
-    private void sortTodos() {
+    public static long getNextId(){
+        long act = nextId;
+        nextId ++;
+        return act;
+    }
+
+
+    public void editTodo() {
 
     }
 
-    private void filterTodos() {
+    public void deleteTodo() {
 
     }
 
-    private void addTodo() {
+    public void findTodo() {
 
     }
 
-    private void editTodo() {
+    public void sortTodos() {
 
     }
 
-    private void deleteTodo() {
-
-    }
-
-    private void findTodo() {
+    public void filterTodos() {
 
     }
 }
