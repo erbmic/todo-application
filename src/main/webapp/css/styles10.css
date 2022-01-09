@@ -1,6 +1,6 @@
 /* ----------- variables ----------- */
-:root{
-    --primary: #FFC636;
+:root {
+    /*--primary: #FFC636;*/
     --secondary: #0A0B5B;
     --main-borderradius: 6px;
 }
@@ -10,13 +10,13 @@
 .container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr 3fr 0.2fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.5fr 3fr 0.2fr;
     grid-template-areas:
-            "nav nav nav"
-            "headbox headbox headbox"
-            "main main main"
-            "footer footer footer";
+            "nav"
+            "headbox"
+            "main"
+            "footer";
 }
 
 /* ----------- body ----------- */
@@ -36,19 +36,19 @@ nav {
     /*background-color: #555555;*/
 }
 
-
 /* ----------- headbox ----------- */
 .headbox {
-    /*background: burlywood;*/
+    background: burlywood;
     grid-area: headbox;
 }
 
 .headtext {
+    display: none;
     text-align: center;
     font-size: 1.3em;
     width: 60%;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -68,19 +68,18 @@ footer {
 
 /* ----------- title fonts ----------- */
 h1 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     text-align: center;
-    margin: 30px 10px 40px 10px;
+    margin: 10px 10px 40px 10px;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: normal;
     text-align: center;
     margin: 0 0 10px 0;
 }
-
 
 /* ----------- general buttons ----------- */
 button {
@@ -95,6 +94,7 @@ button {
     height: 40px;
 }
 
+
 button:hover {
     font-weight: bold;
 }
@@ -103,12 +103,9 @@ button:hover {
 /* ----------- login box ----------- */
 .loginbox {
     width: 300px;
-    /*padding: 40px;*/
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -70%);
-    /*background: aquamarine;*/
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -215,7 +212,6 @@ button:hover {
 }
 
 
-
 /* ----- list of todos ----- */
 .todolist {
     display: flex;
@@ -228,37 +224,40 @@ button:hover {
     /*border-collapse: collapse;*/
     margin: 25px 0;
     width: 100%;
-    border-collapse:separate;
-    border-spacing:0 15px;
+    border-collapse: separate;
+    border-spacing: 0 15px;
     text-align: left;
     box-shadow: #555555;
 }
 
 .todolist th {
     color: #555555;
-    font-size: 0.9em;
+    font-size: 0.75em;
+    padding: 0 10px;
+
 }
 
 .todolist td {
     background: white;
-    font-size: 1.2em;
+    font-size: 1em;
     height: 60px;
     /*padding: 17px 0;*/
     border-bottom: 1px solid black;
     border-top: 1px solid black;
-    /*border-left: 1px solid red;*/
+    padding: 0 10px;
 }
 
 .todolist td:last-child {
     border-radius: 0 6px 6px 0;
     border-right: 1px solid black;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 .todolist td:first-child {
     border-radius: 6px 0 0 6px;
     border-left: 1px solid black;
-    padding-left: 10px;
+    padding-left: 15px;
+
 }
 
 .todolist .center {
@@ -293,7 +292,7 @@ button:hover {
     width: 1.6em;
     border: 1px solid black;
     border-radius: 5px;
-    margin: 0 0 0 30px;
+    /*margin: 0 10px 0 15px;*/
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -308,7 +307,6 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
 
 
 .editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
@@ -327,15 +325,15 @@ button:hover {
 
 .oneLine2 {
     /*width: 100%;*/
-    display:flex;
+    display: flex;
     justify-content: flex-start;
 
 }
 
 .oneLine {
     /*width: 100%;*/
-    display:flex;
-    justify-content:flex-start;
+    display: flex;
+    justify-content: flex-start;
 
 }
 
@@ -343,10 +341,10 @@ button:hover {
     margin-left: auto;
 }
 
-.editTodoForm .categoryDropdown  {
+.editTodoForm .categoryDropdown {
 }
 
-.editTodoForm #editDueDate,.editTodoForm #editCategoryDropdown {
+.editTodoForm #editDueDate, .editTodoForm #editCategoryDropdown {
     /*min-width: 120px;*/
     width: 48%;
 }
@@ -374,8 +372,6 @@ label[for="editImportant"] {
     margin-top: 7px;
     margin-left: 10px;
 }
-
-
 
 
 /* ----- checkbox editbox ----- */
@@ -422,62 +418,83 @@ input[type=checkbox]:checked:after {
 }
 
 
-
-
 /* ----------- responsive ----------- */
-@media(max-width: 400px) {
+@media screen and (min-width: 960px) {
 
+    /* ----------- general container ----------- */
     .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.2fr 0.5fr 3fr 0.2fr;
-
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.2fr 1fr 3fr 0.2fr;
         grid-template-areas:
-            "nav"
-            "headbox"
-            "mainin"
-            "footer";
+            "nav nav nav"
+            "headbox headbox headbox"
+            "main main main"
+            "footer footer footer";
     }
 
     .headtext {
-        /*display: none;*/
+        display: block;
     }
 
+
+    /* ----------- title fonts ----------- */
     h1 {
-        font-size: 2em;
-        margin: 10px 10px 40px 10px;
+        font-size: 3em;
+        margin: 30px 10px 40px 10px;
     }
 
     h2 {
-        font-size: 1em;
+        font-size: 1.2em;
+    }
+
+    /* ----------- login box ----------- */
+    .loginbox {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -70%);
     }
 
 
 
-
-
-
-
-
-
+    /* ----- list of todos ----- */
 
     .todolist th {
-        display: none;
+        color: #555555;
+        font-size: 0.9em;
+        padding: 0 20px;
     }
 
-    main {
-        background-color: #FFC636;
-        grid-column: 1/4;
+    .todolist td {
+        padding: 0 20px;
+        font-size: 1.2em;
     }
 
-    .todolist #td-edit, #th-edit {
-        display: none;
+    .todolist td:last-child {
+        padding-right: 25px;
     }
 
-    .todolist #td-date {
-        border-radius: 0 6px 6px 0;
-        border-right: 1px solid black;
-        padding-right: 10px;
+    .todolist td:first-child {
+        padding-left: 40px;
     }
+
+
+    /* ----------- checkbox in todos ----------- */
+    .checkTodoButton {
+        /*margin: 0 0 0 30px;*/
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

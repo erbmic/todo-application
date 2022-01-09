@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles9.css">
+    <link rel="stylesheet" href="css/styles10.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -93,13 +93,13 @@
                                     </c:choose>
                                 </td>
 
-                                <td class="center" id="td-important">${todo.important}</td>
+                                <td class="center" id="td-important"><c:if test="${todo.important}"><i class="fas fa-exclamation-circle"></i></c:if></td>
 
                                 <td id="td-date">${todo.important}</td>
 
-                                <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="editTodoButton" value="${todo.title}"><i class="fas fa-ellipsis-h"></i></button>
-                                </td>
+<%--                                <td class="center" id="td-edit">--%>
+<%--                                    <button id="editTodoButton" name="editTodoButton" value="${todo.title}"><i class="fas fa-ellipsis-h"></i></button>--%>
+<%--                                </td>--%>
 
                                 <td class="center" id="td-edit"><a href="todoEdit.jsp">
                                     <i class="fas fa-ellipsis-h"></i></a>
