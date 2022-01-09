@@ -2,6 +2,7 @@
 :root{
     --primary: #FFC636;
     --secondary: #0A0B5B;
+    --main-borderradius: 6px;
 }
 
 
@@ -423,19 +424,49 @@ input[type=checkbox]:checked:after {
 
 
 
-
-
-
-
-
-
-
-
-
 /* ----------- responsive ----------- */
-@media(max-width: 600px) {
+@media(max-width: 400px) {
+
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 0.5fr 3fr 0.2fr;
+
+        grid-template-areas:
+            "nav"
+            "headbox"
+            "mainin"
+            "footer";
+    }
+
+    .headtext {
+        /*display: none;*/
+    }
+
+    h1 {
+        font-size: 2em;
+        margin: 10px 10px 40px 10px;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+
+
+
+
+
+
+
+
+
     .todolist th {
         display: none;
+    }
+
+    main {
+        background-color: #FFC636;
+        grid-column: 1/4;
     }
 
     .todolist #td-edit, #th-edit {
@@ -449,22 +480,5 @@ input[type=checkbox]:checked:after {
     }
 
 
-    button {
-        font-family: "Font Awesome 5 Free";
-        zoom: 0.5;
-    }
-
 
 }
-
-
-/*.todolist {*/
-/*    background: antiquewhite;*/
-/*    padding: 60px;*/
-/*    position: absolute;*/
-/*    left: 60px;*/
-/*    right: 60px;*/
-/*    top: 110px;*/
-/*    bottom: 30px;*/
-/*    text-align: center;*/
-/*}*/
