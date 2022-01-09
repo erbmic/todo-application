@@ -25,7 +25,7 @@ public class TodoServlet extends HttpServlet {
 
         String button = request.getParameter("checkTodoButton");
 
-        System.out.println(button);
+//        System.out.println(button);
         response.sendRedirect("todoList.jsp");
 
     }
