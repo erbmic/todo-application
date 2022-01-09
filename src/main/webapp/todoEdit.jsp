@@ -67,7 +67,7 @@
                         <%--                                                                               value="editImportant"/>--%>
                         <%--                        </div>--%>
 
-                        
+
                         <label for="editTitle">Title</label><input type="text" id="editTitle" name="editTitle"
                                                                    placeholder="title" required>
 

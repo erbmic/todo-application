@@ -61,6 +61,7 @@
                             <th id="th-title">Title</th>
                             <th class="center" id="th-category">Category</th>
                             <th id="th-date">Due Date</th>
+                            <th class="center" id="th-important">Important</th>
                             <th class="center" id="th-edit"></th>
                         </tr>
                         </thead>
@@ -92,6 +93,7 @@
                                 </td>
 
                                 <td id="td-date">${todo.important}</td>
+                                <td class="center" id="td-important">${todo.important}</td>
                                 <td class="center" id="td-edit"><a href="todoEdit.jsp">
                                     <i class="fas fa-ellipsis-h"></i></a>
                                 </td>
