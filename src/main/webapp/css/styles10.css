@@ -38,7 +38,7 @@ nav {
 
 /* ----------- headbox ----------- */
 .headbox {
-    background: burlywood;
+    /*background: burlywood;*/
     grid-area: headbox;
 }
 
@@ -234,13 +234,12 @@ button:hover {
     color: #555555;
     font-size: 0.75em;
     padding: 0 10px;
-
 }
 
 .todolist td {
     background: white;
     font-size: 1em;
-    height: 60px;
+    height: 55px;
     /*padding: 17px 0;*/
     border-bottom: 1px solid black;
     border-top: 1px solid black;
@@ -302,7 +301,7 @@ button:hover {
 
 /* ----------- edit todo box ----------- */
 .editbox {
-    width: 60%;
+    width: 100%;
     /*background-color: pink;*/
     margin-left: auto;
     margin-right: auto;
@@ -315,8 +314,8 @@ button:hover {
     color: black;
     font: inherit;
     border-radius: 6px;
-    height: 60px;
-    padding-left: 30px;
+    height: 55px;
+    padding-left: 20px;
     padding-right: 15px;
     margin-bottom: 20px;
     width: 100%;
@@ -362,11 +361,6 @@ button:hover {
     margin-bottom: 7px;
     display: inline-block;
 }
-
-/*label[for="editImportant"] {*/
-/*    margin-top: 5px;*/
-/*    margin-right: 10px;*/
-/*}*/
 
 label[for="editImportant"] {
     margin-top: 7px;
@@ -458,7 +452,6 @@ input[type=checkbox]:checked:after {
 
 
     /* ----- list of todos ----- */
-
     .todolist th {
         color: #555555;
         font-size: 0.9em;
@@ -468,6 +461,7 @@ input[type=checkbox]:checked:after {
     .todolist td {
         padding: 0 20px;
         font-size: 1.2em;
+        height: 60px;
     }
 
     .todolist td:last-child {
@@ -484,13 +478,19 @@ input[type=checkbox]:checked:after {
         /*margin: 0 0 0 30px;*/
     }
 
+    /* ----------- edit todo box ----------- */
+    .editbox {
+        width: 60%;
+    }
 
 
+    /* ----------- edit todo box ----------- */
 
-
-
-
-
+    .editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
+        height: 60px;
+        padding-left: 30px;
+        padding-right: 15px;
+    }
 
 
 
