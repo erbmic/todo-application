@@ -1,7 +1,7 @@
 /* ----------- variables ----------- */
 :root {
     /*--primary: #FFC636;*/
-    --secondary: #0A0B5B;
+    --warnRed: #8b251c;
     --main-borderradius: 6px;
 }
 
@@ -227,7 +227,6 @@ button:hover {
     border-collapse: separate;
     border-spacing: 0 15px;
     text-align: left;
-    box-shadow: #555555;
 }
 
 .todolist th {
@@ -257,6 +256,10 @@ button:hover {
     border-left: 1px solid black;
     padding-left: 15px;
 
+}
+
+.todolist #td-important {
+    color: var(--warnRed);
 }
 
 .todolist .center {
@@ -483,8 +486,6 @@ input[type=checkbox]:checked:after {
         width: 60%;
     }
 
-
-    /* ----------- edit todo box ----------- */
 
     .editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
         height: 60px;
