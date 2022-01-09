@@ -30,7 +30,7 @@
         <form action="userManager" method="post">
             <label for="name"></label><input type="text" id="name" name="name" placeholder="Name" required>
             <label for="lastName"></label><input type="text" id="lastName" name="lastName" placeholder="Lastname" required>
-            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Username" required>
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <label for="passwordC"></label><input type="password" id="passwordC" name="passwordC" placeholder="Confirm Password" required>
 

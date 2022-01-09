@@ -22,7 +22,7 @@
         </h1>
 
         <form action="userManager" method="post">
-            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Username" required>
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
         </form>
