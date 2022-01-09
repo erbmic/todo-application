@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles7.css">
+    <link rel="stylesheet" href="css/styles9.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -47,7 +47,7 @@
                             <option value="${categories.title}">${categories.title}</option>
                         </c:forEach>
                     </select>
-                    <button name="button" value="add">Add todo</button>
+                        <button name="button" value="addTodoButton">Add todo</button>
                 </form>
             </div>
 
@@ -60,8 +60,8 @@
                             <th class="center" id="th-check"></th>
                             <th id="th-title">Title</th>
                             <th class="center" id="th-category">Category</th>
-                            <th id="th-date">Due Date</th>
                             <th class="center" id="th-important">Important</th>
+                            <th id="th-date">Due Date</th>
                             <th class="center" id="th-edit"></th>
                         </tr>
                         </thead>
@@ -69,7 +69,8 @@
                         <tbody>
                         <c:forEach items="${user.todoList.todos}" var="todo">
                             <tr>
-                                <td class="center" id="td-check"><button class="checkedButton" name="test" value="${todo.title}"><c:if test="${todo.done}"><i class="fas fa-check"></i></c:if></button></td>
+                                <td class="center" id="td-check"><button class="checkTodoButton" name="checkTodoButton"
+                                                                         value="${todo.title}"><c:if test="${todo.done}"><i class="fas fa-check"></i></c:if></button></td>
 
 <%--                                <td class="center" id="td-check"><input class="checkbox" type="checkbox" name="checkbox" value="${todo.done}"--%>
 <%--                                                                        <c:if test="${todo.done}">checked</c:if>/></td>--%>
@@ -92,16 +93,17 @@
                                     </c:choose>
                                 </td>
 
-                                <td id="td-date">${todo.important}</td>
                                 <td class="center" id="td-important">${todo.important}</td>
 
+                                <td id="td-date">${todo.important}</td>
+
                                 <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="test" value="${todo.title}"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button id="editTodoButton" name="editTodoButton" value="${todo.title}"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>
 
-<%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
-<%--                                    <i class="fas fa-ellipsis-h"></i></a>--%>
-<%--                                </td>--%>
+                                <td class="center" id="td-edit"><a href="todoEdit.jsp">
+                                    <i class="fas fa-ellipsis-h"></i></a>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -1,3 +1,10 @@
+/* ----------- variables ----------- */
+:root{
+    --primary: #FFC636;
+    --secondary: #0A0B5B;
+}
+
+
 /* ----------- general container ----------- */
 .container {
     display: grid;
@@ -185,7 +192,7 @@ button:hover {
     font-size: 1.8em;
 }
 
-.editMenu #saveButton, .editMenu #deleteButton {
+.editMenu #saveTodoButton, .editMenu #deleteTodoButton {
     background-color: white;
     color: black;
     border: solid 3px black;
@@ -194,7 +201,7 @@ button:hover {
     align-items: center;
 }
 
-.editMenu #deleteButton {
+.editMenu #deleteTodoButton {
     font-size: 1.7em;
 }
 
@@ -277,7 +284,7 @@ button:hover {
 
 
 /* ----------- checkbox in todos ----------- */
-.checkedButton {
+.checkTodoButton {
     appearance: none;
     background-color: white;
     color: black;
