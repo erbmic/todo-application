@@ -60,7 +60,7 @@
                         </div>
 
                         <label for="editTitle">Title</label><input type="text" id="editTitle" name="editTitle"
-                                                                   placeholder="title" value="${user.userName}" required>
+                                                                   placeholder="title" required>
 
                         <div class="oneLine">
                             <c:set var="today" value="<%=new java.util.Date()%>"/>

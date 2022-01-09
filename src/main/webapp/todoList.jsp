@@ -94,9 +94,14 @@
 
                                 <td id="td-date">${todo.important}</td>
                                 <td class="center" id="td-important">${todo.important}</td>
-                                <td class="center" id="td-edit"><a href="todoEdit.jsp">
-                                    <i class="fas fa-ellipsis-h"></i></a>
+
+                                <td class="center" id="td-edit">
+                                    <button id="editTodoButton" name="test" value="${todo.title}"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>
+
+<%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
+<%--                                    <i class="fas fa-ellipsis-h"></i></a>--%>
+<%--                                </td>--%>
                             </tr>
                         </c:forEach>
                         </tbody>

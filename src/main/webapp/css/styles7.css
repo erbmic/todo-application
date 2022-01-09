@@ -261,6 +261,20 @@ button:hover {
     column-width: 300px;
 }
 
+.todolist #td-edit {
+    text-align: right;
+}
+
+.todolist #editTodoButton {
+    border: 0;
+    background-color: white;
+    color: #555555;
+    height: 1.6em;
+    width: 1.6em;
+    margin-right: 20px;
+    margin-left: 0;
+}
+
 
 /* ----------- checkbox in todos ----------- */
 .checkedButton {
