@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles4.css">
+    <link rel="stylesheet" href="css/styles11.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         </h1>
 
         <form action="userManager" method="post">
-            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Username" required>
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
         </form>

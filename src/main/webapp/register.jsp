@@ -5,13 +5,13 @@
   Time: 21:55
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/styles4.css">
+    <link rel="stylesheet" href="css/styles11.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         <form action="userManager" method="post">
             <label for="name"></label><input type="text" id="name" name="name" placeholder="Name" required>
             <label for="lastName"></label><input type="text" id="lastName" name="lastName" placeholder="Lastname" required>
-            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Email" required>
+            <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Username" required>
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <label for="passwordC"></label><input type="password" id="passwordC" name="passwordC" placeholder="Confirm Password" required>
 
