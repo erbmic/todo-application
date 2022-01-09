@@ -82,6 +82,14 @@ h2 {
     margin: 0 0 10px 0;
 }
 
+
+/* ----------- error message ----------- */
+.errorMsg {
+    color: var(--warnRed);
+}
+
+
+
 /* ----------- general buttons ----------- */
 button {
     background-color: black;

@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles11.css">
+    <link rel="stylesheet" href="css/styles12.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
