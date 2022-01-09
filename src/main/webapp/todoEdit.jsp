@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: michael
   Date: 06.01.22
@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Edit view</title>
@@ -43,9 +44,7 @@
                     <form class="editMenuForm" action="todoManager" method="post">
                         <button id="deleteButton" name="button" value="close"><i class="far fa-trash-alt"></i></button>
                         <button id="saveButton" name="button" value="close"><i class="far fa-save"></i></button>
-                        <a href="todoList.jsp">
-                            <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
-                        </a>
+                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
                     </form>
                 </div>
 
@@ -68,17 +67,19 @@
                         <%--                                                                               value="editImportant"/>--%>
                         <%--                        </div>--%>
 
-
+                        
                         <label for="editTitle">Title</label><input type="text" id="editTitle" name="editTitle"
                                                                    placeholder="title" required>
 
+
+
                         <div class="oneLine">
+                            <c:set var="today" value="<%=new java.util.Date()%>" />
                             <div id="editDueDate">
                                 <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                                 name="editDueDate"
-                                                                                value="2018-07-22"
-                                                                                min="2018-01-01" max="2018-12-31"
-                                                                                placeholder="due date">
+                                                                                value=
+                                                                                min=<fmt:formatDate pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
                             </div>
 
                             <div id="editCategoryDropdown">
