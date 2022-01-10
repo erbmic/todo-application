@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles12.css">
+    <link rel="stylesheet" href="css/styles13.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -38,6 +38,8 @@
 
         <div class="todolistBox">
 
+
+
             <div class="todoMenu">
                 <form class="todoListMenuForm" action="todoManager" method="post">
                     <select class="categoryDropdown" name="category">
@@ -47,6 +49,27 @@
                             <option value="${categories.title}">${categories.title}</option>
                         </c:forEach>
                     </select>
+
+                    <label class="dropdown">
+
+                        <div class="dd-button">
+                            <i class="fas fa-filter"></i> Category
+                        </div>
+
+                        <input type="checkbox" class="dd-input" id="test">
+
+                        <ul class="dd-menu">
+                            <li>Action</li>
+                            <li>Ano</li>
+                            <li>Snge</li>
+                            <li><i class="fas fa-briefcase"></i>Work</li>
+                            <li><button name="button" value="addTodoButton">Add todo</button></li>
+                            <li><button name="button" value="addTodoButton">Add todo</button></li>
+                            <li><button name="button" value="addTodoButton">Add todo</button></li>
+                        </ul>
+
+                    </label>
+
                         <button name="button" value="addTodoButton">Add todo</button>
                 </form>
             </div>

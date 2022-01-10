@@ -4,7 +4,7 @@
 
 <head>
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles12.css">
+    <link rel="stylesheet" href="css/styles13.css">
 </head>
 
 <body>
@@ -14,7 +14,6 @@
 </header>
 
 <main>
-<%--    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>--%>
 
     <div class="loginbox">
         <h1>

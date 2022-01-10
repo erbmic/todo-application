@@ -503,9 +503,127 @@ input[type=checkbox]:checked:after {
     }
 
 
+    /* ----------- filter category dropdown ----------- */
+
+
+    a:hover {
+        color: #222222
+    }
+
+    .dropdown {
+        display: inline-block;
+        /*background-color: #8b251c;*/
+        position: relative;
+
+    }
+
+    .dd-button {
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: var(--mainBorderradius);
+        padding: 10px 20px 10px 16px;
+        background-color: #ffffff;
+        cursor: pointer;
+        width: 100px;
+
+        white-space: nowrap;
+    }
+
+    .dd-button:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid black;
+    }
+
+    .dd-button:hover {
+        background-color: #eeeeee;
+        font-weight: bold;
+    }
+
+
+    .dd-input {
+        display: none;
+    }
+
+    .dd-menu {
+        position: absolute;
+        top: 100%;
+        border: 1px solid #ccc;
+        border-radius: var(--smallBorderradius);
+        padding: 0;
+        margin: 2px 0 0 0;
+        background-color: #ffffff;
+        list-style-type: none;
+        max-height: 280px;
+        overflow-x: hidden;
+    }
+
+    .dd-input + .dd-menu {
+        display: none;
+    }
+
+    .dd-input:checked + .dd-menu {
+        display: block;
+    }
+
+
+    .dd-menu li {
+        padding: 10px 20px;
+        /*padding: 0;*/
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 120px;
+    }
+
+    .dd-menu button {
+        padding: 10px 20px;
+        cursor: pointer;
+        height: 0;
+        width: 100%;
+        background-color: white;
+        border: 0;
+        color: black;
+
+    }
+
+    .dd-menu li:hover {
+        background-color: #f6f6f6;
+    }
+
+    /*.dd-menu:focus li {*/
+    /*    display: none;*/
+    /*    !* this is to prevent clicking the current item instead of activating the dropdown *!*/
+    /*    pointer-events: none;*/
+    /*    !* this is to override background from the multi-rule below *!*/
+    /*    background: white;*/
+    /*}*/
+
+    /*.dd-menu:not(:focus) li {*/
+    /*    display: block;*/
+    /*    !* this is to prevent clicking the current item instead of activating the dropdown *!*/
+    /*    pointer-events: none;*/
+    /*    !* this is to override background from the multi-rule below *!*/
+    /*    background: white;*/
+    /*}*/
+
+
+
+
+
+
+
 
 
 
 
 
 }
+
+
