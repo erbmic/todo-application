@@ -452,13 +452,6 @@ tr.red {
     text-align: left;
 }
 
-.oneLine2 {
-    /*width: 100%;*/
-    display: flex;
-    justify-content: flex-start;
-
-}
-
 .oneLine {
     /*width: 100%;*/
     display: flex;
@@ -482,6 +475,10 @@ tr.red {
     margin-left: 0;
 }
 
+.editTodoForm #editCompletion {
+    margin-left: 40px;
+}
+
 .editTodoForm #editDescription {
     height: 200px;
     line-height: normal;
@@ -492,7 +489,7 @@ tr.red {
     display: inline-block;
 }
 
-label[for="editImportant"] {
+label[for="editImportant"], label[for="editCompletion"]  {
     margin-top: 7px;
     margin-left: 10px;
 }

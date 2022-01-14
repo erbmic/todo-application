@@ -61,6 +61,12 @@
                                id="editImportant"
                                name="editImportant"
                                value="editImportant"/><label for="editImportant">Important</label>
+
+                        <c:if test="${not empty todo.id}">
+                            <input class="checkbox" type="checkbox"
+                                   id="editCompletion"
+                                   name="editCompletion"
+                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label for="editCompletion">Completion</label></c:if>
                     </div>
                     <%--value="${user.userName}"--%>
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
@@ -72,7 +78,7 @@
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                                    min=<fmt:formatDate
+                                                                            min=<fmt:formatDate
                                 pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
                         </div>
 
@@ -88,9 +94,9 @@
                             <option <c:if test="${todo.category == 'School'}">selected</c:if>>School</option>
                             <option <c:if test="${todo.category == 'Shopping'}">selected</c:if>>Shopping</option>
                             <option <c:if test="${todo.category == 'Work'}">selected</c:if>>Work</option>
-<%--                            <c:forEach items="${user.todoList.todos}" var="categories">--%>
-<%--                                <option value="${categories.title}">${categories.title}</option>--%>
-<%--                            </c:forEach>--%>
+                            <%--                            <c:forEach items="${user.todoList.todos}" var="categories">--%>
+                            <%--                                <option value="${categories.title}">${categories.title}</option>--%>
+                            <%--                            </c:forEach>--%>
 
                         </select>
                         </div>
