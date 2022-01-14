@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles14.css">
+    <link rel="stylesheet" href="css/styles16.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -42,9 +42,13 @@
 
                 <div class="editMenu">
                     <form class="editMenuForm" action="todoManager" method="post">
-                        <button id="deleteTodoButton" name="editTodoButton" value="delete"><i class="far fa-trash-alt"></i></button>
-                        <button id="saveTodoButton" name="editTodoButton" value="save"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="editTodoButton" value="close"><i class="fas fa-times"></i></button>
+                        <c:if test="${not empty todo.id}">
+                        <button id="deleteTodoButton" name="button" value="delete"><i
+                                class="far fa-trash-alt"></i></c:if>
+                            <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
+                        </button>
+                        <button id="saveTodoButton" name="button" value="save"><i class="far fa-save"></i></button>
+                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
                     </form>
                 </div>
 
@@ -60,7 +64,8 @@
                         </div>
 
                         <label for="editTitle">Title</label><input type="text" id="editTitle" name="title"
-                                                                   placeholder="title" value="${user.userName}" required maxlength="50">
+                                                                   placeholder="title" value="${user.userName}" required
+                                                                   maxlength="50">
 
                         <div class="oneLine">
                             <c:set var="today" value="<%=new java.util.Date()%>"/>
