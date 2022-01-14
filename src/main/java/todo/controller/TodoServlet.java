@@ -23,9 +23,13 @@ public class TodoServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String button = request.getParameter("checkTodoButton");
+        String button = request.getParameter("button");
+        String title = request.getParameter("title");
+        String button2 = request.getParameter("editTodoButton3");
 
-//        System.out.println(button);
+        System.out.println(button);
+        System.out.println(title);
+        System.out.println(button);
         response.sendRedirect("todoList.jsp");
 
     }
