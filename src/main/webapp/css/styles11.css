@@ -1,0 +1,503 @@
+/* ----------- variables ----------- */
+:root {
+    --grey: #777777;
+    --warnRed: #8b251c;
+    --mainBorderradius: 6px;
+    --smallBorderradius: 5px;
+}
+
+
+/* ----------- general container ----------- */
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.5fr 3fr 0.2fr;
+    grid-template-areas:
+            "nav"
+            "headbox"
+            "main"
+            "footer";
+}
+
+/* ----------- body ----------- */
+body {
+    background-color: white;
+    color: black;
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* ----------- nav ----------- */
+nav {
+    /*background: cornsilk;*/
+    grid-area: nav;
+    /*background-color: var(--grey);*/
+}
+
+/* ----------- headbox ----------- */
+.headbox {
+    /*background: burlywood;*/
+    grid-area: headbox;
+}
+
+.headtext {
+    display: none;
+    text-align: center;
+    font-size: 1.3em;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ----------- main ----------- */
+main {
+    /*background: antiquewhite;*/
+    grid-area: main;
+}
+
+
+/* ----------- footer ----------- */
+footer {
+    /*background: aquamarine;*/
+    grid-area: footer;
+}
+
+
+/* ----------- title fonts ----------- */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 10px 40px 10px;
+}
+
+h2 {
+    font-size: 1em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+/* ----------- general buttons ----------- */
+button {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    font: inherit;
+    border-radius: var(--mainBorderradius);
+    /*min-width: 120px;*/
+    width: 120px;
+    height: 40px;
+}
+
+
+button:hover {
+    font-weight: bold;
+}
+
+
+/* ----------- login box ----------- */
+.loginbox {
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.loginbox input {
+    box-sizing: border-box;
+    border: solid 1px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    font: inherit;
+    border-radius: var(--mainBorderradius);
+    height: 50px;
+    padding: 14px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.loginbox button {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.loginbox p {
+    font-size: 0.75em;
+    /*color: #555555;*/
+    padding: 0;
+    margin: 30px 0 5px 0;
+}
+
+.loginbox a {
+    color: black;
+    font-size: 0.9em;
+}
+
+.loginbox a:hover {
+    font-weight: bold;
+}
+
+
+/* ----------- todolist box ----------- */
+.todolistBox {
+    /*background-color: #555555;*/
+    width: 80%;
+    max-width: 1500px;
+    margin: auto;
+}
+
+
+/* ----- todolist menu ----- */
+.todoListMenuForm, .editMenuForm {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+.categoryDropdown {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+    border-radius: var(--mainBorderradius);
+    height: 40px;
+    font: inherit;
+    text-align: center;
+}
+
+.todoMenu .categoryDropdown {
+    min-width: 120px;
+}
+
+.categoryDropdown:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ----- editmenu buttons ----- */
+.editMenu button {
+    color: white;
+    background-color: black;
+    width: 40px;
+    font-size: 1.8em;
+}
+
+.editMenu #saveTodoButton, .editMenu #deleteTodoButton {
+    background-color: white;
+    color: black;
+    border: solid 3px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editMenu #deleteTodoButton {
+    font-size: 1.7em;
+}
+
+.editMenu #closeButton {
+    margin-left: 15px;
+}
+
+.editMenu a {
+    text-decoration: none;
+}
+
+
+/* ----- list of todos ----- */
+.todolist {
+    display: flex;
+    justify-content: center;
+    /*background-color: blueviolet;*/
+}
+
+.todolist table {
+    color: black;
+    /*border-collapse: collapse;*/
+    margin: 25px 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    text-align: left;
+}
+
+.todolist th {
+    color: #555555;
+    font-size: 0.75em;
+    padding: 0 10px;
+}
+
+.todolist td {
+    background: white;
+    font-size: 1em;
+    height: 55px;
+    /*padding: 17px 0;*/
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 0 10px;
+}
+
+.todolist td:last-child {
+    border-radius: 0 var(--mainBorderradius) var(--mainBorderradius) 0;
+    border-right: 1px solid black;
+    padding-right: 15px;
+}
+
+.todolist td:first-child {
+    border-radius: var(--mainBorderradius) 0 0 var(--mainBorderradius);
+    border-left: 1px solid black;
+    padding-left: 15px;
+
+}
+
+.todolist #td-important {
+    color: var(--warnRed);
+}
+
+.todolist .center {
+    text-align: center;
+}
+
+.todolist #th-title, .todolist #td-title {
+    column-width: 300px;
+}
+
+.todolist #td-edit {
+    text-align: right;
+}
+
+.todolist #editTodoButton {
+    border: 0;
+    background-color: white;
+    color: var(--grey);
+    height: 1.6em;
+    width: 1.6em;
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+
+/* ----------- checkbox in todos ----------- */
+.checkTodoButton {
+    appearance: none;
+    background-color: white;
+    color: black;
+    height: 1.6em;
+    width: 1.6em;
+    border: 1px solid black;
+    border-radius: var(--smallBorderradius);
+    /*margin: 0 10px 0 15px;*/
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ----------- edit todo box ----------- */
+.editbox {
+    width: 100%;
+    /*background-color: pink;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
+    box-sizing: border-box;
+    border: solid 1px;
+    color: black;
+    font: inherit;
+    border-radius: var(--mainBorderradius);
+    height: 55px;
+    padding-left: 20px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.oneLine2 {
+    /*width: 100%;*/
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.oneLine {
+    /*width: 100%;*/
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.editTodoForm #editCategoryDropdown {
+    margin-left: auto;
+}
+
+.editTodoForm .categoryDropdown {
+}
+
+.editTodoForm #editDueDate, .editTodoForm #editCategoryDropdown {
+    /*min-width: 120px;*/
+    width: 48%;
+}
+
+.editTodoForm #editImportant {
+    margin-left: 0;
+}
+
+.editTodoForm #editDescription {
+    height: 200px;
+    line-height: normal;
+}
+
+.editTodoForm label {
+    margin-bottom: 7px;
+    display: inline-block;
+}
+
+label[for="editImportant"] {
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+
+/* ----- checkbox editbox ----- */
+.editBox .checkbox {
+    /*zoom: 0.5;*/
+    /*text-align: left;*/
+    /*background-color: yellow;*/
+}
+
+.editBox input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    height: 1.5em;
+    width: 1.5em;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: var(--smallBorderradius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type=checkbox]:after {
+    font-family: "Font Awesome 5 Free";
+    Font-weight: 900;
+    content: "\f00d";
+    font-size: 1.1em;
+    color: black;
+    display: none;
+}
+
+input[type=checkbox]:hover {
+    /*background-color: #888888;*/
+}
+
+input[type=checkbox]:checked {
+    background-color: white;
+}
+
+input[type=checkbox]:checked:after {
+    display: block;
+}
+
+
+/* ----------- responsive ----------- */
+@media screen and (min-width: 960px) {
+
+    /* ----------- general container ----------- */
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.2fr 1fr 3fr 0.2fr;
+        grid-template-areas:
+            "nav nav nav"
+            "headbox headbox headbox"
+            "main main main"
+            "footer footer footer";
+    }
+
+    .headtext {
+        display: block;
+    }
+
+
+    /* ----------- title fonts ----------- */
+    h1 {
+        font-size: 3em;
+        margin: 30px 10px 40px 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    /* ----------- login box ----------- */
+    .loginbox {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -70%);
+    }
+
+
+
+    /* ----- list of todos ----- */
+    .todolist th {
+        color: var(--grey);
+        font-size: 0.9em;
+        padding: 0 20px;
+    }
+
+    .todolist td {
+        padding: 0 20px;
+        font-size: 1.2em;
+        height: 60px;
+    }
+
+    .todolist td:last-child {
+        padding-right: 25px;
+    }
+
+    .todolist td:first-child {
+        padding-left: 40px;
+    }
+
+
+    /* ----------- checkbox in todos ----------- */
+    .checkTodoButton {
+        /*margin: 0 0 0 30px;*/
+    }
+
+    /* ----------- edit todo box ----------- */
+    .editbox {
+        width: 60%;
+    }
+
+
+    .editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
+        height: 60px;
+        padding-left: 30px;
+        padding-right: 15px;
+    }
+
+
+
+
+
+
+
+}
