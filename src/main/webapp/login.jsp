@@ -4,7 +4,7 @@
 
 <head>
     <title>ToDo App</title>
-    <link rel="stylesheet" href="css/styles11.css">
+    <link rel="stylesheet" href="css/styles16.css">
 </head>
 
 <body>
@@ -14,7 +14,6 @@
 </header>
 
 <main>
-<%--    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>--%>
 
     <div class="loginbox">
         <h1>
@@ -26,6 +25,7 @@
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
         </form>
+        <div class="errorMsg"><i class="fas fa-exclamation-circle"></i>${errorMsg}</div>
 
         <p>Don't have an account?</p>
         <a href="register.jsp">Sign up</a>

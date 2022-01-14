@@ -82,8 +82,26 @@ h2 {
     margin: 0 0 10px 0;
 }
 
+/* ----------- links ----------- */
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+
+/* ----------- error message ----------- */
+.errorMsg {
+    color: var(--warnRed);
+}
+
+
+
 /* ----------- general buttons ----------- */
-button {
+button, .button {
     background-color: black;
     color: white;
     cursor: pointer;
@@ -95,6 +113,18 @@ button {
     height: 40px;
 }
 
+.button a {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button a:hover {
+    color: white;
+}
 
 button:hover {
     font-weight: bold;
@@ -141,9 +171,9 @@ button:hover {
     font-size: 0.9em;
 }
 
-.loginbox a:hover {
-    font-weight: bold;
-}
+/*.loginbox a:hover {*/
+/*    font-weight: bold;*/
+/*}*/
 
 
 /* ----------- todolist box ----------- */
@@ -156,7 +186,8 @@ button:hover {
 
 
 /* ----- todolist menu ----- */
-.todoListMenuForm, .editMenuForm {
+/*.todoListMenuForm, .editMenuForm {*/
+.todoMenu, .editMenuForm {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -180,6 +211,89 @@ button:hover {
 .categoryDropdown:hover {
     font-weight: bold;
     cursor: pointer;
+}
+
+/* ----------- filter category dropdown ----------- */
+
+
+.catDropdown {
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    position: relative;
+}
+
+.catDropdown button:focus + form {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#categoryDropdownButton {
+    /*width: 130px;*/
+    margin: 0;
+    padding: 0;
+}
+
+
+.catDropdown form {
+    display: inline;
+
+}
+
+
+.catDropdown form {
+    opacity: 0;
+}
+
+.catDropdown ul {
+    padding: 0;
+    margin-top: 2px;
+    top: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: var(--smallBorderradius);
+    overflow-x: hidden;
+    max-height: 280px;
+    list-style-type: none;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+
+}
+
+.catDropdown li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+}
+
+.catDropdown li button {
+    padding: 10px 20px;
+    background-color: inherit;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border: 0;
+    color: black;
+}
+
+.catDropdown i {
+    font-size: 0.8em;
+    margin: 0 5px;
+}
+
+
+.catDropdown li:hover {
+    background-color: var(--grey);
+}
+
+.catDropdown form {
+    display: inline;
 }
 
 
@@ -208,9 +322,9 @@ button:hover {
     margin-left: 15px;
 }
 
-.editMenu a {
-    text-decoration: none;
-}
+/*.editMenu a {*/
+/*    text-decoration: none;*/
+/*}*/
 
 
 /* ----- list of todos ----- */
@@ -281,8 +395,12 @@ button:hover {
     color: var(--grey);
     height: 1.6em;
     width: 1.6em;
-    margin-right: 20px;
+    margin-right: 0;
     margin-left: 0;
+}
+
+.todolist #editTodoButton:hover {
+    color: black;
 }
 
 
@@ -496,8 +614,100 @@ input[type=checkbox]:checked:after {
 
 
 
+    /*a:hover {*/
+    /*    color: #222222*/
+    /*}*/
+
+    /*.dropdown {*/
+    /*    display: inline-block;*/
+    /*    !*background-color: #8b251c;*!*/
+    /*    position: relative;*/
+
+    /*}*/
+
+    /*.dd-button {*/
+    /*    display: inline-block;*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: var(--mainBorderradius);*/
+    /*    padding: 10px 20px 10px 16px;*/
+    /*    background-color: #ffffff;*/
+    /*    cursor: pointer;*/
+    /*    width: 100px;*/
+
+    /*    white-space: nowrap;*/
+    /*}*/
+
+    /*.dd-button:after {*/
+    /*    content: '';*/
+    /*    position: absolute;*/
+    /*    top: 50%;*/
+    /*    right: 15px;*/
+    /*    transform: translateY(-50%);*/
+    /*    width: 0;*/
+    /*    height: 0;*/
+    /*    border-left: 5px solid transparent;*/
+    /*    border-right: 5px solid transparent;*/
+    /*    border-top: 5px solid black;*/
+    /*}*/
+
+    /*.dd-button:hover {*/
+    /*    background-color: #eeeeee;*/
+    /*    font-weight: bold;*/
+    /*}*/
+
+
+    /*.dd-input {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*.dd-menu {*/
+    /*    position: absolute;*/
+    /*    top: 100%;*/
+    /*    border: 1px solid #ccc;*/
+    /*    border-radius: var(--smallBorderradius);*/
+    /*    padding: 0;*/
+    /*    margin: 2px 0 0 0;*/
+    /*    background-color: #ffffff;*/
+    /*    list-style-type: none;*/
+    /*    max-height: 280px;*/
+    /*    overflow-x: hidden;*/
+    /*}*/
+
+    /*.dd-input + .dd-menu {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*.dd-input:checked + .dd-menu {*/
+    /*    display: block;*/
+    /*}*/
+
+
+    /*.dd-menu li {*/
+    /*    padding: 10px 20px;*/
+    /*    !*padding: 0;*!*/
+    /*    cursor: pointer;*/
+    /*    white-space: nowrap;*/
+    /*    min-width: 120px;*/
+    /*}*/
+
+    /*.dd-menu button {*/
+    /*    padding: 10px 20px;*/
+    /*    cursor: pointer;*/
+    /*    height: 0;*/
+    /*    width: 100%;*/
+    /*    background-color: white;*/
+    /*    border: 0;*/
+    /*    color: black;*/
+
+    /*}*/
+
+
+
+
 
 
 
 
 }
+
+

@@ -11,7 +11,7 @@
 
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/styles11.css">
+    <link rel="stylesheet" href="css/styles16.css">
 </head>
 
 <body>
@@ -33,9 +33,10 @@
             <label for="userName"></label><input type="text" id="userName" name="userName" placeholder="Username" required>
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <label for="passwordC"></label><input type="password" id="passwordC" name="passwordC" placeholder="Confirm Password" required>
-
             <button name="button" value="register">Register</button>
         </form>
+
+        <div class="errorMsg">${errorMsg}</div>
 
         <p>Already have an account?</p>
         <a href="login.jsp">Log in</a>
