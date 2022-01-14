@@ -2,6 +2,10 @@ package todo.model;
 
 public class Category {
 
-    public static String name;
+    private String name;
+
+    public Category(String name){
+        this.name = name;
+    }
 
 }

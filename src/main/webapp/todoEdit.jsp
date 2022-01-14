@@ -41,16 +41,16 @@
             <div class="editBox">
 
                 <div class="editMenu">
-                    <form class="editMenuForm" action="todoManager" method="post">
-                        <button id="deleteTodoButton" name="editTodoButton" value="delete"><i class="far fa-trash-alt"></i></button>
-                        <button id="saveTodoButton" name="editTodoButton" value="save"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="editTodoButton" value="close"><i class="fas fa-times"></i></button>
+                    <form class="editMenuForm" action="todoEdit" method="post">
+                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i></button>
+                        <button id="saveTodoButton" name="button" value="save"><i class="far fa-save"></i></button>
+                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
                     </form>
                 </div>
 
                 <div class="editTodoForm">
 
-                    <form action="todoManager" method="post">
+                    <form action="todoEdit" method="post">
 
                         <div class="oneLine">
                             <input class="checkbox" type="checkbox"

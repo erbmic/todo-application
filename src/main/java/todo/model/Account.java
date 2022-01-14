@@ -47,9 +47,9 @@ public class Account {
 
     public void saveXml() {
         ObjectMapper mapper = new XmlMapper();
-        try(OutputStream writer = new FileOutputStream(FILE)) {
+        try (OutputStream writer = new FileOutputStream(FILE)) {
             mapper.writerWithDefaultPrettyPrinter().writeValue(writer, accountInstance);
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -61,10 +61,10 @@ public class Account {
         if (!validUserName(userName) || !validPassword(password, passwordC)) throw new InvalidCredentialsException();
         loadXml();
         User user = new User(firstName, lastName, userName, password);
-        if (userAccounts.add(user)){
+        if (userAccounts.add(user)) {
             saveXml();
             return user;
-        } else{
+        } else {
             throw new UserAlreadyExistsException();
         }
     }
@@ -73,16 +73,16 @@ public class Account {
     // throws Exceptions if user doesn't exist or if wrong password
     public User loginUser(String userName, String password) throws WrongPasswordException, NoSuchUserException {
         User user = findByUserName(userName);
-        if (user.getPassword().equals(password)){
+        if (user.getPassword().equals(password)) {
             return user;
-            } else {
-                throw new WrongPasswordException();
-            }
+        } else {
+            throw new WrongPasswordException();
+        }
     }
 
     public User deleteUser(String userName) throws NoSuchUserException {
         User user = findByUserName(userName);
-        if (userAccounts.remove(user)){
+        if (userAccounts.remove(user)) {
             saveXml();
             return user;
         }
@@ -98,12 +98,12 @@ public class Account {
     }
 
     // returns true if a given userName is valid
-    private boolean validUserName(String userName){
+    private boolean validUserName(String userName) {
         return !userName.isEmpty();
     }
 
     // returns true if a given password is valid
-    private boolean validPassword(String password, String passwordC){
+    private boolean validPassword(String password, String passwordC) {
         return !password.isEmpty() && password.equals(passwordC);
     }
 

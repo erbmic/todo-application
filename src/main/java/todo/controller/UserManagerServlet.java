@@ -14,7 +14,7 @@ import todo.model.userExceptions.WrongPasswordException;
 
 import java.io.IOException;
 
-@WebServlet(name = "userManagerServlet", value = "/userManager")
+@WebServlet(name = "UserManagerServlet", value = "/userManager")
 public class UserManagerServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -75,26 +75,4 @@ public class UserManagerServlet extends HttpServlet {
                 break;
         }
     }
-
-
-        /*if (button.equals("register")) {
-            user = account.registerUser(userName, password);
-            session.setAttribute("user", user);
-            response.sendRedirect("todoList.jsp");
-//            response.sendRedirect("register.jsp");
-        }
-        else if (button.equals("login")) {
-            user = account.loginUser(userName, password);
-
-            if (!(user == null)) {
-                session.setAttribute("user", user);
-                response.sendRedirect("todoList.jsp");
-            } else {
-                response.sendRedirect("login.jsp");
-                destroy();
-                System.out.println("destroyed");
-            }
-        } // else if logout und destroy
-    } */
-
 }

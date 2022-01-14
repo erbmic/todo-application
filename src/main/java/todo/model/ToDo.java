@@ -27,6 +27,8 @@ public class ToDo {
         this(title, false, category);
     }
 
+    public ToDo(Category category){this(null, false, category);}
+
     public ToDo(String title, Boolean important, Category category) {
         this.id = TodoList.getNextId();
         this.title = title;
