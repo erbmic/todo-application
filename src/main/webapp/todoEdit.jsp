@@ -49,51 +49,50 @@
                         </button>
                         <button id="saveTodoButton" name="button" value="save"><i class="far fa-save"></i></button>
                         <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
-                    </form>
+                        <%--                    </form>--%>
                 </div>
 
                 <div class="editTodoForm">
 
-                    <form action="todoManager" method="post">
+                    <%--                    <form action="todoManager" method="post">--%>
 
-                        <div class="oneLine">
-                            <input class="checkbox" type="checkbox"
-                                   id="editImportant"
-                                   name="editImportant"
-                                   value="editImportant"/><label for="editImportant">Important</label>
+                    <div class="oneLine">
+                        <input class="checkbox" type="checkbox"
+                               id="editImportant"
+                               name="editImportant"
+                               value="editImportant"/><label for="editImportant">Important</label>
+                    </div>
+                    <%--value="${user.userName}"--%>
+                    <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
+                                                                placeholder="title"
+                                                                maxlength="50">
+
+                    <div class="oneLine">
+                        <c:set var="today" value="<%=new java.util.Date()%>"/>
+                        <div id="editDueDate">
+                            <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
+                                                                            name="dueDate"
+                                                                            value=
+                                                                                    min=<fmt:formatDate
+                                pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
                         </div>
 
-                        <label for="editTitle">Title</label><input type="text" id="editTitle" name="title"
-                                                                   placeholder="title" value="${user.userName}" required
-                                                                   maxlength="50">
-
-                        <div class="oneLine">
-                            <c:set var="today" value="<%=new java.util.Date()%>"/>
-                            <div id="editDueDate">
-                                <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
-                                                                                name="dueDate"
-                                                                                value=
-                                                                                        min=<fmt:formatDate
-                                    pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
-                            </div>
-
-                            <div id="editCategoryDropdown">
-                                <label for="editCategoryDropdownSelect">Category</label><select class="categoryDropdown"
-                                                                                                id="editCategoryDropdownSelect"
-                                                                                                name="category">
-                                <option selected>Category</option>
-                                <option>Work</option>
-                                <c:forEach items="${user.todoList.todos}" var="categories">
-                                    <option value="${categories.title}">${categories.title}</option>
-                                </c:forEach>
-                            </select>
-                            </div>
+                        <div id="editCategoryDropdown">
+                            <label for="editCategoryDropdownSelect">Category</label><select class="categoryDropdown"
+                                                                                            id="editCategoryDropdownSelect"
+                                                                                            name="category">
+                            <option selected>Category</option>
+                            <option>Work</option>
+                            <c:forEach items="${user.todoList.todos}" var="categories">
+                                <option value="${categories.title}">${categories.title}</option>
+                            </c:forEach>
+                        </select>
                         </div>
+                    </div>
 
-                        <label for="editDescription">Description</label><input type="text" id="editDescription"
-                                                                               name="editDescription"
-                                                                               placeholder="description"
-                                                                               required>
+                    <label for="editDescription">Description</label><input type="text" id="editDescription"
+                                                                           name="editDescription"
+                                                                           placeholder="description">
                     </form>
 
                 </div>
