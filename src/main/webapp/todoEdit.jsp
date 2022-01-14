@@ -47,7 +47,7 @@
                                 class="far fa-trash-alt"></i></c:if>
                             <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
                         </button>
-                        <button id="saveTodoButton" name="button" value="save"><i class="far fa-save"></i></button>
+                        <button id="saveTodoButton" name="todoID" value="save"><i class="far fa-save"></i></button>
                         <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
                         <%--                    </form>--%>
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     <%--value="${user.userName}"--%>
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
-                                                                placeholder="title"
+                                                                placeholder="title" value="${user.userName}"
                                                                 maxlength="50">
 
                     <div class="oneLine">
@@ -72,7 +72,6 @@
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                            value=
                                                                                     min=<fmt:formatDate
                                 pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
                         </div>
@@ -81,11 +80,18 @@
                             <label for="editCategoryDropdownSelect">Category</label><select class="categoryDropdown"
                                                                                             id="editCategoryDropdownSelect"
                                                                                             name="category">
-                            <option selected>Category</option>
-                            <option>Work</option>
-                            <c:forEach items="${user.todoList.todos}" var="categories">
-                                <option value="${categories.title}">${categories.title}</option>
-                            </c:forEach>
+                            <option>Category</option>
+                            <option <c:if test="${todo.category == 'Home'}">selected</c:if>>Home</option>
+                            <option <c:if test="${todo.category == 'Important'}">selected</c:if>>Important</option>
+                            <option <c:if test="${todo.category == 'Learning'}">selected</c:if>>Learning</option>
+                            <option <c:if test="${todo.category == 'People'}">selected</c:if>>People</option>
+                            <option <c:if test="${todo.category == 'School'}">selected</c:if>>School</option>
+                            <option <c:if test="${todo.category == 'Shopping'}">selected</c:if>>Shopping</option>
+                            <option <c:if test="${todo.category == 'Work'}">selected</c:if>>Work</option>
+<%--                            <c:forEach items="${user.todoList.todos}" var="categories">--%>
+<%--                                <option value="${categories.title}">${categories.title}</option>--%>
+<%--                            </c:forEach>--%>
+
                         </select>
                         </div>
                     </div>

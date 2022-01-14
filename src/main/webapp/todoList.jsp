@@ -45,58 +45,39 @@
                             class="fas fa-chevron-down"></i></button>
                     <form action="todoManager" method="post">
                         <ul>
-                            <li>
-                                <button name="button" value="addTodoButton">Add todo</button>
-                            </li>
-                            <li>
-                                <button name="button" value="addTodoButton">Add todo</button>
-                            </li>
-                            <li>
-                                <button name="button" value="addTodoButton">Add todo</button>
-                            </li>
+                            <c:forEach items="${user.todoList.todos}" var="todo">
+                                <li>
+                                    <button name="button" value="${todo.title}">${todo.title}</button>
+                                </li>
+                            </c:forEach>
+<%--                            <li>--%>
+<%--                                <button name="button" value="home">Home</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="important">Important</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="learning">Learning</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="people">People</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="school">School</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="shopping">Shopping</button>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <button name="button" value="work">Work</button>--%>
+<%--                            </li>--%>
                         </ul>
                     </form>
                 </div>
 
 
                 <form class="todoListMenuForm" action="todoManager" method="post">
-<%--                    <select class="categoryDropdown" name="category">--%>
-<%--                        <option selected>Category</option>--%>
-<%--                        <option>Work</option>--%>
-<%--                        <c:forEach items="${user.todoList.todos}" var="categories">--%>
-<%--                            <option value="${categories.title}">${categories.title}</option>--%>
-<%--                        </c:forEach>--%>
-<%--                    </select>--%>
-
-<%--                    <label class="dropdown">--%>
-
-<%--                        <div class="dd-button">--%>
-<%--                            <i class="fas fa-filter"></i> Category--%>
-<%--                        </div>--%>
-
-<%--                        <input type="checkbox" class="dd-input" id="test">--%>
-
-<%--                        <ul class="dd-menu">--%>
-<%--                            <li>Action</li>--%>
-<%--                            <li>Ano</li>--%>
-<%--                            <li>Snge</li>--%>
-<%--                            <li><i class="fas fa-briefcase"></i>Work</li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="addTodoButton">Add todo</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="addTodoButton">Add todo</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="addTodoButton">Add todo</button>--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-
-<%--                    </label>--%>
-
-<%--                    <button name="button" value="addTodoButton">Add todo</button>--%>
                     <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
-
                 </form>
             </div>
 
@@ -117,7 +98,7 @@
 
                         <tbody>
                         <c:forEach items="${user.todoList.todos}" var="todo">
-                            <tr>
+                            <tr class=<c:if test="${todo.done}">red</c:if>>
                                 <td class="center" id="td-check">
                                     <button class="checkTodoButton" name="button"
                                             value="${todo.title}"><c:if test="${todo.done}"><i
@@ -128,7 +109,7 @@
                                     <%--                                                                        <c:if test="${todo.done}">checked</c:if>/></td>--%>
                                 <td id="td-title">${todo.title}</td>
 
-                                <td class="center" id="td-done">
+                                <td class="center" id="td-category">
                                     <c:choose>
 
                                         <c:when test="${todo.title == 'house'}">
@@ -151,7 +132,7 @@
                                 <td id="td-date">${todo.important}</td>
 
                                 <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="button" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>
 
 <%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
