@@ -1,10 +1,13 @@
 package todo.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import todo.model.userExceptions.InvalidCredentialsException;
 import todo.model.userExceptions.NoSuchUserException;
 import todo.model.userExceptions.UserAlreadyExistsException;
@@ -36,7 +39,8 @@ public class Account {
     public void loadXml() {
         if (FILE.canRead()) {
             ObjectMapper mapper = new XmlMapper();
-            try (InputStream reader = new FileInputStream(FILE)) {
+            configureMapper(mapper);
+            try (FileReader reader = new FileReader(FILE)) {
                 accountInstance = mapper.readValue(reader, Account.class);
                 userAccounts = accountInstance.userAccounts;
             } catch (IOException ex) {
@@ -45,24 +49,23 @@ public class Account {
         }
     }
 
-    public void saveXml() {
+    public static void saveXml() {
         ObjectMapper mapper = new XmlMapper();
-        try (OutputStream writer = new FileOutputStream(FILE)) {
+        configureMapper(mapper);
+        try (FileWriter writer = new FileWriter(FILE)) {
             mapper.writerWithDefaultPrettyPrinter().writeValue(writer, accountInstance);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // creates a new user if the userName doesn't exist and returns the new user
-    // throws Exceptions if the userName already exists or if the password is invalid
     public User registerUser(String firstName, String lastName, String userName, String password, String passwordC)
             throws InvalidCredentialsException, UserAlreadyExistsException {
         if (!validUserName(userName) || !validPassword(password, passwordC)) throw new InvalidCredentialsException();
         loadXml();
         User user = new User(firstName, lastName, userName, password);
         if (userAccounts.add(user)) {
-            saveXml();
+            Account.saveXml();
             return user;
         } else {
             throw new UserAlreadyExistsException();
@@ -83,7 +86,7 @@ public class Account {
     public User deleteUser(String userName) throws NoSuchUserException {
         User user = findByUserName(userName);
         if (userAccounts.remove(user)) {
-            saveXml();
+            Account.saveXml();
             return user;
         }
         return null;
@@ -107,43 +110,11 @@ public class Account {
         return !password.isEmpty() && password.equals(passwordC);
     }
 
-    /*
-    public User registerUser(String userName, String password) {
-
-        boolean userExists = userAccounts.stream().anyMatch(user -> user.getUserName().equals(userName));
-
-        if (!userExists) {
-            User user = new User(userName, password);
-            userAccounts.add(user);
-
-            return user;
-        } else {
-            return null;
-        }
-
+    private static void configureMapper(ObjectMapper objectMapper) {
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
-
-    public User loginUser(String userName, String password) {
-
-        boolean userExists = userAccounts.stream().anyMatch(user -> user.getUserName().equals(userName));
-
-        if (userExists) {
-            User userAccount = findByUserName(userAccounts, userName);
-            String userAccountPassword = userAccount.getPassword();
-
-            if (userAccountPassword.equals(password)) {
-                System.out.println("login succeeded");
-                return userAccount;
-            } else {
-                System.out.println("wrong password");
-                return null;
-            }
-        } else {
-            System.out.println("The user doesnt exist");
-            return null;
-        }
-    }
-
-    */
 
 }

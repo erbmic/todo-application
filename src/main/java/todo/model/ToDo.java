@@ -9,31 +9,23 @@ public class ToDo {
     @JacksonXmlProperty(isAttribute = true)
     private long id;
     private String title;
-    private Boolean done;
-    private Boolean important;
-//    private LocalDate dueDate;
+    private boolean done;
+    private boolean important;
+    private boolean overDue;
     @JacksonXmlProperty(isAttribute = true)
-    private Category category;
+    private String category;
+    private LocalDate dueDate;
+    private String description;
 
-    public ToDo(String title) {
-        this(title, false, null);
-    }
+    public ToDo(){}
 
-    public ToDo(String title, boolean important){
-        this(title, important, null);
-    }
-
-    public ToDo(String title, Category category){
-        this(title, false, category);
-    }
-
-    public ToDo(Category category){this(null, false, category);}
-
-    public ToDo(String title, Boolean important, Category category) {
-        this.id = TodoList.getNextId();
+    public ToDo(long id, String title, boolean important, String category, LocalDate dueDate, String description) {
+        this.id = id;
         this.title = title;
         this.important = important;
         this.category = category;
+        this.dueDate = dueDate;
+        this.description = description;
     }
 
     public long getId() {
@@ -52,27 +44,43 @@ public class ToDo {
         this.title = title;
     }
 
-    public Boolean getDone() {
+    public boolean getDone() {
         return done;
     }
 
-    public void setDone(Boolean done) {
+    public void setDone(boolean done) {
         this.done = done;
     }
 
-    public Boolean getImportant() {
+    public boolean getImportant() {
         return important;
     }
 
-    public void setImportant(Boolean important) {
+    public void setImportant(boolean important) {
         this.important = important;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public LocalDate getDueDate() {
+        return this.dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

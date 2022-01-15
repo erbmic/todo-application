@@ -43,7 +43,7 @@
                 <div class="catDropdown">
                     <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                             class="fas fa-chevron-down"></i></button>
-                    <form action="todoManager" method="post">
+                    <form action="todoList" method="post">
                         <ul>
                             <li>
                                 <button name="button" value="addTodoButton">Add todo</button>
@@ -59,7 +59,7 @@
                 </div>
 
 
-                <form class="todoListMenuForm" action="todoManager" method="post">
+                <form class="todoListMenuForm" action="todoList" method="post">
 <%--                    <select class="categoryDropdown" name="category">--%>
 <%--                        <option selected>Category</option>--%>
 <%--                        <option>Work</option>--%>
@@ -100,7 +100,7 @@
                 </form>
             </div>
 
-            <form action="todoManager" method="post">
+            <form action="todoList" method="post">
                 <div class="todolist">
                     <table>
 
@@ -148,10 +148,10 @@
                                 <td class="center" id="td-important"><c:if test="${todo.important}"><i
                                         class="fas fa-exclamation-circle"></i></c:if></td>
 
-                                <td id="td-date">${todo.important}</td>
+                                <td id="td-date">${todo.dueDate}</td>
 
                                 <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="button" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
                                 </td>
 
 <%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>

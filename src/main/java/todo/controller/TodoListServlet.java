@@ -27,14 +27,15 @@ public class TodoListServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
 
+        String id = request.getParameter("todoID");
         String button = request.getParameter("button");
         String checkbox = request.getParameter("checkbox");
         String category = request.getParameter("category");
 
         switch (button) {
             case "addTodoButton":
-                ToDo newTodo =new ToDo("");
-                request.setAttribute("Todo", newTodo);
+                //ToDo newTodo =new ToDo("");
+                //request.setAttribute("Todo", newTodo);
                 try {
                     request.getRequestDispatcher("todoEdit.jsp").forward(request,response);
                 } catch (ServletException e) {

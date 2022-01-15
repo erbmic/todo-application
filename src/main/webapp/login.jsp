@@ -25,7 +25,7 @@
             <label for="password"></label><input type="password" id="password" name="password" placeholder="Password" required>
             <button name="button" value="login">Login</button>
         </form>
-        <div class="errorMsg"><i class="fas fa-exclamation-circle"></i>${errorMsg}</div>
+        <div class="errorMsg"><i class="fas fa-exclamation-circle"></i>${message}</div>
 
         <p>Don't have an account?</p>
         <a href="register.jsp">Sign up</a>

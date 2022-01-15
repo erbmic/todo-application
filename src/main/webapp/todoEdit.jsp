@@ -41,7 +41,7 @@
             <div class="editBox">
 
                 <div class="editMenu">
-                    <form class="editMenuForm" action="todoManager" method="post">
+                    <form class="editMenuForm" action="todoEdit" method="post">
                         <c:if test="${not empty todo.id}">
                         <button id="deleteTodoButton" name="button" value="delete"><i
                                 class="far fa-trash-alt"></i></c:if>
@@ -72,7 +72,6 @@
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                            value=
                                                                                     min=<fmt:formatDate
                                 pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
                         </div>
