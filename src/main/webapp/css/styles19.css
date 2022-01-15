@@ -101,6 +101,11 @@ a:hover {
 /* ----------- error message ----------- */
 .errorMsg {
     color: var(--warnRed);
+    font-weight: bold;
+    font-size: 0.8em;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 
 
@@ -234,8 +239,8 @@ button:hover {
 .todoMenu, .editMenuForm {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 10px;
-
 }
 
 
@@ -632,6 +637,10 @@ input[type=checkbox]:checked:after {
         font-size: 1.2em;
     }
 
+    .errorMsg {
+        font-size: 1em;
+    }
+
     /* ----------- login box ----------- */
     .loginbox {
         position: absolute;
@@ -639,7 +648,6 @@ input[type=checkbox]:checked:after {
         top: 50%;
         transform: translate(-50%, -70%);
     }
-
 
 
     /* ----- list of todos ----- */
