@@ -182,17 +182,31 @@ button:hover {
 .todolistBox {
     /*background-color: #555555;*/
     width: 80%;
-    max-width: 1500px;
+    max-width: 80%;
+    /*max-width: 1500px;*/
     margin: auto;
 }
 
 
 /* ----- todolist menu ----- */
 /*.todoListMenuForm, .editMenuForm {*/
+/*.todoMenu {*/
 .todoMenu, .editMenuForm {
+    position: absolute;
+    left: 50%;
+    width: 100px;
+    margin-left: -50px;
+    bottom: 50px;
+
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
+    background-color: #8b251c;
+
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    /*gap: 10px;*/
+
 }
 
 
@@ -341,13 +355,14 @@ button:hover {
     /*border-collapse: collapse;*/
     margin: 25px 0;
     width: 100%;
+    max-width: 100%;
     border-collapse: separate;
     border-spacing: 0 15px;
     text-align: left;
 }
 
 .todolist th {
-    color: #555555;
+    color: var(--grey);
     font-size: 0.75em;
     padding: 0 10px;
 }
@@ -360,7 +375,7 @@ tr.red {
 
 .todolist td {
     /*background: white;*/
-    font-size: 1em;
+    font-size: 0.8em;
     height: 55px;
     /*padding: 17px 0;*/
     border-bottom: 1px solid black;
@@ -368,17 +383,17 @@ tr.red {
     padding: 0 10px;
 }
 
-.todolist td:last-child {
-    border-radius: 0 var(--mainBorderradius) var(--mainBorderradius) 0;
-    border-right: 1px solid black;
-    padding-right: 15px;
-}
-
 .todolist td:first-child {
     border-radius: var(--mainBorderradius) 0 0 var(--mainBorderradius);
     border-left: 1px solid black;
     padding-left: 15px;
+}
 
+
+.todolist td:last-child {
+    border-radius: 0 var(--mainBorderradius) var(--mainBorderradius) 0;
+    border-right: 1px solid black;
+    /*padding-right: 15px;*/
 }
 
 .todolist #td-important {
@@ -390,24 +405,43 @@ tr.red {
 }
 
 .todolist #th-title, .todolist #td-title {
-    column-width: 300px;
+    column-width: 400px;
+    /*word-break: break-all;*/
+    word-break: break-word;
+}
+
+.todolist #td-delete {
+    padding: 0;
+    text-align: right;
+    width: 1.3em;
+    /*padding: 0 5px;*/
 }
 
 .todolist #td-edit {
+    padding: 0;
     text-align: right;
+    /*padding-left: 5px;*/
+    width: 1.6em;
+}
+
+
+.todolist #editTodoButton, .todolist #deleteTodoButton {
+    border: 0;
+    background-color: yellow;
+    color: var(--grey);
+    height: 80%;
+    width: 80%;
+    /*width: 1.6em;*/
+    margin: 0;
+    padding: 0;
 }
 
 .todolist #editTodoButton {
-    border: 0;
-    background-color: inherit;
-    color: var(--grey);
-    height: 1.6em;
-    width: 1.6em;
-    margin-right: 0;
-    margin-left: 0;
+    padding-right: 20px;
+    padding-left: 5px;
 }
 
-.todolist #editTodoButton:hover {
+.todolist #editTodoButton:hover, .todolist #deleteTodoButton:hover {
     color: black;
 }
 
@@ -580,7 +614,6 @@ input[type=checkbox]:checked:after {
 
     /* ----- list of todos ----- */
     .todolist th {
-        color: var(--grey);
         font-size: 0.9em;
         padding: 0 20px;
     }
@@ -592,11 +625,16 @@ input[type=checkbox]:checked:after {
     }
 
     .todolist td:last-child {
-        padding-right: 25px;
+        /*padding-right: 30px;*/
     }
 
     .todolist td:first-child {
         padding-left: 40px;
+    }
+
+    .todolist #editTodoButton {
+        padding-right: 30px;
+        padding-left: 5px;
     }
 
 
@@ -615,6 +653,15 @@ input[type=checkbox]:checked:after {
         height: 60px;
         padding-left: 30px;
         padding-right: 15px;
+    }
+
+    .todoMenu, .editMenuForm {
+        position: inherit;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 100%;
+        margin-left: 0;
     }
 
 
