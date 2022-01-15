@@ -41,13 +41,13 @@
             <div class="editBox">
 
                 <div class="editMenu">
-                    <form class="editMenuForm" action="todoManager" method="post">
+                    <form class="editMenuForm" action="todoEdit" method="post">
                         <c:if test="${not empty todo.id}">
                         <button id="deleteTodoButton" name="button" value="deleteTodo"><i
                                 class="far fa-trash-alt"></i></c:if>
                             <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
                         </button>
-                        <button id="saveTodoButton" name="todoID" value="saveTodo"><i class="far fa-save"></i></button>
+                        <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
                         <button id="closeButton" name="button" value="closeTodo"><i class="fas fa-times"></i></button>
                         <%--                    </form>--%>
                 </div>

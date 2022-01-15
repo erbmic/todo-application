@@ -23,12 +23,12 @@
     <nav>
         <div class="navBox">
             <div class="navBarLogo">
-                <form id="navBarLogo" action="todoManager" method="post">
+                <form id="navBarLogo" action="todoList" method="post">
                     <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
                 </form>
             </div>
             <div class="navBarMenuForm">
-                <form id="navLogoutMenuForm" action="todoManager" method="post">
+                <form id="navLogoutMenuForm" action="todoList" method="post">
                     <button id="logoutButton" name="button" value="logout">Sign out</button>
                 </form>
 
@@ -57,7 +57,7 @@
                 <div class="catDropdown">
                     <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                             class="fas fa-chevron-down"></i></button>
-                    <form action="todoManager" method="post">
+                    <form action="todoList" method="post">
                         <ul>
                             <c:forEach items="${user.todoList.todos}" var="todo">
                                 <li>
@@ -93,7 +93,7 @@
                 <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
             </div>
 
-            <form action="todoManager" method="post">
+            <form action="todoList" method="post">
                 <div class="todolist">
                     <table>
 
@@ -150,7 +150,7 @@
                                 <td class="center" id="td-important"><c:if test="${todo.important}"><i
                                         class="fas fa-exclamation-circle"></i></c:if></td>
 
-                                <td id="td-date">${todo.title}</td>
+                                <td id="td-date">${todo.dueDate}</td>
 
                                 <td class="center" id="td-delete">
                                     <button id="deleteTodoButton" name="button" value="deleteTodo"><i
