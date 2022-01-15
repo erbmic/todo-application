@@ -192,20 +192,9 @@ button:hover {
 /*.todoListMenuForm, .editMenuForm {*/
 /*.todoMenu {*/
 .todoMenu, .editMenuForm {
-    position: absolute;
-    left: 50%;
-    width: 100px;
-    margin-left: -50px;
-    bottom: 50px;
-
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 10px;
-    background-color: #8b251c;
-
-    /*display: flex;*/
-    /*justify-content: flex-end;*/
-    /*gap: 10px;*/
 
 }
 
