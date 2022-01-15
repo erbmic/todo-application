@@ -25,11 +25,13 @@ public class TodoServlet extends HttpServlet {
 
         String button = request.getParameter("button");
         String title = request.getParameter("title");
+        String date = request.getParameter("dueDate");
         String button2 = request.getParameter("editTodoButton3");
 
         System.out.println(button);
         System.out.println(title);
         System.out.println(button);
+        System.out.println(date);
         response.sendRedirect("todoList.jsp");
 
     }

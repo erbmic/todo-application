@@ -11,7 +11,7 @@
 
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/styles16.css">
+    <link rel="stylesheet" href="css/styles19.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
             <button name="button" value="register">Register</button>
         </form>
 
-        <div class="errorMsg">${errorMsg}</div>
+        <div class="errorMsg">${message}</div>
 
         <p>Already have an account?</p>
         <a href="login.jsp">Log in</a>

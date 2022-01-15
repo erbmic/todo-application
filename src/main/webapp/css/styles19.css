@@ -1,7 +1,10 @@
 /* ----------- variables ----------- */
 :root {
+    --lightGrey: #f0f0f0;
     --grey: #777777;
+    -darkGrey: #777777;
     --warnRed: #8b251c;
+    --tableRed: rgba(160, 40, 20, 0.2);
     --mainBorderradius: 6px;
     --smallBorderradius: 5px;
 }
@@ -32,9 +35,11 @@ body {
 
 /* ----------- nav ----------- */
 nav {
-    /*background: cornsilk;*/
+    background-color: var(--grey);
     grid-area: nav;
-    /*background-color: var(--grey);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ----------- headbox ----------- */
@@ -99,6 +104,12 @@ a:hover {
 }
 
 
+/* ----------- error message ----------- */
+.unvisible {
+    display: none;
+}
+
+
 
 /* ----------- general buttons ----------- */
 button, .button {
@@ -128,6 +139,37 @@ button, .button {
 
 button:hover {
     font-weight: bold;
+}
+
+/* ----------- Navbar button ----------- */
+.navBox {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.navBox #homeButton {
+    background-color: inherit;
+    font-weight: bold;
+    height: 30px;
+    width: 70px;
+    border: solid white 2px;
+}
+
+
+.navBox #logoutButton {
+    background-color: inherit;
+    text-align: right;
+    border-radius: 0;
+    padding: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    height: 20px;
+    width: 60px;
 }
 
 
@@ -180,17 +222,20 @@ button:hover {
 .todolistBox {
     /*background-color: #555555;*/
     width: 80%;
-    max-width: 1500px;
+    max-width: 80%;
+    /*max-width: 1500px;*/
     margin: auto;
 }
 
 
 /* ----- todolist menu ----- */
 /*.todoListMenuForm, .editMenuForm {*/
+/*.todoMenu {*/
 .todoMenu, .editMenuForm {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+
 }
 
 
@@ -289,7 +334,7 @@ button:hover {
 
 
 .catDropdown li:hover {
-    background-color: var(--grey);
+    background-color: var(--lightGrey);
 }
 
 .catDropdown form {
@@ -339,20 +384,27 @@ button:hover {
     /*border-collapse: collapse;*/
     margin: 25px 0;
     width: 100%;
+    max-width: 100%;
     border-collapse: separate;
     border-spacing: 0 15px;
     text-align: left;
 }
 
 .todolist th {
-    color: #555555;
+    color: var(--grey);
     font-size: 0.75em;
     padding: 0 10px;
 }
 
+
+tr.red {
+    background-color: var(--tableRed);
+}
+
+
 .todolist td {
-    background: white;
-    font-size: 1em;
+    /*background: white;*/
+    font-size: 0.8em;
     height: 55px;
     /*padding: 17px 0;*/
     border-bottom: 1px solid black;
@@ -360,17 +412,17 @@ button:hover {
     padding: 0 10px;
 }
 
-.todolist td:last-child {
-    border-radius: 0 var(--mainBorderradius) var(--mainBorderradius) 0;
-    border-right: 1px solid black;
-    padding-right: 15px;
-}
-
 .todolist td:first-child {
     border-radius: var(--mainBorderradius) 0 0 var(--mainBorderradius);
     border-left: 1px solid black;
     padding-left: 15px;
+}
 
+
+.todolist td:last-child {
+    border-radius: 0 var(--mainBorderradius) var(--mainBorderradius) 0;
+    border-right: 1px solid black;
+    /*padding-right: 15px;*/
 }
 
 .todolist #td-important {
@@ -382,24 +434,43 @@ button:hover {
 }
 
 .todolist #th-title, .todolist #td-title {
-    column-width: 300px;
+    column-width: 400px;
+    /*word-break: break-all;*/
+    word-break: break-word;
+}
+
+.todolist #td-delete {
+    padding: 0;
+    text-align: right;
+    width: 1.3em;
+    /*padding: 0 5px;*/
 }
 
 .todolist #td-edit {
+    padding: 0;
     text-align: right;
+    /*padding-left: 5px;*/
+    width: 1.6em;
+}
+
+
+.todolist #editTodoButton, .todolist #deleteTodoButton {
+    border: 0;
+    background-color: inherit;
+    color: var(--grey);
+    height: 80%;
+    width: 80%;
+    /*width: 1.6em;*/
+    margin: 0;
+    padding: 0;
 }
 
 .todolist #editTodoButton {
-    border: 0;
-    background-color: white;
-    color: var(--grey);
-    height: 1.6em;
-    width: 1.6em;
-    margin-right: 0;
-    margin-left: 0;
+    padding-right: 20px;
+    padding-left: 5px;
 }
 
-.todolist #editTodoButton:hover {
+.todolist #editTodoButton:hover, .todolist #deleteTodoButton:hover {
     color: black;
 }
 
@@ -407,7 +478,7 @@ button:hover {
 /* ----------- checkbox in todos ----------- */
 .checkTodoButton {
     appearance: none;
-    background-color: white;
+    background-color: inherit;
     color: black;
     height: 1.6em;
     width: 1.6em;
@@ -444,13 +515,6 @@ button:hover {
     text-align: left;
 }
 
-.oneLine2 {
-    /*width: 100%;*/
-    display: flex;
-    justify-content: flex-start;
-
-}
-
 .oneLine {
     /*width: 100%;*/
     display: flex;
@@ -474,6 +538,10 @@ button:hover {
     margin-left: 0;
 }
 
+.editTodoForm #editCompletion {
+    margin-left: 40px;
+}
+
 .editTodoForm #editDescription {
     height: 200px;
     line-height: normal;
@@ -484,7 +552,7 @@ button:hover {
     display: inline-block;
 }
 
-label[for="editImportant"] {
+label[for="editImportant"], label[for="editCompletion"]  {
     margin-top: 7px;
     margin-left: 10px;
 }
@@ -548,6 +616,7 @@ input[type=checkbox]:checked:after {
             "footer footer footer";
     }
 
+
     .headtext {
         display: block;
     }
@@ -575,7 +644,6 @@ input[type=checkbox]:checked:after {
 
     /* ----- list of todos ----- */
     .todolist th {
-        color: var(--grey);
         font-size: 0.9em;
         padding: 0 20px;
     }
@@ -587,11 +655,16 @@ input[type=checkbox]:checked:after {
     }
 
     .todolist td:last-child {
-        padding-right: 25px;
+        /*padding-right: 30px;*/
     }
 
     .todolist td:first-child {
         padding-left: 40px;
+    }
+
+    .todolist #editTodoButton {
+        padding-right: 30px;
+        padding-left: 5px;
     }
 
 
@@ -610,6 +683,15 @@ input[type=checkbox]:checked:after {
         height: 60px;
         padding-left: 30px;
         padding-right: 15px;
+    }
+
+    .todoMenu, .editMenuForm {
+        position: inherit;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 100%;
+        margin-left: 0;
     }
 
 
