@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles18.css">
+    <link rel="stylesheet" href="css/styles19.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,21 @@
 <div class="container">
 
     <!-- MENU NAV -->
-    <nav></nav>
+    <nav>
+        <div class="navBox">
+            <div class="navBarLogo">
+                <form id="navBarLogo" action="todoManager" method="post">
+                    <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
+                </form>
+            </div>
+            <div class="navBarMenuForm">
+                <form id="navLogoutMenuForm" action="todoManager" method="post">
+                    <button id="logoutButton" name="button" value="logout">Sign out</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
     <!-- END MENU NAV -->
 
     <!-- HEADBOX -->
@@ -34,8 +48,8 @@
     </div>
     <!-- END HEADBOX -->
 
-    <main>
 
+    <main>
         <div class="todolistBox">
 
 
@@ -50,27 +64,27 @@
                                     <button name="button" value="${todo.title}">${todo.title}</button>
                                 </li>
                             </c:forEach>
-<%--                            <li>--%>
-<%--                                <button name="button" value="home">Home</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="important">Important</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="learning">Learning</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="people">People</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="school">School</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="shopping">Shopping</button>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <button name="button" value="work">Work</button>--%>
-<%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="home">Home</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="important">Important</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="learning">Learning</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="people">People</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="school">School</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="shopping">Shopping</button>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <button name="button" value="work">Work</button>--%>
+                            <%--                            </li>--%>
                         </ul>
                     </form>
                 </div>
@@ -102,7 +116,7 @@
                             <tr class=<c:if test="${todo.done}">red</c:if>>
                                 <td class="center" id="td-check">
                                     <button class="checkTodoButton" name="button"
-                                            value="${todo.title}"><c:if test="${todo.done}"><i
+                                            value="${todo.id}"><c:if test="${todo.done}"><i
                                             class="fas fa-check"></i></c:if></button>
                                 </td>
 
@@ -130,20 +144,22 @@
                                 <td class="center" id="td-important"><c:if test="${todo.important}"><i
                                         class="fas fa-exclamation-circle"></i></c:if></td>
 
-                                <td id="td-date">${todo.important}</td>
+                                <td id="td-date">${todo.title}</td>
 
                                 <td class="center" id="td-delete">
-                                    <button id="deleteTodoButton" name="todoID" value="${todo.id}"><i class="far fa-trash-alt"></i></button>
+                                    <button id="deleteTodoButton" name="todoID" value="${todo.id}"><i
+                                            class="far fa-trash-alt"></i></button>
                                 </td>
 
                                 <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
-<%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
+                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i
+                                            class="fas fa-ellipsis-h"></i></button>
+                                        <%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                 </td>
 
-<%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
-<%--                                    <i class="fas fa-ellipsis-h"></i></a>--%>
-<%--                                </td>--%>
+                                    <%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
+                                    <%--                                    <i class="fas fa-ellipsis-h"></i></a>--%>
+                                    <%--                                </td>--%>
                             </tr>
                         </c:forEach>
                         </tbody>

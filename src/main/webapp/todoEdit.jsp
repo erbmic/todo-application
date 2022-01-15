@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles18.css">
+    <link rel="stylesheet" href="css/styles19.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -53,9 +53,12 @@
                 </div>
 
                 <div class="editTodoForm">
-
+                    <div class="unvisible">
+                        <label>
+                            <input value="${todo.id}"/>
+                        </label>
+                    </div>
                     <%--                    <form action="todoManager" method="post">--%>
-
                     <div class="oneLine">
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
@@ -66,7 +69,8 @@
                             <input class="checkbox" type="checkbox"
                                    id="editCompletion"
                                    name="editCompletion"
-                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label for="editCompletion">Completion</label></c:if>
+                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label
+                                for="editCompletion">Completion</label></c:if>
                     </div>
                     <%--value="${user.userName}"--%>
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"

@@ -2,6 +2,7 @@
 :root {
     --lightGrey: #f0f0f0;
     --grey: #777777;
+    -darkGrey: #777777;
     --warnRed: #8b251c;
     --tableRed: rgba(160, 40, 20, 0.2);
     --mainBorderradius: 6px;
@@ -34,9 +35,11 @@ body {
 
 /* ----------- nav ----------- */
 nav {
-    /*background: cornsilk;*/
+    background-color: var(--grey);
     grid-area: nav;
-    /*background-color: var(--grey);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ----------- headbox ----------- */
@@ -101,6 +104,12 @@ a:hover {
 }
 
 
+/* ----------- error message ----------- */
+.unvisible {
+    display: none;
+}
+
+
 
 /* ----------- general buttons ----------- */
 button, .button {
@@ -130,6 +139,37 @@ button, .button {
 
 button:hover {
     font-weight: bold;
+}
+
+/* ----------- Navbar button ----------- */
+.navBox {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.navBox #homeButton {
+    background-color: inherit;
+    font-weight: bold;
+    height: 30px;
+    width: 70px;
+    border: solid white 2px;
+}
+
+
+.navBox #logoutButton {
+    background-color: inherit;
+    text-align: right;
+    border-radius: 0;
+    padding: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    height: 20px;
+    width: 60px;
 }
 
 
@@ -416,7 +456,7 @@ tr.red {
 
 .todolist #editTodoButton, .todolist #deleteTodoButton {
     border: 0;
-    background-color: yellow;
+    background-color: inherit;
     color: var(--grey);
     height: 80%;
     width: 80%;
@@ -575,6 +615,7 @@ input[type=checkbox]:checked:after {
             "main main main"
             "footer footer footer";
     }
+
 
     .headtext {
         display: block;
