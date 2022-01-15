@@ -43,19 +43,19 @@
                 <div class="editMenu">
                     <form class="editMenuForm" action="todoManager" method="post">
                         <c:if test="${not empty todo.id}">
-                        <button id="deleteTodoButton" name="button" value="delete"><i
+                        <button id="deleteTodoButton" name="button" value="deleteTodo"><i
                                 class="far fa-trash-alt"></i></c:if>
                             <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
                         </button>
-                        <button id="saveTodoButton" name="todoID" value="save"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
+                        <button id="saveTodoButton" name="todoID" value="saveTodo"><i class="far fa-save"></i></button>
+                        <button id="closeButton" name="button" value="closeTodo"><i class="fas fa-times"></i></button>
                         <%--                    </form>--%>
                 </div>
 
                 <div class="editTodoForm">
                     <div class="unvisible">
                         <label>
-                            <input value="${todo.id}"/>
+                            <input name="todoID" value="${todo.id}"/>
                         </label>
                     </div>
                     <%--                    <form action="todoManager" method="post">--%>

@@ -115,13 +115,13 @@
                             <tr class=<c:if test="${todo.done}">red</c:if>>
                                 <td class="center" id="td-check">
                                     <button class="checkTodoButton" name="button"
-                                            value="${todo.id}"><c:if test="${todo.done}"><i
+                                            value="checkTodo"><c:if test="${todo.done}"><i
                                             class="fas fa-check"></i></c:if></button>
                                 </td>
 
                                 <td id="td-id" class="unvisible">
                                     <label>
-                                        <input value="${todo.id}"/>
+                                        <input name="todoID" value="${todo.id}"/>
                                     </label>
                                 </td>
 
@@ -153,12 +153,12 @@
                                 <td id="td-date">${todo.title}</td>
 
                                 <td class="center" id="td-delete">
-                                    <button id="deleteTodoButton" name="todoID" value="${todo.id}"><i
+                                    <button id="deleteTodoButton" name="button" value="deleteTodo"><i
                                             class="far fa-trash-alt"></i></button>
                                 </td>
 
                                 <td class="center" id="td-edit">
-                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i
+                                    <button id="editTodoButton" name="button" value="editTodo"><i
                                             class="fas fa-ellipsis-h"></i></button>
                                         <%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                 </td>
