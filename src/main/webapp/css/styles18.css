@@ -196,12 +196,12 @@ button:hover {
     left: 50%;
     width: 100px;
     margin-left: -50px;
-    bottom: 50px;
+    /*bottom: 50px;*/
+    top: 90%;
 
     display: flex;
     justify-content: center;
     gap: 10px;
-    background-color: #8b251c;
 
     /*display: flex;*/
     /*justify-content: flex-end;*/
@@ -427,7 +427,7 @@ tr.red {
 
 .todolist #editTodoButton, .todolist #deleteTodoButton {
     border: 0;
-    background-color: yellow;
+    background-color: inherit;
     color: var(--grey);
     height: 80%;
     width: 80%;
