@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles16.css">
+    <link rel="stylesheet" href="css/styles17.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -92,6 +92,7 @@
                             <th class="center" id="th-category">Category</th>
                             <th class="center" id="th-important">Important</th>
                             <th id="th-date">Due Date</th>
+                            <th class="center" id="th-delete"></th>
                             <th class="center" id="th-edit"></th>
                         </tr>
                         </thead>
@@ -131,8 +132,13 @@
 
                                 <td id="td-date">${todo.important}</td>
 
+                                <td class="center" id="td-delete">
+                                    <button id="deleteTodoButton" name="todoID" value="${todo.id}"><i class="far fa-trash-alt"></i></button>
+                                </td>
+
                                 <td class="center" id="td-edit">
                                     <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-ellipsis-h"></i></button>
+<%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                 </td>
 
 <%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
