@@ -33,7 +33,7 @@ public class TodoListServlet extends HttpServlet {
         String category = request.getParameter("category");
 
         switch (button) {
-            case "addTodoButton":
+            case "addTodo":
                 //ToDo newTodo =new ToDo("");
                 //request.setAttribute("Todo", newTodo);
                 try {
@@ -42,6 +42,13 @@ public class TodoListServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "checkTodo":
+                break;
+            case "deleteTodo":
+                break;
+            case "editTodo":
+                break;
+
         }
 
     }
