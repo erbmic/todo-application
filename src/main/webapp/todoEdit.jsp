@@ -50,8 +50,7 @@
                                 class="far fa-trash-alt"></i></c:if>
                         </button>
                         <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="button" value="closeTodo"><i class="fas fa-times"></i></button>
-                        <div class="button"><a href="todoEdit.jsp"><i class="fas fa-times"></i></a></div>
+                        <div class="button"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
                 </div>
 
                 <div class="editTodoForm">

@@ -348,7 +348,7 @@ button:hover {
 
 
 /* ----- editmenu buttons ----- */
-.editMenu button {
+.editMenu button, .editMenu .button {
     color: white;
     background-color: black;
     width: 40px;
