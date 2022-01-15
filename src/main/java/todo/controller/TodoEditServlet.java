@@ -35,7 +35,7 @@ public class TodoEditServlet extends HttpServlet {
         String todoDescription = request.getParameter("description");
 
         switch (button) {
-            case "save":
+            case "saveTodo":
                 if (todoID == null){
                     try {
                         user.getTodoList().addTodo(todoTitle, todoImportant, todoDueDate, todoCategory, todoDescription);
@@ -57,7 +57,7 @@ public class TodoEditServlet extends HttpServlet {
                 request.getRequestDispatcher("todoList.jsp").forward(request, response);
                 break;
 
-            case "delete":
+            case "deleteTodo":
                 try{
                     long id = Integer.parseUnsignedInt(todoID);
                     user.getTodoList().deleteTodo(id);
@@ -70,7 +70,7 @@ public class TodoEditServlet extends HttpServlet {
                 request.getRequestDispatcher("todoList.jsp").forward(request, response);
                 break;
 
-            case "close":
+            case "closeTodo":
                 break;
         }
 

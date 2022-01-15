@@ -14,6 +14,7 @@ public class TodoList {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
+    private List<ToDo> filtered;
     private long nextId;
 
     public TodoList() {

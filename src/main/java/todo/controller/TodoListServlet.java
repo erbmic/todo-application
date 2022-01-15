@@ -10,6 +10,9 @@ import todo.model.Account;
 import todo.model.Category;
 import todo.model.ToDo;
 import todo.model.User;
+import todo.model.todoExceptions.InvalidTodoDueDateException;
+import todo.model.todoExceptions.InvalidTodoTitleException;
+import todo.model.todoExceptions.NoSuchTodoIDException;
 
 import java.io.IOException;
 
@@ -26,27 +29,36 @@ public class TodoListServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
+        ToDo todo = null;
+        String msg = "";
 
-        String id = request.getParameter("todoID");
+        String todoID = request.getParameter("todoID");
         String button = request.getParameter("button");
         String checkbox = request.getParameter("checkbox");
         String category = request.getParameter("category");
 
         switch (button) {
-            case "addTodo":
-                //ToDo newTodo =new ToDo("");
-                //request.setAttribute("Todo", newTodo);
-                try {
-                    request.getRequestDispatcher("todoEdit.jsp").forward(request,response);
-                } catch (ServletException e) {
-                    e.printStackTrace();
-                }
-                break;
+
             case "checkTodo":
                 break;
             case "deleteTodo":
                 break;
             case "editTodo":
+                try{
+                    long id = Integer.parseUnsignedInt(todoID);
+                    todo = user.getTodoList().getTodo(id);
+                } catch (NumberFormatException e) {
+                    msg = "Invalid value for Todo ID.";
+                } catch (NoSuchTodoIDException e) {
+                    msg = e.getMessage();
+                }
+                request.setAttribute("todo", todo);
+                request.setAttribute("message", msg);
+                try {
+                    request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                }
                 break;
 
         }
