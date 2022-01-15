@@ -90,9 +90,7 @@
                 </div>
 
 
-                <form class="todoListMenuForm" action="todoManager" method="post">
-                    <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
-                </form>
+                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
             </div>
 
             <form action="todoManager" method="post">
@@ -113,12 +111,20 @@
 
                         <tbody>
                         <c:forEach items="${user.todoList.todos}" var="todo">
+
                             <tr class=<c:if test="${todo.done}">red</c:if>>
                                 <td class="center" id="td-check">
                                     <button class="checkTodoButton" name="button"
                                             value="${todo.id}"><c:if test="${todo.done}"><i
                                             class="fas fa-check"></i></c:if></button>
                                 </td>
+
+                                <td id="td-id" class="unvisible">
+                                    <label>
+                                        <input value="${todo.id}"/>
+                                    </label>
+                                </td>
+
 
                                     <%--                                <td class="center" id="td-check"><input class="checkbox" type="checkbox" name="checkbox" value="${todo.done}"--%>
                                     <%--                                                                        <c:if test="${todo.done}">checked</c:if>/></td>--%>
