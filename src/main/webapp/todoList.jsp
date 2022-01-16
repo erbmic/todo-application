@@ -59,13 +59,12 @@
 
                 <!-- TODOMENU -->
                 <div class="todoMenu">
-                    <div class="errorMsg"><c:if test="${not empty message}"><i
-                            class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
+                    <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-info-circle"></i></c:if> ${message}</div>
 
                     <div class="catDropdown">
                         <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                                 class="fas fa-chevron-down"></i></button>
-                        <form action="todoList" method="post">
+                        <form id="categoryDropdownOptions" action="todoList" method="post">
                             <ul>
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>

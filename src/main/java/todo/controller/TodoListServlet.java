@@ -25,7 +25,7 @@ public class TodoListServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
@@ -34,37 +34,40 @@ public class TodoListServlet extends HttpServlet {
 
         String todoID = request.getParameter("todoID");
         String button = request.getParameter("button");
-        String checkbox = request.getParameter("checkbox");
-        String category = request.getParameter("category");
 
         switch (button) {
 
             case "checkTodo":
+                try{
+                    user.getTodoList().toggleDone(todoID);
+                } catch (NoSuchTodoIDException e) {
+                    msg = e.getMessage();
+                }
+                request.setAttribute("message", msg);
+                request.getRequestDispatcher("todoList.jsp").forward(request, response);
                 break;
+
             case "deleteTodo":
+                try{
+                    user.getTodoList().deleteTodo(todoID);
+                } catch (NoSuchTodoIDException e) {
+                    msg = e.getMessage();
+                }
+                request.setAttribute("message", msg);
+                request.getRequestDispatcher("todoList.jsp").forward(request, response);
                 break;
+
             case "editTodo":
                 try{
-                    long id = Integer.parseUnsignedInt(todoID);
-                    todo = user.getTodoList().getTodo(id);
-                } catch (NumberFormatException e) {
-                    msg = "Invalid value for Todo ID.";
+                    todo = user.getTodoList().getTodo(todoID);
                 } catch (NoSuchTodoIDException e) {
                     msg = e.getMessage();
                 }
                 request.setAttribute("todo", todo);
                 request.setAttribute("message", msg);
-                try {
-                    request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
-                } catch (ServletException e) {
-                    e.printStackTrace();
-                }
+                request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
                 break;
-
         }
 
-    }
-
-    public void destroy() {
     }
 }

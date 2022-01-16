@@ -54,8 +54,7 @@
 
     <!-- MAIN -->
     <main>
-        <div class="errorMsg"><c:if test="${not empty message}"><i
-                class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
+        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-info-circle"></i></c:if> ${message}</div>
 
         <!-- TODOLISTBOX -->
         <div class="todolistBox">
