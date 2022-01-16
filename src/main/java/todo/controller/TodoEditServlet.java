@@ -36,7 +36,7 @@ public class TodoEditServlet extends HttpServlet {
 
         switch (button) {
             case "saveTodo":
-                if (todoID == null){
+                if (todoID == null || todoID.equals("")){
                     try {
                         user.getTodoList().addTodo(todoTitle, todoImportant, todoDueDate, todoCategory, todoDescription);
                         msg = "New Todo added.";
