@@ -8,9 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import todo.model.Account;
 import todo.model.ToDo;
 import todo.model.User;
+import todo.model.todoExceptions.NoSuchTodoIDException;
 import todo.rest.service.TodoService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/api/todo/*")
@@ -25,7 +27,17 @@ public class TodoController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String keyword = request.getParameter("keyword");
         User user = (User)request.getAttribute("user");
-        List<ToDo> toDos = user.getTodoList().getTodos();
+        List<ToDo> toDos = new ArrayList<>();
+
+        if (keyword == null) {
+            toDos = user.getTodoList().getTodos();
+        } else {
+            try {
+                toDos.add(user.getTodoList().getTodo(keyword));
+            } catch (NoSuchTodoIDException e) {
+                e.printStackTrace();
+            }
+        }
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(JSON_MEDIA_TYPE);
         objectMapper.writeValue(response.getWriter(), toDos);
