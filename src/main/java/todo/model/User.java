@@ -15,6 +15,7 @@ public class User {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todoList")
     private TodoList todoList;
+    private CatList catList;
 
     public User() {
     }
@@ -26,6 +27,7 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.todoList = new TodoList();
+        this.catList = new CatList();
     }
 
     public String getFirstName(){return firstName;}
@@ -56,6 +58,14 @@ public class User {
 
     public void setTodoList(TodoList todoList) {
         this.todoList = todoList;
+    }
+
+    public CatList getCatList() {
+        return catList;
+    }
+
+    public void setCatList(CatList catList) {
+        this.catList = catList;
     }
 
     @Override
