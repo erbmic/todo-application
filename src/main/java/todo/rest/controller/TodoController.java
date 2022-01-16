@@ -16,9 +16,6 @@ import java.util.List;
 @WebServlet("/api/todo/*")
 public class TodoController extends HttpServlet {
 
-    Account account = Account.getAccountInstance();
-
-    public static TodoService todoService = new TodoService();
     private final ObjectMapper objectMapper = ObjectMapperFactory.createObjectMapper();
 
 
@@ -26,16 +23,11 @@ public class TodoController extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         String keyword = request.getParameter("keyword");
-        List<ToDo> todos = todoService.getTodos();
         User user = (User)request.getAttribute("user");
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(JSON_MEDIA_TYPE);
         objectMapper.writeValue(response.getWriter(), user);
-
-//        response.setStatus(200);
-
     }
 
     @Override
