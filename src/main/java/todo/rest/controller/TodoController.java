@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import todo.model.Account;
 import todo.model.ToDo;
+import todo.model.User;
 import todo.rest.service.TodoService;
 
 import java.io.IOException;
@@ -28,9 +29,10 @@ public class TodoController extends HttpServlet {
 
         String keyword = request.getParameter("keyword");
         List<ToDo> todos = todoService.getTodos();
+        User user = (User)request.getAttribute("user");
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(JSON_MEDIA_TYPE);
-        objectMapper.writeValue(response.getWriter(), todos);
+        objectMapper.writeValue(response.getWriter(), user);
 
 //        response.setStatus(200);
 

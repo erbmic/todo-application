@@ -36,7 +36,6 @@ public class AuthenticationFilter extends HttpFilter  {
         if (request.getMethod().equals("GET")) {
             try {
                 String[] credentials = getCredentials(request);
-                account.loadXml();
                 User user = account.loginUser(credentials[0], credentials[1]);
 
                 session.setAttribute("user", user);
