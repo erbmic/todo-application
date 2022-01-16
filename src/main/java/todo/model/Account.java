@@ -65,6 +65,8 @@ public class Account {
         loadXml();
         User user = new User(firstName, lastName, userName, password);
         if (userAccounts.add(user)) {
+            user.getTodoList().setTodosFiltered(user.getTodoList().getTodos());
+            user.getTodoList().sortTodos();
             Account.saveXml();
             return user;
         } else {
@@ -78,6 +80,8 @@ public class Account {
         loadXml();
         User user = findByUserName(userName);
         if (user.getPassword().equals(password)) {
+            user.getTodoList().setTodosFiltered(user.getTodoList().getTodos());
+            user.getTodoList().sortTodos();
             return user;
         } else {
             throw new WrongPasswordException();
