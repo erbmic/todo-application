@@ -22,7 +22,7 @@
 
 <div class="container">
 
-    <!-- MENU NAV -->
+    <!-- NAV -->
     <nav>
         <div class="navBox">
             <div class="navBarLogo">
@@ -37,7 +37,7 @@
             </div>
         </div>
     </nav>
-    <!-- END MENU NAV -->
+    <!-- END NAV -->
 
     <!-- HEADBOX -->
     <div class="headbox">
@@ -50,12 +50,17 @@
     </div>
     <!-- END HEADBOX -->
 
-
+    <!-- MAIN -->
     <main>
+
+        <!-- TODOLISTBOX -->
         <div class="todolistBox">
             <div class="listBox">
+
+                <!-- TODOMENU -->
                 <div class="todoMenu">
-                    <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
+                    <div class="errorMsg"><c:if test="${not empty message}"><i
+                            class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
                     <div class="catDropdown">
                         <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
@@ -73,13 +78,13 @@
                             </ul>
                         </form>
                     </div>
-                    <%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
                     <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
                 </div>
+                <!-- END TODOMENU -->
 
+                <!-- TODOLIST -->
                 <div class="todolist">
                     <table>
-
                         <thead>
                         <tr>
                             <th class="center" id="th-check"></th>
@@ -152,16 +157,19 @@
                                     </td>
                                 </tr>
                             </form>
-
                         </c:forEach>
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <!-- END TODOLIST -->
 
+            </div>
         </div>
+        <!-- END TODOLISTBOX -->
 
     </main>
+    <!-- END MAIN -->
+
     <footer></footer>
 </div>
 

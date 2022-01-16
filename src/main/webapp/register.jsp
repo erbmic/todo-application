@@ -22,15 +22,17 @@
 <body>
 
 <header>
-
 </header>
 
+<!-- MAIN -->
 <main>
 
+    <!-- LOGINBOX -->
     <div class="loginbox">
         <h1>
             ToDo App
         </h1>
+
 
         <form action="userManager" method="post">
             <label for="name"></label><input type="text" id="name" name="name" placeholder="Name" required>
@@ -46,7 +48,10 @@
         <p>Already have an account?</p>
         <a href="login.jsp">Log in</a>
     </div>
+    <!-- END LOGINBOX -->
+
 </main>
+<!-- END -->
 
 </body>
 </html>

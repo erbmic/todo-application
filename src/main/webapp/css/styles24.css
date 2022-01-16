@@ -1,8 +1,8 @@
 /* ----------- variables ----------- */
 :root {
     --lightGrey: #f0f0f0;
-    --grey: #777777;
-    --darkGrey: #555555;
+    --grey: #999999;
+    --darkGrey: #444444;
     --warnRed: #8b251c;
     --tableRed: rgba(160, 40, 20, 0.2);
     --mainBorderradius: 6px;
@@ -163,18 +163,18 @@ button:hover {
     height: 30px;
     width: 70px;
     margin: 7px 0;
-    border: solid var(--lightGrey) 2px;
-    color: var(--lightGrey);
+    border: solid var(--grey) 2px;
+    color: var(--grey);
 }
 
 .navBox #homeButton a {
-    color: var(--lightGrey);
+    color: var(--grey);
 }
 
 
 .navBox #logoutButton {
     background-color: inherit;
-    color: var(--lightGrey);
+    color: var(--grey);
     text-align: right;
     border-radius: 0;
     padding: 0;
@@ -408,6 +408,7 @@ button:hover {
     color: var(--grey);
     font-size: 0.75em;
     padding: 0 10px;
+    margin: 0;
 }
 
 
@@ -418,9 +419,8 @@ tr.red {
 
 .todolist td {
     /*background: white;*/
-    font-size: 0.8em;
+    font-size: 0.9em;
     height: 55px;
-    /*padding: 17px 0;*/
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     padding: 0 10px;
@@ -622,7 +622,7 @@ input[type=checkbox]:checked:after {
 
 
 /* ----------- responsive ----------- */
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 992px) {
 
     /* ----------- general container ----------- */
     .container {

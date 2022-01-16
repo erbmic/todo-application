@@ -15,14 +15,15 @@
 <body>
 
 <header>
-
 </header>
 
+<!-- MAIN -->
 <main>
 
+    <!-- LOGINBOX -->
     <div class="loginbox">
         <h1>
-            <%= "ToDo App" %>
+            ToDo App
         </h1>
 
         <form action="userManager" method="post">
@@ -36,7 +37,10 @@
         <p>Don't have an account?</p>
         <a href="register.jsp">Sign up</a>
     </div>
+    <!-- END LOGINBOX -->
+
 </main>
+<!-- END MAIN -->
 
 </body>
 </html>

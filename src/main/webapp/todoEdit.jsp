@@ -23,12 +23,13 @@
 
 <div class="container">
 
-    <!-- MENU NAV -->
+    <!-- NAV -->
     <nav>
         <div class="navBox">
             <div class="navBarLogo">
                 <form id="navBarLogo" action="todoList" method="post">
-                    <div class="button" id="homeButton"><a href="todoList.jsp"><i class="fas fa-check"></i>&nbsp;isto</a></div>
+                    <div class="button" id="homeButton"><a href="todoList.jsp"><i
+                            class="fas fa-check"></i>&nbsp;isto</a></div>
                 </form>
             </div>
             <div class="navBarMenuForm">
@@ -38,7 +39,7 @@
             </div>
         </div>
     </nav>
-    <!-- END MENU NAV -->
+    <!-- END NAV -->
 
     <!-- HEADBOX -->
     <div class="headbox">
@@ -51,15 +52,16 @@
     </div>
     <!-- END HEADBOX -->
 
+    <!-- MAIN -->
     <main>
+        <div class="errorMsg"><c:if test="${not empty message}"><i
+                class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
-        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
-
-
+        <!-- TODOLISTBOX -->
         <div class="todolistBox">
-
             <div class="editBox">
 
+                <!-- EDITMENU -->
                 <div class="editMenu">
                     <form class="editMenuForm" action="todoEdit" method="post">
                         <c:if test="${not empty todo.id}">
@@ -67,9 +69,12 @@
                                 class="far fa-trash-alt"></i></c:if>
                         </button>
                         <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
-                        <div class="button" id="closeButton"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
+                        <div class="button" id="closeButton"><a href="todoList.jsp"><i class="fas fa-times"></i></a>
+                        </div>
                 </div>
+                <!-- END EDITMENU -->
 
+                <!-- EDITTODOFORM -->
                 <div class="editTodoForm">
                     <div class="unvisible">
                         <label>
@@ -81,7 +86,8 @@
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label for="editImportant">Important</label>
+                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label
+                            for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
@@ -123,12 +129,15 @@
                                                                            placeholder="description"
                                                                            value="${todo.description}">
                     </form>
+                    <!-- END EDITTODOFORM -->
 
                 </div>
             </div>
         </div>
+        <!-- END TODOLISTBOX -->
 
     </main>
+    <!-- END HEADBOX -->
 
     <footer></footer>
 
