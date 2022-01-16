@@ -48,6 +48,7 @@ public class TodoList {
 
         ToDo todo = new ToDo(id, pTitle, pImportant, category, pDueDate, description);
         todos.add(todo);
+        sortTodos();
         Account.saveXml();
         return todo;
     }
@@ -69,12 +70,14 @@ public class TodoList {
         todo.setCategory(category);
         todo.setDescription(description);
 
+        sortTodos();
         Account.saveXml();
         return todo;
     }
 
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
         todos.remove(getTodo(todoID));
+        sortTodos();
         Account.saveXml();
     }
 
@@ -99,13 +102,19 @@ public class TodoList {
     }
 
     public void sortTodos() {
-
+        Collections.sort(todosFiltered, new Comparator<ToDo>() {
+            @Override
+            public int compare(ToDo t1, ToDo t2) {
+                return t1.getDueDate().compareTo(t2.getDueDate());
+            }
+        });
     }
 
     public void filterTodos(String category) {
         todosFiltered = todos.stream()
                             .filter(todo -> todo.getCategory().equals(category))
                             .collect(Collectors.toList());
+        sortTodos();
     }
 
     private String processTitle(String title) throws InvalidTodoTitleException{
