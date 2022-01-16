@@ -76,7 +76,7 @@
 
                 <!-- EDITTODOFORM -->
                 <div class="editTodoForm">
-                    <div class="unvisible">
+                    <div class="invisible">
                         <label>
                             <input name="todoID" value="${todo.id}"/>
                         </label>

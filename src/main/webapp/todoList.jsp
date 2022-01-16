@@ -88,7 +88,7 @@
                         <thead>
                         <tr>
                             <th class="center" id="th-check"></th>
-                            <th id="th-id" class="unvisible"></th>
+                            <th id="th-id" class="invisible"></th>
                             <th id="th-title">Title</th>
                             <th class="center" id="th-category">Category</th>
                             <th class="center" id="th-important">Important</th>
@@ -110,7 +110,7 @@
                                                 class="fas fa-check"></i></c:if></button>
                                     </td>
 
-                                    <td id="td-id" class="unvisible">
+                                    <td id="td-id" class="invisible">
                                         <label>
                                             <input name="todoID" value="${todo.id}"/>
                                         </label>
