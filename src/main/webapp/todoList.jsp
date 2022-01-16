@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles22.css">
+    <link rel="stylesheet" href="css/styles23.css">
 </head>
 <body>
 
@@ -55,7 +55,8 @@
     <main>
         <div class="todolistBox">
             <div class="todoMenu">
-                <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
+                <div class="errorMsg"><c:if test="${not empty message}"><i
+                        class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
 
                 <div class="catDropdown">
                     <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
@@ -73,29 +74,30 @@
                         </ul>
                     </form>
                 </div>
-<%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
+                <%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
                 <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
             </div>
 
-            <form action="todoList" method="post">
-                <div class="todolist">
-                    <table>
+            <div class="todolist">
+                <table>
 
-                        <thead>
-                        <tr>
-                            <th class="center" id="th-check"></th>
-                            <th id="th-id" class="unvisible"></th>
-                            <th id="th-title">Title</th>
-                            <th class="center" id="th-category">Category</th>
-                            <th class="center" id="th-important">Important</th>
-                            <th id="th-date">Due Date</th>
-                            <th class="center" id="th-delete"></th>
-                            <th class="center" id="th-edit"></th>
-                        </tr>
-                        </thead>
+                    <thead>
+                    <tr>
+                        <th class="center" id="th-check"></th>
+                        <th id="th-id" class="unvisible"></th>
+                        <th id="th-title">Title</th>
+                        <th class="center" id="th-category">Category</th>
+                        <th class="center" id="th-important">Important</th>
+                        <th id="th-date">Due Date</th>
+                        <th class="center" id="th-delete"></th>
+                        <th class="center" id="th-edit"></th>
+                    </tr>
+                    </thead>
 
-                        <tbody>
-                        <c:forEach items="${user.todoList.todos}" var="todo">
+                    <tbody>
+                    <c:forEach items="${user.todoList.todos}" var="todo">
+                        <form action="todoList" method="post">
+
 
                             <tr class=<c:if test="${todo.done}">red</c:if>>
                                 <td class="center" id="td-check">
@@ -150,11 +152,12 @@
                                         <%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                 </td>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+                        </form>
+
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 

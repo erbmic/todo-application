@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles22.css">
+    <link rel="stylesheet" href="css/styles23.css">
 </head>
 <body>
 
@@ -92,7 +92,7 @@
                     </div>
 
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
-                                                                placeholder="title" value="${todo.id}"
+                                                                placeholder="title" value="${todo.title}"
                                                                 maxlength="50">
 
                     <div class="oneLine">

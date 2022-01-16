@@ -502,7 +502,7 @@ tr.red {
 /* ----------- editTodo box ----------- */
 .editbox {
     width: 48%;
-    background-color: pink;
+    /*background-color: pink;*/
     margin-left: auto;
     margin-right: auto;
 }
