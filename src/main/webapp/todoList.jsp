@@ -77,7 +77,7 @@
                             </ul>
                         </form>
                     </div>
-                    <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
+                    <div class="button" id="addTodoButton"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
                 </div>
                 <!-- END TODOMENU -->
 
