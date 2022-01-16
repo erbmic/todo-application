@@ -1,5 +1,6 @@
 package todo.rest.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +20,6 @@ import java.util.List;
 public class TodoController extends HttpServlet {
 
     private final ObjectMapper objectMapper = ObjectMapperFactory.createObjectMapper();
-
 
     private static final String JSON_MEDIA_TYPE = "application/json";
 
@@ -44,7 +44,11 @@ public class TodoController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = (User)request.getAttribute("user");
 
+        ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+//            user.getTodoList().addTodo(toDo);
+        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
 
     @Override

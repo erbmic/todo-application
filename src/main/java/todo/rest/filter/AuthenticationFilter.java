@@ -19,20 +19,14 @@ import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 public class AuthenticationFilter extends HttpFilter  {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String AUTHENTICATION_SCHEME = "Basic";
-    private static final String ADMIN_USERNAME = "admin";
-    private static final String ADMIN_PASSWORD = "12345";
-
 
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        String ADMIN_USERNAME = "admin";
-        HttpSession session = request.getSession();
 
         Account account = Account.getAccountInstance();
 
-
-        if (request.getMethod().equals("GET")) {
+        if (request.getMethod().equals("GET") || request.getMethod().equals("POST")) {
             try {
                 String[] credentials = getCredentials(request);
                 User user = account.loginUser(credentials[0], credentials[1]);
