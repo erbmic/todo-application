@@ -98,7 +98,7 @@
                         </thead>
 
                         <tbody>
-                        <c:forEach items="${user.todoList.todos}" var="todo">
+                        <c:forEach items="${user.todoList.todosFiltered}" var="todo">
                             <form action="todoList" method="post">
 
 
@@ -131,7 +131,7 @@
                                             <c:when test="${todo.category == 'Shopping'}">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </c:when>
-                                            <c:when test="${todo.category == 'work'}">
+                                            <c:when test="${todo.category == 'Work'}">
                                                 <i class="fas fa-briefcase"></i>
                                             </c:when>
                                             <c:otherwise>

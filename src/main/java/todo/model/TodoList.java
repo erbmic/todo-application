@@ -1,5 +1,6 @@
 package todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
@@ -8,24 +9,27 @@ import todo.model.todoExceptions.NoSuchTodoIDException;
 
 import java.util.*;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class TodoList {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
-    private List<ToDo> filtered;
+    @JsonIgnore
+    private List<ToDo> todosFiltered;
     private long nextId;
 
     public TodoList() {
         this.todos = new ArrayList<>();
-        this.todos = new ArrayList<>();
+        this.todosFiltered = new ArrayList<>();
     }
 
     public List<ToDo> getTodos() {
         return todos;
     }
-    public List<ToDo> getFiltered(){return filtered;}
+    public List<ToDo> getTodosFiltered(){return todosFiltered;}
+    public void setTodosFiltered(List<ToDo> todos){this.todosFiltered = todos;}
     public long getNextId(){return this.nextId;}
 
     public long nextId(){
@@ -98,8 +102,10 @@ public class TodoList {
 
     }
 
-    public void filterTodos() {
-
+    public void filterTodos(String category) {
+        todosFiltered = todos.stream()
+                            .filter(todo -> todo.getCategory().equals(category))
+                            .collect(Collectors.toList());
     }
 
     private String processTitle(String title) throws InvalidTodoTitleException{
