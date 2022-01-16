@@ -59,7 +59,8 @@
 
                 <!-- TODOMENU -->
                 <div class="todoMenu">
-                    <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-info-circle"></i></c:if> ${message}</div>
+                    <div class="errorMsg"><c:if test="${not empty message}"><i
+                            class="fas fa-info-circle"></i></c:if> ${message}</div>
 
                     <div class="catDropdown">
                         <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
@@ -69,9 +70,9 @@
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>
                                 </li>
-                                <c:forEach items="${user.todoList.todos}" var="todo">
+                                <c:forEach items="${user.catList.cats}" var="category">
                                     <li>
-                                        <button name="button" value="${todo.category}">${todo.category}</button>
+                                        <button name="button" value="${category}">${category}</button>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -102,7 +103,7 @@
                             <form action="todoList" method="post">
 
 
-                                <tr class=<c:if test="${todo.done}">red</c:if>>
+                                <tr class=<c:if test="${todo.overDue}">red</c:if>>
                                     <td class="center" id="td-check">
                                         <button class="checkTodoButton" name="button"
                                                 value="checkTodo"><c:if test="${todo.done}"><i

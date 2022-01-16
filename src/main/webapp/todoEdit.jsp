@@ -114,11 +114,9 @@
                                                                                             id="editCategoryDropdownSelect"
                                                                                             name="category">
                             <option>Category</option>
-                            <option <c:if test="${todo.category == 'Home'}">selected</c:if>>Home</option>
-                            <option <c:if test="${todo.category == 'People'}">selected</c:if>>People</option>
-                            <option <c:if test="${todo.category == 'School'}">selected</c:if>>School</option>
-                            <option <c:if test="${todo.category == 'Shopping'}">selected</c:if>>Shopping</option>
-                            <option <c:if test="${todo.category == 'Work'}">selected</c:if>>Work</option>
+                            <c:forEach items="${user.catList.cats}" var="category">
+                                <option <c:if test="${todo.category == category}">selected</c:if>>${category}</option>
+                            </c:forEach>
                         </select>
                         </div>
                     </div>
