@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--<!DOCTYPE html>--%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Edit view</title>
@@ -16,29 +16,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles23.css">
+    <link rel="stylesheet" href="css/styles24.css">
 </head>
 <body>
 
 
 <div class="container">
 
-    <!-- MENU NAV -->
+    <!-- NAV -->
     <nav>
         <div class="navBox">
             <div class="navBarLogo">
                 <form id="navBarLogo" action="todoList" method="post">
-                    <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
+                    <div class="button" id="homeButton"><a href="todoList.jsp"><i
+                            class="fas fa-check"></i>&nbsp;isto</a></div>
                 </form>
             </div>
             <div class="navBarMenuForm">
-                <form id="navLogoutMenuForm" action="todoList" method="post">
+                <form id="navLogoutMenuForm" action="userManager" method="post">
                     <button id="logoutButton" name="button" value="logout">Sign out</button>
                 </form>
             </div>
         </div>
     </nav>
-    <!-- END MENU NAV -->
+    <!-- END NAV -->
 
     <!-- HEADBOX -->
     <div class="headbox">
@@ -51,15 +52,16 @@
     </div>
     <!-- END HEADBOX -->
 
+    <!-- MAIN -->
     <main>
+        <div class="errorMsg"><c:if test="${not empty message}"><i
+                class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
-        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
-
-
+        <!-- TODOLISTBOX -->
         <div class="todolistBox">
-
             <div class="editBox">
 
+                <!-- EDITMENU -->
                 <div class="editMenu">
                     <form class="editMenuForm" action="todoEdit" method="post">
                         <c:if test="${not empty todo.id}">
@@ -67,11 +69,14 @@
                                 class="far fa-trash-alt"></i></c:if>
                         </button>
                         <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
-                        <div class="button"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
+                        <div class="button" id="closeButton"><a href="todoList.jsp"><i class="fas fa-times"></i></a>
+                        </div>
                 </div>
+                <!-- END EDITMENU -->
 
+                <!-- EDITTODOFORM -->
                 <div class="editTodoForm">
-                    <div class="unvisible">
+                    <div class="invisible">
                         <label>
                             <input name="todoID" value="${todo.id}"/>
                         </label>
@@ -81,7 +86,8 @@
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label for="editImportant">Important</label>
+                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label
+                            for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
@@ -123,12 +129,15 @@
                                                                            placeholder="description"
                                                                            value="${todo.description}">
                     </form>
+                    <!-- END EDITTODOFORM -->
 
                 </div>
             </div>
         </div>
+        <!-- END TODOLISTBOX -->
 
     </main>
+    <!-- END HEADBOX -->
 
     <footer></footer>
 
