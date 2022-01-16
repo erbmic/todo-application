@@ -26,12 +26,12 @@
     <nav>
         <div class="navBox">
             <div class="navBarLogo">
-                <form id="navBarLogo" action="todoList" method="post">
+                <form id="navBarLogo" action="userManager" method="post">
                     <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
                 </form>
             </div>
             <div class="navBarMenuForm">
-                <form id="navLogoutMenuForm" action="todoList" method="post">
+                <form id="navLogoutMenuForm" action="userManager" method="post">
                     <button id="logoutButton" name="button" value="logout">Sign out</button>
                 </form>
 

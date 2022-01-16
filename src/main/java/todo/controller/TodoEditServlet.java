@@ -27,7 +27,7 @@ public class TodoEditServlet extends HttpServlet {
 
         String button = request.getParameter("button");
         String todoID = request.getParameter("todoID");
-        String todoDone = request.getParameter("done");
+        String todoDone = request.getParameter("editCompletion");
         String todoTitle = request.getParameter("title");
         String todoImportant = request.getParameter("editImportant");
         String todoDueDate = request.getParameter("dueDate");
@@ -42,15 +42,16 @@ public class TodoEditServlet extends HttpServlet {
                         msg = "New Todo added.";
                     } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
                         msg = e.getMessage();
+                        request.setAttribute("message", msg);
+                        request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
                     }
                 } else {
                     try{
-                        long id = Integer.parseUnsignedInt(todoID);
-                        user.getTodoList().editTodo(id,todoTitle, todoDone, todoImportant, todoDueDate, todoCategory, todoDescription);
-                    } catch (NumberFormatException e) {
-                        msg = "Invalid value for Todo ID.";
+                        user.getTodoList().editTodo(todoID,todoTitle, todoDone, todoImportant, todoDueDate, todoCategory, todoDescription);
                     } catch (NoSuchTodoIDException | InvalidTodoTitleException | InvalidTodoDueDateException e) {
                         msg = e.getMessage();
+                        request.setAttribute("message", msg);
+                        request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
                     }
                 }
                 request.setAttribute("message", msg);
@@ -59,18 +60,12 @@ public class TodoEditServlet extends HttpServlet {
 
             case "deleteTodo":
                 try{
-                    long id = Integer.parseUnsignedInt(todoID);
-                    user.getTodoList().deleteTodo(id);
-                } catch (NumberFormatException e) {
-                    msg = "Invalid value for Todo ID.";
+                    user.getTodoList().deleteTodo(todoID);
                 } catch (NoSuchTodoIDException e) {
                     msg = e.getMessage();
                 }
                 request.setAttribute("message", msg);
                 request.getRequestDispatcher("todoList.jsp").forward(request, response);
-                break;
-
-            case "closeTodo":
                 break;
         }
 

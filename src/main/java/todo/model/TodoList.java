@@ -19,13 +19,16 @@ public class TodoList {
 
     public TodoList() {
         this.todos = new ArrayList<>();
+        this.todos = new ArrayList<>();
     }
 
     public List<ToDo> getTodos() {
         return todos;
     }
+    public List<ToDo> getFiltered(){return filtered;}
+    public long getNextId(){return this.nextId;}
 
-    public long getNextId(){
+    public long nextId(){
         long act = nextId;
         nextId ++;
         return act;
@@ -34,7 +37,7 @@ public class TodoList {
     public ToDo addTodo(String title, String important, String dueDate, String category, String description)
         throws  InvalidTodoTitleException, InvalidTodoDueDateException {
 
-        long id = getNextId();
+        long id = nextId();
         String pTitle = processTitle(title);
         boolean pImportant = processImportant(important);
         LocalDate pDueDate = processDueDate(dueDate);
@@ -45,7 +48,7 @@ public class TodoList {
         return todo;
     }
 
-    public ToDo editTodo(long todoID, String title, String done, String important, String dueDate, String category, String description)
+    public ToDo editTodo(String todoID, String title, String done, String important, String dueDate, String category, String description)
         throws NoSuchTodoIDException, InvalidTodoTitleException, InvalidTodoDueDateException{
 
         ToDo todo = getTodo(todoID);
@@ -66,18 +69,29 @@ public class TodoList {
         return todo;
     }
 
-    public void deleteTodo(long todoID) throws NoSuchTodoIDException{
+    public void deleteTodo(String todoID) throws NoSuchTodoIDException{
         todos.remove(getTodo(todoID));
         Account.saveXml();
     }
 
-    public ToDo getTodo(long todoID) throws NoSuchTodoIDException {
-        for (ToDo todo : todos) {
-            if (todo.getId() == todoID){
-                return todo;
+    public ToDo getTodo(String todoID) throws NoSuchTodoIDException {
+        try{
+            long id = Integer.parseUnsignedInt(todoID);
+            for (ToDo todo : todos) {
+                if (todo.getId() == id){
+                    return todo;
+                }
             }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         throw new NoSuchTodoIDException();
+    }
+
+    public void toggleDone(String todoID) throws NoSuchTodoIDException{
+        ToDo todo = getTodo(todoID);
+        todo.setDone(!todo.getDone());
+        Account.saveXml();
     }
 
     public void sortTodos() {
