@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles19.css">
+    <link rel="stylesheet" href="css/styles20.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -63,16 +63,20 @@
                             class="fas fa-chevron-down"></i></button>
                     <form action="todoList" method="post">
                         <ul>
+                            <li>
+                                <button name="button" value="displayAll">reset filter</button>
+                            </li>
                             <c:forEach items="${user.todoList.todos}" var="todo">
                                 <li>
-                                    <button name="button" value="${todo.title}">${todo.title}</button>
+                                    <button name="button" value="${todo.category}">${todo.category}</button>
                                 </li>
                             </c:forEach>
                         </ul>
                     </form>
                 </div>
 
-                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
+<%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
+                <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
             </div>
 
 

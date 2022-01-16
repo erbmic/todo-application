@@ -2,7 +2,7 @@
 :root {
     --lightGrey: #f0f0f0;
     --grey: #777777;
-    -darkGrey: #777777;
+    --darkGrey: #555555;
     --warnRed: #8b251c;
     --tableRed: rgba(160, 40, 20, 0.2);
     --mainBorderradius: 6px;
@@ -35,7 +35,7 @@ body {
 
 /* ----------- nav ----------- */
 nav {
-    background-color: var(--grey);
+    background-color: var(--darkGrey);
     grid-area: nav;
     display: flex;
     align-items: center;
@@ -162,12 +162,14 @@ button:hover {
     font-weight: bold;
     height: 30px;
     width: 70px;
-    border: solid white 2px;
+    border: solid var(--lightGrey) 2px;
+    color: var(--lightGrey);
 }
 
 
 .navBox #logoutButton {
     background-color: inherit;
+    color: var(--lightGrey);
     text-align: right;
     border-radius: 0;
     padding: 0;
@@ -347,8 +349,8 @@ button:hover {
 }
 
 
-/* ----- editmenu buttons ----- */
-.editMenu button, .editMenu .button {
+/* ----- button small ----- */
+.editMenu button, .editMenu .button, .todoMenu .button {
     color: white;
     background-color: black;
     width: 40px;
@@ -549,7 +551,7 @@ tr.red {
 
 .editTodoForm #editDescription {
     height: 200px;
-    line-height: normal;
+
 }
 
 .editTodoForm label {

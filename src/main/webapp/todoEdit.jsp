@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles19.css">
+    <link rel="stylesheet" href="css/styles20.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,20 @@
 <div class="container">
 
     <!-- MENU NAV -->
-    <nav></nav>
+    <nav>
+        <div class="navBox">
+            <div class="navBarLogo">
+                <form id="navBarLogo" action="todoList" method="post">
+                    <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
+                </form>
+            </div>
+            <div class="navBarMenuForm">
+                <form id="navLogoutMenuForm" action="todoList" method="post">
+                    <button id="logoutButton" name="button" value="logout">Sign out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <!-- END MENU NAV -->
 
     <!-- HEADBOX -->
@@ -64,7 +77,7 @@
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="${todo.important}"/><label for="editImportant">Important</label>
+                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
@@ -82,7 +95,7 @@
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                            value="todo.dueDate"
+                                                                            value="${todo.dueDate}"
                                                                             min=<fmt:formatDate pattern="yyyy-MM-dd"
                                                                                                 value="<%=new java.util.Date()%>"/>>
                         </div>
