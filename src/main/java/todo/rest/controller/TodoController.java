@@ -25,9 +25,10 @@ public class TodoController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String keyword = request.getParameter("keyword");
         User user = (User)request.getAttribute("user");
+        List<ToDo> toDos = user.getTodoList().getTodos();
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(JSON_MEDIA_TYPE);
-        objectMapper.writeValue(response.getWriter(), user);
+        objectMapper.writeValue(response.getWriter(), toDos);
     }
 
     @Override
