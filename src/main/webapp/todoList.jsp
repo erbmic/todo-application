@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles19.css">
+    <link rel="stylesheet" href="css/styles20.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -54,44 +54,31 @@
 
 
             <div class="todoMenu">
+
+                <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
+
+
                 <div class="catDropdown">
                     <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                             class="fas fa-chevron-down"></i></button>
                     <form action="todoList" method="post">
                         <ul>
+                            <li>
+                                <button name="button" value="displayAll">reset filter</button>
+                            </li>
                             <c:forEach items="${user.todoList.todos}" var="todo">
                                 <li>
-                                    <button name="button" value="${todo.title}">${todo.title}</button>
+                                    <button name="button" value="${todo.category}">${todo.category}</button>
                                 </li>
                             </c:forEach>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="home">Home</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="important">Important</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="learning">Learning</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="people">People</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="school">School</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="shopping">Shopping</button>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <button name="button" value="work">Work</button>--%>
-                            <%--                            </li>--%>
                         </ul>
                     </form>
                 </div>
 
-
-                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>
+<%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
+                <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
             </div>
+
 
             <form action="todoList" method="post">
                 <div class="todolist">
@@ -125,24 +112,26 @@
                                     </label>
                                 </td>
 
-
-                                    <%--                                <td class="center" id="td-check"><input class="checkbox" type="checkbox" name="checkbox" value="${todo.done}"--%>
-                                    <%--                                                                        <c:if test="${todo.done}">checked</c:if>/></td>--%>
                                 <td id="td-title">${todo.title}</td>
 
                                 <td class="center" id="td-category">
                                     <c:choose>
-
-                                        <c:when test="${todo.title == 'house'}">
+                                        <c:when test="${todo.category == 'Home'}">
                                             <i class="fas fa-home"></i>
                                         </c:when>
-
-                                        <c:when test="${todo.title == 'work'}">
+                                        <c:when test="${todo.category == 'People'}">
+                                            <i class="fas fa-users"></i>
+                                        </c:when>
+                                        <c:when test="${todo.category == 'School'}">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </c:when>
+                                        <c:when test="${todo.category == 'Shopping'}">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </c:when>
+                                        <c:when test="${todo.category == 'work'}">
                                             <i class="fas fa-briefcase"></i>
                                         </c:when>
-
                                         <c:otherwise>
-
                                         </c:otherwise>
                                     </c:choose>
                                 </td>
@@ -162,10 +151,6 @@
                                             class="fas fa-ellipsis-h"></i></button>
                                         <%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                 </td>
-
-                                    <%--                                <td class="center" id="td-edit"><a href="todoEdit.jsp">--%>
-                                    <%--                                    <i class="fas fa-ellipsis-h"></i></a>--%>
-                                    <%--                                </td>--%>
                             </tr>
                         </c:forEach>
                         </tbody>

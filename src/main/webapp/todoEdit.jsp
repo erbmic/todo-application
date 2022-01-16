@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles19.css">
+    <link rel="stylesheet" href="css/styles20.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,20 @@
 <div class="container">
 
     <!-- MENU NAV -->
-    <nav></nav>
+    <nav>
+        <div class="navBox">
+            <div class="navBarLogo">
+                <form id="navBarLogo" action="todoList" method="post">
+                    <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
+                </form>
+            </div>
+            <div class="navBarMenuForm">
+                <form id="navLogoutMenuForm" action="todoList" method="post">
+                    <button id="logoutButton" name="button" value="logout">Sign out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <!-- END MENU NAV -->
 
     <!-- HEADBOX -->
@@ -36,6 +49,9 @@
 
     <main>
 
+        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
+
+
         <div class="todolistBox">
 
             <div class="editBox">
@@ -45,11 +61,9 @@
                         <c:if test="${not empty todo.id}">
                         <button id="deleteTodoButton" name="button" value="deleteTodo"><i
                                 class="far fa-trash-alt"></i></c:if>
-                            <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
                         </button>
                         <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="button" value="closeTodo"><i class="fas fa-times"></i></button>
-                        <%--                    </form>--%>
+                        <div class="button"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
                 </div>
 
                 <div class="editTodoForm">
@@ -58,12 +72,12 @@
                             <input name="todoID" value="${todo.id}"/>
                         </label>
                     </div>
-                    <%--                    <form action="todoManager" method="post">--%>
+
                     <div class="oneLine">
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="editImportant"/><label for="editImportant">Important</label>
+                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
@@ -72,18 +86,18 @@
                                    value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label
                                 for="editCompletion">Completion</label></c:if>
                     </div>
-                    <%--value="${user.userName}"--%>
+
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
-                                                                placeholder="title" value="${user.userName}"
+                                                                placeholder="title" value="${todo.title}"
                                                                 maxlength="50">
 
                     <div class="oneLine">
-                        <c:set var="today" value="<%=new java.util.Date()%>"/>
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                            min=<fmt:formatDate
-                                pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
+                                                                            value="${todo.dueDate}"
+                                                                            min=<fmt:formatDate pattern="yyyy-MM-dd"
+                                                                                                value="<%=new java.util.Date()%>"/>>
                         </div>
 
                         <div id="editCategoryDropdown">
@@ -92,23 +106,18 @@
                                                                                             name="category">
                             <option>Category</option>
                             <option <c:if test="${todo.category == 'Home'}">selected</c:if>>Home</option>
-                            <option <c:if test="${todo.category == 'Important'}">selected</c:if>>Important</option>
-                            <option <c:if test="${todo.category == 'Learning'}">selected</c:if>>Learning</option>
                             <option <c:if test="${todo.category == 'People'}">selected</c:if>>People</option>
                             <option <c:if test="${todo.category == 'School'}">selected</c:if>>School</option>
                             <option <c:if test="${todo.category == 'Shopping'}">selected</c:if>>Shopping</option>
                             <option <c:if test="${todo.category == 'Work'}">selected</c:if>>Work</option>
-                            <%--                            <c:forEach items="${user.todoList.todos}" var="categories">--%>
-                            <%--                                <option value="${categories.title}">${categories.title}</option>--%>
-                            <%--                            </c:forEach>--%>
-
                         </select>
                         </div>
                     </div>
 
                     <label for="editDescription">Description</label><input type="text" id="editDescription"
                                                                            name="editDescription"
-                                                                           placeholder="description">
+                                                                           placeholder="description"
+                                                                           value="${todo.description}">
                     </form>
 
                 </div>
