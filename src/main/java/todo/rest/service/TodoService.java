@@ -7,8 +7,9 @@ import java.util.List;
 
 public class TodoService {
 
-    TodoList todoList = new TodoList();
 
+
+    TodoList todoList = new TodoList();
     private final List<ToDo> todos = todoList.getTodos();
 
     public List<ToDo> getTodos() {

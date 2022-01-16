@@ -75,6 +75,7 @@ public class Account {
     // returns user if login succeeds
     // throws Exceptions if user doesn't exist or if wrong password
     public User loginUser(String userName, String password) throws WrongPasswordException, NoSuchUserException {
+        loadXml();
         User user = findByUserName(userName);
         if (user.getPassword().equals(password)) {
             return user;
