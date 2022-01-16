@@ -10,7 +10,6 @@ import todo.model.Account;
 import todo.model.ToDo;
 import todo.model.User;
 import todo.model.todoExceptions.NoSuchTodoIDException;
-import todo.rest.service.TodoService;
 
 import java.io.IOException;
 import java.util.ArrayList;
