@@ -250,25 +250,48 @@ button:hover {
 /*.todoListMenuForm, .editMenuForm {*/
 /*.todoMenu {*/
 .todoMenu, .editMenuForm {
-    position: absolute;
-    left: 50%;
-    width: 100%;
-    margin-left: -50px;
-    /*bottom: 50px;*/
-    top: 90%;
-    background-color: #8b251c;
-
-    display: flex;
-    justify-content: center;
-    /*justify-content: flex-end;*/
-    /*align-items: center;*/
-    gap: 10px;
-
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*padding-top: 20px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*bottom: 40px;*/
+    /*background-color: #8b251c;*/
     /*display: flex;*/
+    /*justify-content: center;*/
+
+    /*left: 50%;*/
+    /*width: 100%;*/
+    /*margin-left: -50px;*/
+    /*!*bottom: 50px;*!*/
+
+
     /*justify-content: flex-end;*/
+    /*align-items: flex-end;*/
     /*gap: 10px;*/
 
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
+
+#addTodoButton, .editMenu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /*padding-top: 20px;*/
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 40px;
+    /*background-color: #8b251c;*/
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
 
 
 .categoryDropdown {
@@ -715,7 +738,6 @@ input[type=checkbox]:checked:after {
     }
 
 
-
     .editTodoForm input, .editTodoForm #editCategoryDropdownSelect {
         height: 60px;
         padding-left: 30px;
@@ -729,6 +751,20 @@ input[type=checkbox]:checked:after {
         gap: 10px;
         width: 100%;
         margin-left: 0;
+    }
+
+
+    #addTodoButton, .editMenu {
+        position: inherit;
+        /*left: inherit;*/
+        /*right: inherit;*/
+        /*padding-top: 20px;*/
+        margin-left: inherit;
+        margin-right: inherit;
+        /*bottom: inherit;*/
+        /*background-color: #8b251c;*/
+        /*display: inherit;*/
+        /*justify-content: inherit;*/
     }
 
 
