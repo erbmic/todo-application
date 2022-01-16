@@ -6,11 +6,11 @@
 # ToDo Webapplication
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+## Inhaltsverzeichnis
 
-* [About the Project](#about-the-project)
+* [Frontend](#frontend)
   * [Built With](#built-with)
-* [Getting Started](#getting-started)
+* [Backend](#backend)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
@@ -19,6 +19,17 @@
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
+
+
+## Frontend
+
+
+
+
+
+
+
+
 
 
 
