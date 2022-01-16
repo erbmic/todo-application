@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class TodoList {
 
+    private CatList catList;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
@@ -20,10 +21,12 @@ public class TodoList {
     private long nextId;
 
     public TodoList() {
+        this.catList = new CatList();
         this.todos = new ArrayList<>();
         this.todosFiltered = new ArrayList<>();
     }
 
+    public CatList getCatList(){return catList;}
     public List<ToDo> getTodos() {
         return todos;
     }
@@ -49,6 +52,7 @@ public class TodoList {
         todos.add(todo);
         sortTodos();
         markOverDue();
+        catList.filterCats(todos);
         Account.saveXml();
         return todo;
     }
@@ -72,6 +76,7 @@ public class TodoList {
 
         sortTodos();
         markOverDue();
+        catList.filterCats(todos);
         Account.saveXml();
         return todo;
     }
@@ -79,6 +84,7 @@ public class TodoList {
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
         todos.remove(getTodo(todoID));
         sortTodos();
+        catList.filterCats(todos);
         Account.saveXml();
     }
 
