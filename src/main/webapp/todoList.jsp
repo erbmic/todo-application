@@ -12,8 +12,11 @@
 <head>
     <meta charset="utf-8">
     <title>ToDo list</title>
-    <link rel="stylesheet" href="css/styles20.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles22.css">
 </head>
 <body>
 
@@ -51,12 +54,8 @@
 
     <main>
         <div class="todolistBox">
-
-
             <div class="todoMenu">
-
                 <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
-
 
                 <div class="catDropdown">
                     <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
@@ -74,11 +73,9 @@
                         </ul>
                     </form>
                 </div>
-
 <%--                <div class="button"><a href="todoEdit.jsp">Add todo</a></div>--%>
                 <div class="button"><a href="todoEdit.jsp"><i class="fas fa-plus"></i></a></div>
             </div>
-
 
             <form action="todoList" method="post">
                 <div class="todolist">
@@ -87,6 +84,7 @@
                         <thead>
                         <tr>
                             <th class="center" id="th-check"></th>
+                            <th id="th-id" class="unvisible"></th>
                             <th id="th-title">Title</th>
                             <th class="center" id="th-category">Category</th>
                             <th class="center" id="th-important">Important</th>
@@ -155,7 +153,6 @@
                         </c:forEach>
                         </tbody>
                     </table>
-
                 </div>
             </form>
 
