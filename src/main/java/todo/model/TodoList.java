@@ -105,15 +105,21 @@ public class TodoList {
         Collections.sort(todosFiltered, new Comparator<ToDo>() {
             @Override
             public int compare(ToDo t1, ToDo t2) {
+                if (t1.getDueDate() == null) return 1;
+                if (t2.getDueDate() == null) return -1;
                 return t1.getDueDate().compareTo(t2.getDueDate());
             }
         });
     }
 
     public void filterTodos(String category) {
-        todosFiltered = todos.stream()
-                            .filter(todo -> todo.getCategory().equals(category))
-                            .collect(Collectors.toList());
+        if (category.equals("displayAll")) {
+            todosFiltered = todos;
+        } else {
+            todosFiltered = todos.stream()
+                    .filter(todo -> todo.getCategory().equals(category))
+                    .collect(Collectors.toList());
+        }
         sortTodos();
     }
 

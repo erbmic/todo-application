@@ -64,7 +64,7 @@
                     <div class="catDropdown">
                         <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                                 class="fas fa-chevron-down"></i></button>
-                        <form id="categoryDropdownOptions" action="todoList" method="post">
+                        <form id="categoryDropdownOptions" action="todoFilter" method="post">
                             <ul>
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>
