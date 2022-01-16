@@ -8,20 +8,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Edit view</title>
-    <link rel="stylesheet" href="css/styles18.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles24.css">
 </head>
 <body>
 
 
 <div class="container">
 
-    <!-- MENU NAV -->
-    <nav></nav>
-    <!-- END MENU NAV -->
+    <!-- NAV -->
+    <nav>
+        <div class="navBox">
+            <div class="navBarLogo">
+                <form id="navBarLogo" action="todoList" method="post">
+                    <div class="button" id="homeButton"><a href="todoList.jsp"><i
+                            class="fas fa-check"></i>&nbsp;isto</a></div>
+                </form>
+            </div>
+            <div class="navBarMenuForm">
+                <form id="navLogoutMenuForm" action="userManager" method="post">
+                    <button id="logoutButton" name="button" value="logout">Sign out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
 
     <!-- HEADBOX -->
     <div class="headbox">
@@ -34,52 +52,62 @@
     </div>
     <!-- END HEADBOX -->
 
+    <!-- MAIN -->
     <main>
+        <div class="errorMsg"><c:if test="${not empty message}"><i
+                class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
+        <!-- TODOLISTBOX -->
         <div class="todolistBox">
-
             <div class="editBox">
 
+                <!-- EDITMENU -->
                 <div class="editMenu">
-                    <form class="editMenuForm" action="todoManager" method="post">
+                    <form class="editMenuForm" action="todoEdit" method="post">
                         <c:if test="${not empty todo.id}">
-                        <button id="deleteTodoButton" name="button" value="delete"><i
+                        <button id="deleteTodoButton" name="button" value="deleteTodo"><i
                                 class="far fa-trash-alt"></i></c:if>
-                            <%--                        <button id="deleteTodoButton" name="button" value="delete"><i class="far fa-trash-alt"></i>--%>
                         </button>
-                        <button id="saveTodoButton" name="todoID" value="save"><i class="far fa-save"></i></button>
-                        <button id="closeButton" name="button" value="close"><i class="fas fa-times"></i></button>
-                        <%--                    </form>--%>
+                        <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
+                        <div class="button" id="closeButton"><a href="todoList.jsp"><i class="fas fa-times"></i></a>
+                        </div>
                 </div>
+                <!-- END EDITMENU -->
 
+                <!-- EDITTODOFORM -->
                 <div class="editTodoForm">
-
-                    <%--                    <form action="todoManager" method="post">--%>
+                    <div class="invisible">
+                        <label>
+                            <input name="todoID" value="${todo.id}"/>
+                        </label>
+                    </div>
 
                     <div class="oneLine">
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="editImportant"/><label for="editImportant">Important</label>
+                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label
+                            for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
                                    id="editCompletion"
                                    name="editCompletion"
-                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label for="editCompletion">Completion</label></c:if>
+                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label
+                                for="editCompletion">Completion</label></c:if>
                     </div>
-                    <%--value="${user.userName}"--%>
+
                     <label for="editTitle">Title*</label><input type="text" id="editTitle" name="title"
-                                                                placeholder="title" value="${user.userName}"
+                                                                placeholder="title" value="${todo.title}"
                                                                 maxlength="50">
 
                     <div class="oneLine">
-                        <c:set var="today" value="<%=new java.util.Date()%>"/>
                         <div id="editDueDate">
                             <label for="editDueDate">Due Date</label><input type="date" id="editDueDateInput"
                                                                             name="dueDate"
-                                                                            min=<fmt:formatDate
-                                pattern="yyyy-MM-dd" value="<%=new java.util.Date()%>"/>>
+                                                                            value="${todo.dueDate}"
+                                                                            min=<fmt:formatDate pattern="yyyy-MM-dd"
+                                                                                                value="<%=new java.util.Date()%>"/>>
                         </div>
 
                         <div id="editCategoryDropdown">
@@ -88,30 +116,28 @@
                                                                                             name="category">
                             <option>Category</option>
                             <option <c:if test="${todo.category == 'Home'}">selected</c:if>>Home</option>
-                            <option <c:if test="${todo.category == 'Important'}">selected</c:if>>Important</option>
-                            <option <c:if test="${todo.category == 'Learning'}">selected</c:if>>Learning</option>
                             <option <c:if test="${todo.category == 'People'}">selected</c:if>>People</option>
                             <option <c:if test="${todo.category == 'School'}">selected</c:if>>School</option>
                             <option <c:if test="${todo.category == 'Shopping'}">selected</c:if>>Shopping</option>
                             <option <c:if test="${todo.category == 'Work'}">selected</c:if>>Work</option>
-                            <%--                            <c:forEach items="${user.todoList.todos}" var="categories">--%>
-                            <%--                                <option value="${categories.title}">${categories.title}</option>--%>
-                            <%--                            </c:forEach>--%>
-
                         </select>
                         </div>
                     </div>
 
                     <label for="editDescription">Description</label><input type="text" id="editDescription"
                                                                            name="editDescription"
-                                                                           placeholder="description">
+                                                                           placeholder="description"
+                                                                           value="${todo.description}">
                     </form>
+                    <!-- END EDITTODOFORM -->
 
                 </div>
             </div>
         </div>
+        <!-- END TODOLISTBOX -->
 
     </main>
+    <!-- END HEADBOX -->
 
     <footer></footer>
 

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import todo.model.Account;
+import todo.model.User;
 import todo.model.userExceptions.InvalidCredentialsException;
 import todo.model.userExceptions.NoSuchUserException;
 import todo.model.userExceptions.UserAlreadyExistsException;
@@ -14,7 +15,7 @@ import todo.model.userExceptions.WrongPasswordException;
 
 import java.io.IOException;
 
-@WebServlet(name = "userManagerServlet", value = "/userManager")
+@WebServlet(name = "UserManagerServlet", value = "/userManager")
 public class UserManagerServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -41,7 +42,7 @@ public class UserManagerServlet extends HttpServlet {
                 } catch (InvalidCredentialsException | UserAlreadyExistsException e) {
                     // stay on register site and inform user
                     try {
-                        request.setAttribute("errorMsg", e.getMessage());
+                        request.setAttribute("message", e.getMessage());
                         request.getRequestDispatcher("register.jsp").forward(request, response);
                     } catch (ServletException ex) {
                         ex.printStackTrace();
@@ -49,21 +50,24 @@ public class UserManagerServlet extends HttpServlet {
                 }
                 break;
             case "login":
-                // if user not logged in call login method
-                if (session.getAttribute("user") == null) {
+                User user = (User)session.getAttribute("user");
+                if (user != null && user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+                    response.sendRedirect("todoList.jsp");
+                } else {
                     try {
                         session.setAttribute("user", account.loginUser(userName, password));
                         response.sendRedirect("todoList.jsp");
                     } catch (NoSuchUserException | WrongPasswordException e) {
-                        // stay on login site and inform user about wrong userName or password
+
                         try {
-                            request.setAttribute("errorMsg", e.getMessage());
+                            request.setAttribute("message", e.getMessage());
                             request.getRequestDispatcher("login.jsp").forward(request, response);
                         } catch (ServletException ex) {
                             ex.printStackTrace();
                         }
                     }
                 }
+
                 break;
             case "logout":
                 if (session != null) {
@@ -75,26 +79,4 @@ public class UserManagerServlet extends HttpServlet {
                 break;
         }
     }
-
-
-        /*if (button.equals("register")) {
-            user = account.registerUser(userName, password);
-            session.setAttribute("user", user);
-            response.sendRedirect("todoList.jsp");
-//            response.sendRedirect("register.jsp");
-        }
-        else if (button.equals("login")) {
-            user = account.loginUser(userName, password);
-
-            if (!(user == null)) {
-                session.setAttribute("user", user);
-                response.sendRedirect("todoList.jsp");
-            } else {
-                response.sendRedirect("login.jsp");
-                destroy();
-                System.out.println("destroyed");
-            }
-        } // else if logout und destroy
-    } */
-
 }
