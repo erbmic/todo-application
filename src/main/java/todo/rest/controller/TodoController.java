@@ -28,15 +28,14 @@ public class TodoController extends HttpServlet {
         String keyword = request.getParameter("keyword");
         User user = (User)request.getAttribute("user");
         List<ToDo> toDos = new ArrayList<>();
-
-        if (keyword == null) {
-            toDos = user.getTodoList().getTodos();
-        } else {
+        if (keyword != null) {
             try {
                 toDos.add(user.getTodoList().getTodo(keyword));
             } catch (NoSuchTodoIDException e) {
                 e.printStackTrace();
             }
+        } else {
+            toDos = user.getTodoList().getTodos();
         }
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(JSON_MEDIA_TYPE);

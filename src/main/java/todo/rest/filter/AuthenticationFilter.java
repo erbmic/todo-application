@@ -15,8 +15,7 @@ import java.util.Base64;
 
 import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
-//@WebFilter("/todo/*")
-@WebFilter("/api/todo/*")
+@WebFilter("/api/*")
 public class AuthenticationFilter extends HttpFilter  {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String AUTHENTICATION_SCHEME = "Basic";
