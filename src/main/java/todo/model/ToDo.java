@@ -1,7 +1,7 @@
 package todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import java.time.LocalDate;
 
 public class ToDo {
@@ -11,6 +11,7 @@ public class ToDo {
     private String title;
     private boolean done;
     private boolean important;
+    @JsonIgnore
     private boolean overDue;
     @JacksonXmlProperty(isAttribute = true)
     private String category;
@@ -59,6 +60,10 @@ public class ToDo {
     public void setImportant(boolean important) {
         this.important = important;
     }
+
+    public boolean getOverDue(){return this.overDue;}
+
+    public void setOverDue(boolean overDue){this.overDue = overDue;}
 
     public String getCategory() {
         return category;

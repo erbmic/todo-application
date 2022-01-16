@@ -67,6 +67,7 @@ public class Account {
         if (userAccounts.add(user)) {
             user.getTodoList().setTodosFiltered(user.getTodoList().getTodos());
             user.getTodoList().sortTodos();
+            user.getTodoList().markOverDue();
             Account.saveXml();
             return user;
         } else {
@@ -81,6 +82,7 @@ public class Account {
         if (user.getPassword().equals(password)) {
             user.getTodoList().setTodosFiltered(user.getTodoList().getTodos());
             user.getTodoList().sortTodos();
+            user.getTodoList().markOverDue();
             return user;
         } else {
             throw new WrongPasswordException();

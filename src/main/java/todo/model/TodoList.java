@@ -6,7 +6,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
-
 import java.util.*;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
@@ -49,6 +48,7 @@ public class TodoList {
         ToDo todo = new ToDo(id, pTitle, pImportant, category, pDueDate, description);
         todos.add(todo);
         sortTodos();
+        markOverDue();
         Account.saveXml();
         return todo;
     }
@@ -71,6 +71,7 @@ public class TodoList {
         todo.setDescription(description);
 
         sortTodos();
+        markOverDue();
         Account.saveXml();
         return todo;
     }
@@ -121,6 +122,19 @@ public class TodoList {
                     .collect(Collectors.toList());
         }
         sortTodos();
+    }
+
+    public void markOverDue() {
+        LocalDate today = LocalDate.now();
+        for (ToDo todo : todos) {
+            if (todo.getDueDate() == null) {
+                todo.setOverDue(false);
+            } else if (todo.getDueDate().compareTo(today) < 0) {
+                todo.setOverDue(true);
+            } else {
+                todo.setOverDue(false);
+            }
+        }
     }
 
     private String processTitle(String title) throws InvalidTodoTitleException{
