@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles23.css">
+    <link rel="stylesheet" href="css/styles24.css">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
         <div class="navBox">
             <div class="navBarLogo">
                 <form id="navBarLogo" action="todoList" method="post">
-                    <div class="button" id="homeButton"><a href="#"><i class="fas fa-check"></i>&nbsp;isto</a></div>
+                    <div class="button" id="homeButton"><a href="todoList.jsp"><i class="fas fa-check"></i>&nbsp;isto</a></div>
                 </form>
             </div>
             <div class="navBarMenuForm">
@@ -53,7 +53,7 @@
 
     <main>
 
-        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
+        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
 
         <div class="todolistBox">
@@ -67,7 +67,7 @@
                                 class="far fa-trash-alt"></i></c:if>
                         </button>
                         <button id="saveTodoButton" name="button" value="saveTodo"><i class="far fa-save"></i></button>
-                        <div class="button"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
+                        <div class="button" id="closeButton"><a href="todoList.jsp"><i class="fas fa-times"></i></a></div>
                 </div>
 
                 <div class="editTodoForm">

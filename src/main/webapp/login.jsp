@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles23.css">
+    <link rel="stylesheet" href="css/styles24.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
             <button name="button" value="login">Login</button>
         </form>
 
-        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-circle"></i></c:if> ${message}</div>
+        <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-exclamation-triangle"></i></c:if> ${message}</div>
 
         <p>Don't have an account?</p>
         <a href="register.jsp">Sign up</a>

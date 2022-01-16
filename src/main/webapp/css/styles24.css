@@ -369,7 +369,7 @@ button:hover {
 }
 
 .editMenu #saveTodoButton, .editMenu #deleteTodoButton {
-    background-color: white;
+    background-color: inherit;
     color: black;
     border: solid 3px black;
     display: flex;
@@ -382,12 +382,8 @@ button:hover {
 }
 
 .editMenu #closeButton {
-    margin-left: 15px;
+    margin-left: 20px;
 }
-
-/*.editMenu a {*/
-/*    text-decoration: none;*/
-/*}*/
 
 
 /* ----- list of todos ----- */
@@ -520,7 +516,7 @@ tr.red {
 
 /* ----------- editTodo box ----------- */
 .editBox {
-    width: 48%;
+    width: 100%;
 }
 
 
