@@ -333,6 +333,10 @@ button:hover {
     padding: 0;
 }
 
+#categoryDropdownOptions:hover{
+    display: block;
+}
+
 #categoryDropdownOptions{
     display: none;
 }
