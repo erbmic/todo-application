@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--<!DOCTYPE html>--%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Edit view</title>
@@ -28,11 +28,11 @@
         <div class="navBox">
             <div class="navBarLogo">
                 <form id="navBarLogo" action="todoList" method="post">
-                    <button id="homeButton" name="button" value="logout"><i class="fas fa-check"></i> isto</button>
+                    <div class="button" id="homeButton"><a href="#"><i class="fas fa-check"></i>&nbsp;isto</a></div>
                 </form>
             </div>
             <div class="navBarMenuForm">
-                <form id="navLogoutMenuForm" action="todoList" method="post">
+                <form id="navLogoutMenuForm" action="userManager" method="post">
                     <button id="logoutButton" name="button" value="logout">Sign out</button>
                 </form>
             </div>
