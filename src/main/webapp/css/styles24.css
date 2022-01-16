@@ -252,18 +252,16 @@ button:hover {
 .todoMenu, .editMenuForm {
     position: absolute;
     left: 50%;
-    width: 100px;
+    width: 100%;
     margin-left: -50px;
     /*bottom: 50px;*/
     top: 90%;
+    background-color: #8b251c;
 
     display: flex;
-<<<<<<<< HEAD:src/main/webapp/css/styles18.css
     justify-content: center;
-========
-    justify-content: flex-end;
-    align-items: center;
->>>>>>>> master:src/main/webapp/css/styles24.css
+    /*justify-content: flex-end;*/
+    /*align-items: center;*/
     gap: 10px;
 
     /*display: flex;*/
@@ -435,11 +433,7 @@ tr.red {
 
 .todolist td {
     /*background: white;*/
-<<<<<<<< HEAD:src/main/webapp/css/styles18.css
-    font-size: 0.8em;
-========
     font-size: 0.9em;
->>>>>>>> master:src/main/webapp/css/styles24.css
     height: 55px;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
@@ -468,13 +462,6 @@ tr.red {
 }
 
 .todolist #th-title, .todolist #td-title {
-<<<<<<<< HEAD:src/main/webapp/css/styles18.css
-    column-width: 400px;
-    /*word-break: break-all;*/
-    word-break: break-word;
-}
-
-========
     width: 50%;
     min-width: 60px;
     word-break: break-word;
@@ -489,7 +476,6 @@ tr.red {
     width: 10%;
 }
 
->>>>>>>> master:src/main/webapp/css/styles24.css
 .todolist #td-delete {
     padding: 0;
     text-align: right;
@@ -717,13 +703,9 @@ input[type=checkbox]:checked:after {
         padding-left: 5px;
     }
 
-<<<<<<<< HEAD:src/main/webapp/css/styles18.css
-========
     .todolist #th-category, .todolist #td-category, .todolist #th-important, .todolist #td-important, .todolist #th-date, .todolist #td-date  {
         padding: 0 10px;
     }
-
->>>>>>>> master:src/main/webapp/css/styles24.css
 
     /* ----------- checkbox in todos ----------- */
     .checkTodoButton {
