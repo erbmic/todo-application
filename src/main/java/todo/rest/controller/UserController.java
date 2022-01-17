@@ -20,7 +20,6 @@ public class UserController extends HttpServlet {
     private static final String JSON_MEDIA_TYPE = "application/json";
     Account account = Account.getAccountInstance();
 
-
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = objectMapper.readValue(request.getReader(), User.class);
