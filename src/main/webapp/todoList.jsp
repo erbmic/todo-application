@@ -70,9 +70,21 @@
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>
                                 </li>
-                                <c:forEach items="${user.todoList.catList.catsFiltered}" var="cat">
+                                <c:forEach items="${user.todoList.catList.catsFiltered}" var="category">
                                     <li>
-                                        <button name="button" value="${cat}">${cat}</button>
+                                        <button name="button" value="${category}">
+                                            <c:choose>
+                                                <c:when test="empty ${category}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:when test="${category == '-'}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${category}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </button>
                                     </li>
                                 </c:forEach>
                             </ul>
