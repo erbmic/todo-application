@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import todo.model.ToDo;
 import todo.model.User;
+import todo.model.todoExceptions.AddTodoException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
@@ -55,10 +56,10 @@ public class TodoController extends HttpServlet {
 
 
         try {
-            user.getTodoList().addTodo(toDo.getTitle(), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
+            user.getTodoList().addTodo(toDo);
             response.setStatus(HttpServletResponse.SC_CREATED);
 
-        } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
+        } catch (AddTodoException e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
