@@ -34,7 +34,7 @@ public class AuthenticationFilter extends HttpFilter  {
                 User user = account.loginUser(credentials[0], credentials[1]);
                 request.setAttribute("user", user);
             } catch (Exception ex) {
-                response.setStatus(SC_UNAUTHORIZED);
+                response.setStatus(SC_UNAUTHORIZED); // 401 user not authorized
                 return;
             }
         }
