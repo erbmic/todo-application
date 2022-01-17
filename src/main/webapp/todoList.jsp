@@ -70,9 +70,9 @@
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>
                                 </li>
-                                <c:forEach items="${user.todoList.catList.catsFiltered}" var="category">
+                                <c:forEach items="${user.todoList.catList.catsFiltered}" var="cat">
                                     <li>
-                                        <button name="button" value="${category}">${category}</button>
+                                        <button name="button" value="${cat}">${cat}</button>
                                     </li>
                                 </c:forEach>
                             </ul>

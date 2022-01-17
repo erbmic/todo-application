@@ -26,13 +26,13 @@ public class AuthenticationFilter extends HttpFilter  {
 
         Account account = Account.getAccountInstance();
 
-        if (request.getMethod().equals("GET") || request.getMethod().equals("POST")) {
+        String url = request.getRequestURI();
+
+        if (!request.getRequestURI().equals("/api/users")) {
             try {
                 String[] credentials = getCredentials(request);
                 User user = account.loginUser(credentials[0], credentials[1]);
                 request.setAttribute("user", user);
-
-//                validate(credentials);
             } catch (Exception ex) {
                 response.setStatus(SC_UNAUTHORIZED);
                 return;
@@ -49,10 +49,4 @@ public class AuthenticationFilter extends HttpFilter  {
         return new String(decoded).split(":");
     }
 
-    private void validate(String[] credentials) throws Exception {
-//        if (!credentials[0].equals(ADMIN_USERNAME) || !credentials[1].equals(ADMIN_PASSWORD))
-//            throw new Exception();
-
-
-    }
 }
