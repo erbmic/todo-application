@@ -6,13 +6,13 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
-
 import java.util.*;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 public class TodoList {
 
+    private CatList catList;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
@@ -21,10 +21,12 @@ public class TodoList {
     private long nextId;
 
     public TodoList() {
+        this.catList = new CatList();
         this.todos = new ArrayList<>();
         this.todosFiltered = new ArrayList<>();
     }
 
+    public CatList getCatList(){return catList;}
     public List<ToDo> getTodos() {
         return todos;
     }
@@ -49,6 +51,8 @@ public class TodoList {
         ToDo todo = new ToDo(id, pTitle, pImportant, category, pDueDate, description);
         todos.add(todo);
         sortTodos();
+        markOverDue();
+        catList.filterCats(todos);
         Account.saveXml();
         return todo;
     }
@@ -71,6 +75,8 @@ public class TodoList {
         todo.setDescription(description);
 
         sortTodos();
+        markOverDue();
+        catList.filterCats(todos);
         Account.saveXml();
         return todo;
     }
@@ -78,6 +84,7 @@ public class TodoList {
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
         todos.remove(getTodo(todoID));
         sortTodos();
+        catList.filterCats(todos);
         Account.saveXml();
     }
 
@@ -121,6 +128,19 @@ public class TodoList {
                     .collect(Collectors.toList());
         }
         sortTodos();
+    }
+
+    public void markOverDue() {
+        LocalDate today = LocalDate.now();
+        for (ToDo todo : todos) {
+            if (todo.getDueDate() == null) {
+                todo.setOverDue(false);
+            } else if (todo.getDueDate().compareTo(today) < 0) {
+                todo.setOverDue(true);
+            } else {
+                todo.setOverDue(false);
+            }
+        }
     }
 
     private String processTitle(String title) throws InvalidTodoTitleException{

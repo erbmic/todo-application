@@ -114,7 +114,7 @@
                                                                                             id="editCategoryDropdownSelect"
                                                                                             name="category">
                             <option>Category</option>
-                            <c:forEach items="${user.catList.cats}" var="category">
+                            <c:forEach items="${user.todoList.catList.cats}" var="category">
                                 <option <c:if test="${todo.category == category}">selected</c:if>>${category}</option>
                             </c:forEach>
                         </select>

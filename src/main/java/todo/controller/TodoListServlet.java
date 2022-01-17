@@ -6,14 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import todo.model.Account;
-import todo.model.Category;
 import todo.model.ToDo;
 import todo.model.User;
-import todo.model.todoExceptions.InvalidTodoDueDateException;
-import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
-
 import java.io.IOException;
 
 @WebServlet(name = "TodoListServlet", value = "/todoList")
