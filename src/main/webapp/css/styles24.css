@@ -289,10 +289,7 @@ button:hover {
     justify-content: center;
 }
 
-
-
-
-
+/* ----------- filter category dropdown ----------- */
 
 .categoryDropdown {
     background-color: white;
@@ -313,7 +310,6 @@ button:hover {
     cursor: pointer;
 }
 
-/* ----------- filter category dropdown ----------- */
 
 
 .catDropdown {
@@ -391,6 +387,10 @@ button:hover {
 
 .catDropdown form {
     display: inline;
+}
+
+.smallText {
+    font-size: 0.9em;
 }
 
 

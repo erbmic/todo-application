@@ -113,7 +113,7 @@
                             <label for="editCategoryDropdownSelect">Category</label><select class="categoryDropdown"
                                                                                             id="editCategoryDropdownSelect"
                                                                                             name="category">
-                            <option>Category</option>
+                            <option>-</option>
                             <c:forEach items="${user.todoList.catList.cats}" var="category">
                                 <option <c:if test="${todo.category == category}">selected</c:if>>${category}</option>
                             </c:forEach>

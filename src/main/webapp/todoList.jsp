@@ -72,7 +72,19 @@
                                 </li>
                                 <c:forEach items="${user.todoList.catList.catsFiltered}" var="category">
                                     <li>
-                                        <button name="button" value="${category}">${category}</button>
+                                        <button name="button" value="${category}">
+                                            <c:choose>
+                                                <c:when test="empty ${category}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:when test="${category == '-'}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${category}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </button>
                                     </li>
                                 </c:forEach>
                             </ul>
