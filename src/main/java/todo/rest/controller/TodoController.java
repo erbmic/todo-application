@@ -51,9 +51,7 @@ public class TodoController extends HttpServlet {
 //            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
 //        }
 
-        if (!acceptedType.equals(JSON_MEDIA_TYPE)) {
-            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
-        } else if (path == null || path.equals("/")) {
+        if (path == null || path.equals("/")) {
             toDos = user.getTodoList().getTodos();
         } else if (category != null) {
             try {
@@ -61,13 +59,14 @@ public class TodoController extends HttpServlet {
             } catch (NoSuchTodoIDException e) {
                 response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE); // ------------------ todo
             }
-        } else {
+        } else if (path.substring(1).matches("\\d+")) {
             try {
-                String id = path.substring(1);
-                toDos.add(user.getTodoList().getTodo(id));
+                toDos.add(user.getTodoList().getTodo(path.substring(1)));
             } catch (NoSuchTodoIDException e) {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
             }
+        } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
         response.setStatus(HttpServletResponse.SC_OK); // 200
         response.setContentType(JSON_MEDIA_TYPE);
@@ -77,42 +76,52 @@ public class TodoController extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getAttribute("user");
-        ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
         String contentType = request.getContentType();
 
-        if (!contentType.equals(JSON_MEDIA_TYPE)) {
-            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
+        try {
+            ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+
+            if (!contentType.equals(JSON_MEDIA_TYPE)) {
+                response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
 //        } else if (!acceptedType.equals(JSON_MEDIA_TYPE)) {
 //            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
-        } else {
-            try {
-                user.getTodoList().addTodo(toDo.getTitle(), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
-                response.setStatus(HttpServletResponse.SC_CREATED); // 201 created
-            } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
+            } else {
+                try {
+                    user.getTodoList().addTodo(toDo.getTitle(), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
+                    response.setStatus(HttpServletResponse.SC_CREATED); // 201 created
+                } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
+                }
             }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
         }
     }
 
     @Override
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getAttribute("user");
-        ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
         String path = request.getPathInfo();
         String contentType = request.getContentType();
 
-        if (!contentType.equals(JSON_MEDIA_TYPE)) {
-            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
-        } else {
-            try {
-                String id = path.substring(1);
-                user.getTodoList().editTodo(id, toDo.getTitle(), String.valueOf(toDo.getDone()), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
-                response.setStatus(HttpServletResponse.SC_OK); // 200
-            } catch (NoSuchTodoIDException e) {
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
-            } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
+        try {
+            ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+
+            if (!contentType.equals(JSON_MEDIA_TYPE)) {
+                response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
+            } else {
+                try {
+                    String id = path.substring(1);
+                    user.getTodoList().editTodo(id, toDo.getTitle(), String.valueOf(toDo.getDone()), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
+                    response.setStatus(HttpServletResponse.SC_OK); // 200
+                } catch (NoSuchTodoIDException e) {
+                    response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
+                } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
+                }
             }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
         }
     }
 
