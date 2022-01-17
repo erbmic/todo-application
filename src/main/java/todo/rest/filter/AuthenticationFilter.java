@@ -30,7 +30,6 @@ public class AuthenticationFilter extends HttpFilter  {
             try {
                 String[] credentials = getCredentials(request);
                 User user = account.loginUser(credentials[0], credentials[1]);
-
                 request.setAttribute("user", user);
 
 //                validate(credentials);
