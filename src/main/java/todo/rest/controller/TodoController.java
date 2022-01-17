@@ -1,23 +1,17 @@
 package todo.rest.controller;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import todo.model.Account;
 import todo.model.ToDo;
-import todo.model.TodoList;
 import todo.model.User;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,17 +26,24 @@ public class TodoController extends HttpServlet {
         String keyword = request.getParameter("keyword");
         User user = (User)request.getAttribute("user");
 
+        String contentType = request.getContentType();
+
+        if (!contentType.equals(JSON_MEDIA_TYPE)) {
+            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported content type
+        }
+
         List<ToDo> toDos = new ArrayList<>();
         if (keyword != null) {
             try {
                 toDos.add(user.getTodoList().getTodo(keyword));
+                response.setStatus(HttpServletResponse.SC_CREATED); // 201 the added todo
             } catch (NoSuchTodoIDException e) {
-                e.printStackTrace();
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid todo data
             }
         } else {
             toDos = user.getTodoList().getTodos();
         }
-        response.setStatus(HttpServletResponse.SC_OK);
+        response.setStatus(HttpServletResponse.SC_OK); // 200
         response.setContentType(JSON_MEDIA_TYPE);
         objectMapper.writeValue(response.getWriter(), toDos);
     }
@@ -51,6 +52,7 @@ public class TodoController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User)request.getAttribute("user");
         ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+
 
         try {
             user.getTodoList().addTodo(toDo.getTitle(), String.valueOf(toDo.getImportant()), String.valueOf(toDo.getDueDate()), toDo.getCategory(), toDo.getDescription());
