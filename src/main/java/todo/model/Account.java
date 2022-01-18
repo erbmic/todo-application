@@ -15,6 +15,7 @@ import todo.model.userExceptions.WrongPasswordException;
 
 import java.io.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @JacksonXmlRootElement(localName = "account")
@@ -65,6 +66,11 @@ public class Account {
         loadXml();
         User user = new User(firstName, lastName, userName, password);
         if (userAccounts.add(user)) {
+            TodoList todos = user.getTodoList();
+            todos.setTodosFiltered(user.getTodoList().getTodos());
+            todos.sortTodos();
+            todos.markOverDue();
+            todos.getCatList().filterCats(todos.getTodos());
             Account.saveXml();
             return user;
         } else {
@@ -77,6 +83,11 @@ public class Account {
     public User loginUser(String userName, String password) throws WrongPasswordException, NoSuchUserException {
         User user = findByUserName(userName);
         if (user.getPassword().equals(password)) {
+            TodoList todos = user.getTodoList();
+            todos.setTodosFiltered(user.getTodoList().getTodos());
+            todos.sortTodos();
+            todos.markOverDue();
+            todos.getCatList().filterCats(todos.getTodos());
             return user;
         } else {
             throw new WrongPasswordException();

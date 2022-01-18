@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "2b77e471-29e9-4397-b421-3c6e5dfb946a",
+		"name": "News Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get todos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search todos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/todo?keyword=33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todo"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "33"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post todos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"date\": \"2022-12-04\",\r\n\t\"text\": \"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/todo?title=\"title\"&category=\"Home\"&dueDate=2021-10-01&important=false&completed=false&id=7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todo"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "\"title\""
+						},
+						{
+							"key": "category",
+							"value": "\"Home\""
+						},
+						{
+							"key": "dueDate",
+							"value": "2021-10-01"
+						},
+						{
+							"key": "important",
+							"value": "false"
+						},
+						{
+							"key": "completed",
+							"value": "false"
+						},
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete todos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/todo/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todo",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

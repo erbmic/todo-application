@@ -59,19 +59,32 @@
 
                 <!-- TODOMENU -->
                 <div class="todoMenu">
-                    <div class="errorMsg"><c:if test="${not empty message}"><i class="fas fa-info-circle"></i></c:if> ${message}</div>
+                    <div class="errorMsg"><c:if test="${not empty message}"><i
+                            class="fas fa-info-circle"></i></c:if> ${message}</div>
 
                     <div class="catDropdown">
                         <button id="categoryDropdownButton" class="categoryDropdown"><i class="fas fa-filter"></i>Category<i
                                 class="fas fa-chevron-down"></i></button>
-                        <form id="categoryDropdownOptions" action="todoList" method="post">
+                        <form id="categoryDropdownOptions" action="todoFilter" method="post">
                             <ul>
                                 <li>
                                     <button name="button" value="displayAll">reset filter</button>
                                 </li>
-                                <c:forEach items="${user.todoList.todos}" var="todo">
+                                <c:forEach items="${user.todoList.catList.catsFiltered}" var="category">
                                     <li>
-                                        <button name="button" value="${todo.category}">${todo.category}</button>
+                                        <button name="button" value="${category}">
+                                            <c:choose>
+                                                <c:when test="empty ${category}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:when test="${category == '-'}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${category}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </button>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -98,11 +111,11 @@
                         </thead>
 
                         <tbody>
-                        <c:forEach items="${user.todoList.todos}" var="todo">
+                        <c:forEach items="${user.todoList.todosFiltered}" var="todo">
                             <form action="todoList" method="post">
 
 
-                                <tr class=<c:if test="${todo.done}">red</c:if>>
+                                <tr class=<c:if test="${todo.overDue}">red</c:if>>
                                     <td class="center" id="td-check">
                                         <button class="checkTodoButton" name="button"
                                                 value="checkTodo"><c:if test="${todo.done}"><i
@@ -131,7 +144,7 @@
                                             <c:when test="${todo.category == 'Shopping'}">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </c:when>
-                                            <c:when test="${todo.category == 'work'}">
+                                            <c:when test="${todo.category == 'Work'}">
                                                 <i class="fas fa-briefcase"></i>
                                             </c:when>
                                             <c:otherwise>

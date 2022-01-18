@@ -19,7 +19,6 @@ public class User {
     public User() {
     }
 
-    //call method readToDos() directly to initially read the xml file
     public User(String firstName, String lastName, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

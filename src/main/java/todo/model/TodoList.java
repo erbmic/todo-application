@@ -1,76 +1,84 @@
 package todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import todo.model.todoExceptions.AddTodoException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
-
 import java.util.*;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class TodoList {
 
+    private long nextId;
+    private CatList catList;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
     private List<ToDo> todos;
-    private List<ToDo> filtered;
-    private long nextId;
+    @JsonIgnore
+    private List<ToDo> todosFiltered;
 
     public TodoList() {
+        this.catList = new CatList();
         this.todos = new ArrayList<>();
-        this.todos = new ArrayList<>();
+        this.todosFiltered = new ArrayList<>();
     }
 
+    public CatList getCatList(){return catList;}
     public List<ToDo> getTodos() {
         return todos;
     }
-    public List<ToDo> getFiltered(){return filtered;}
-    public long getNextId(){return this.nextId;}
 
-    public long nextId(){
+    public long getNextId(){return this.nextId;}
+    public List<ToDo> getTodosFiltered(){return this.todosFiltered;}
+    public void setTodosFiltered(List<ToDo> todos){this.todosFiltered = todos;}
+
+    private long generateNextId(){
         long act = nextId;
         nextId ++;
         return act;
     }
 
-    public ToDo addTodo(String title, String important, String dueDate, String category, String description)
-        throws  InvalidTodoTitleException, InvalidTodoDueDateException {
-
-        long id = nextId();
-        String pTitle = processTitle(title);
-        boolean pImportant = processImportant(important);
-        LocalDate pDueDate = processDueDate(dueDate);
-
-        ToDo todo = new ToDo(id, pTitle, pImportant, category, pDueDate, description);
-        todos.add(todo);
-        Account.saveXml();
-        return todo;
+    public void addTodo(ToDo todo) throws AddTodoException{
+        todo.setId(generateNextId());
+        if (todos.add(todo)){
+            sortTodos();
+            markOverDue();
+            catList.filterCats(todos);
+            Account.saveXml();
+        } else {
+            throw new AddTodoException();
+        }
     }
 
-    public ToDo editTodo(String todoID, String title, String done, String important, String dueDate, String category, String description)
-        throws NoSuchTodoIDException, InvalidTodoTitleException, InvalidTodoDueDateException{
-
-        ToDo todo = getTodo(todoID);
-
-        String pTitle = processTitle(title);
-        boolean pDone = processDone(done);
-        boolean pImportant = processImportant(important);
-        LocalDate pDueDate = processDueDate(dueDate);
-
-        todo.setTitle(pTitle);
-        todo.setDone(pDone);
-        todo.setImportant(pImportant);
-        todo.setDueDate(pDueDate);
-        todo.setCategory(category);
-        todo.setDescription(description);
-
-        Account.saveXml();
-        return todo;
+    public void editTodo(ToDo todo) throws NoSuchTodoIDException {
+        int index = todos.indexOf(todo);
+        if (index >= 0) {
+            todos.set(index, todo);
+            sortTodos();
+            markOverDue();
+            catList.filterCats(todos);
+            Account.saveXml();
+        } else {
+            throw new NoSuchTodoIDException();
+        }
+        /*
+        eTodo.setTitle(pTitle);
+        eTodo.setDone(pDone);
+        eTodo.setImportant(pImportant);
+        eTodo.setDueDate(pDueDate);
+        eTodo.setCategory(category);
+        eTodo.setDescription(description);
+         */
     }
 
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
         todos.remove(getTodo(todoID));
+        sortTodos();
+        catList.filterCats(todos);
         Account.saveXml();
     }
 
@@ -83,8 +91,17 @@ public class TodoList {
                 }
             }
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            throw new NoSuchTodoIDException();
         }
+        throw new NoSuchTodoIDException();
+    }
+
+    public ToDo getTodo(long todoID) throws NoSuchTodoIDException{
+            for (ToDo todo : todos) {
+                if (todo.getId() == todoID){
+                    return todo;
+                }
+            }
         throw new NoSuchTodoIDException();
     }
 
@@ -95,50 +112,37 @@ public class TodoList {
     }
 
     public void sortTodos() {
-
-    }
-
-    public void filterTodos() {
-
-    }
-
-    private String processTitle(String title) throws InvalidTodoTitleException{
-        if (!title.isEmpty()) {
-            return title;
-        }
-        throw new InvalidTodoTitleException();
-    }
-
-    private boolean processDone(String done){
-        if (done == null){
-            return false;
-        }
-        return true;
-    }
-
-    private boolean processImportant(String important){
-        if (important == null){
-            return false;
-        }
-        return true;
-    }
-
-    private LocalDate processDueDate(String dueDate) throws InvalidTodoDueDateException {
-        if (dueDate == null) return null;
-        if (dueDate.equals("")) return null;
-        int year = 0;
-        int month = 0;
-        int day = 0;
-        try(Scanner scan = new Scanner(dueDate)){
-            while(scan.hasNext()){
-                scan.useDelimiter("-");
-                year = scan.nextInt();
-                month = scan.nextInt();
-                day = scan.nextInt();
+        Collections.sort(todosFiltered, new Comparator<ToDo>() {
+            @Override
+            public int compare(ToDo t1, ToDo t2) {
+                if (t1.getDueDate() == null) return 1;
+                if (t2.getDueDate() == null) return -1;
+                return t1.getDueDate().compareTo(t2.getDueDate());
             }
-            return LocalDate.of(year, month, day);
-        } catch (Exception e) {
-            throw new InvalidTodoDueDateException();
+        });
+    }
+
+    public void filterTodos(String category) {
+        if (category.equals("displayAll")) {
+            todosFiltered = todos;
+        } else {
+            todosFiltered = todos.stream()
+                    .filter(todo -> todo.getCategory().equals(category))
+                    .collect(Collectors.toList());
+        }
+        sortTodos();
+    }
+
+    public void markOverDue() {
+        LocalDate today = LocalDate.now();
+        for (ToDo todo : todos) {
+            if (todo.getDueDate() == null) {
+                todo.setOverDue(false);
+            } else if (todo.getDueDate().compareTo(today) < 0) {
+                todo.setOverDue(true);
+            } else {
+                todo.setOverDue(false);
+            }
         }
     }
 

@@ -3,7 +3,9 @@ package todo.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import todo.model.ToDo;
 import todo.model.User;
+import todo.model.todoExceptions.AddTodoException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
@@ -38,17 +40,19 @@ public class TodoEditServlet extends HttpServlet {
             case "saveTodo":
                 if (todoID == null || todoID.equals("")){
                     try {
-                        user.getTodoList().addTodo(todoTitle, todoImportant, todoDueDate, todoCategory, todoDescription);
+                        ToDo todo = new ToDo(todoTitle, todoDone, todoImportant, todoCategory, todoDueDate, todoDescription);
+                        user.getTodoList().addTodo(todo);
                         msg = "New Todo added.";
-                    } catch (InvalidTodoTitleException | InvalidTodoDueDateException e) {
+                    } catch (InvalidTodoTitleException | InvalidTodoDueDateException | AddTodoException e) {
                         msg = e.getMessage();
                         request.setAttribute("message", msg);
                         request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
                     }
                 } else {
                     try{
-                        user.getTodoList().editTodo(todoID,todoTitle, todoDone, todoImportant, todoDueDate, todoCategory, todoDescription);
-                    } catch (NoSuchTodoIDException | InvalidTodoTitleException | InvalidTodoDueDateException e) {
+                        ToDo todo = new ToDo(todoID, todoTitle, todoDone, todoImportant, todoCategory, todoDueDate, todoDescription);
+                        user.getTodoList().editTodo(todo);
+                    } catch (NoSuchTodoIDException | InvalidTodoTitleException | InvalidTodoDueDateException | NumberFormatException e) {
                         msg = e.getMessage();
                         request.setAttribute("message", msg);
                         request.getRequestDispatcher("todoEdit.jsp").forward(request, response);
