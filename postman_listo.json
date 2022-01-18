@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "2b77e471-29e9-4397-b421-3c6e5dfb946a",
-		"name": "News Service",
+		"name": "Listo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -32,7 +32,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/todo",
+					"raw": "http://localhost:8080/api/todos",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -40,14 +40,14 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"todo"
+						"todos"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Search todos",
+			"name": "Get todos via ID",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -73,7 +73,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/todo?keyword=33",
+					"raw": "http://localhost:8080/api/todos/80",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -81,12 +81,54 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"todo"
+						"todos",
+						"80"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get todos via category",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/todos?category=\"test\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos"
 					],
 					"query": [
 						{
-							"key": "keyword",
-							"value": "33"
+							"key": "category",
+							"value": "\"test\""
 						}
 					]
 				}
@@ -95,6 +137,11 @@
 		},
 		{
 			"name": "Post todos",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -117,14 +164,19 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json;",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"date\": \"2022-12-04\",\r\n\t\"text\": \"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\r\n}\r\n"
+					"raw": "{\r\n    \"title\": \"2022-07-06\",\r\n    \"category\": \"Home\"\r\n}\r\n"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/todo?title=\"title\"&category=\"Home\"&dueDate=2021-10-01&important=false&completed=false&id=7",
+					"raw": "http://localhost:8080/api/todos",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -132,32 +184,131 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"todo"
+						"todos"
 					],
 					"query": [
 						{
 							"key": "title",
-							"value": "\"title\""
+							"value": "\"title\"",
+							"disabled": true
 						},
 						{
 							"key": "category",
-							"value": "\"Home\""
+							"value": "\"Home\"",
+							"disabled": true
 						},
 						{
 							"key": "dueDate",
-							"value": "2021-10-01"
+							"value": "\"2021-06-08\"",
+							"disabled": true
 						},
 						{
 							"key": "important",
-							"value": "false"
+							"value": "false",
+							"disabled": true
 						},
 						{
 							"key": "completed",
-							"value": "false"
+							"value": "false",
+							"disabled": true
 						},
 						{
-							"key": "id",
-							"value": "7"
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "\"sakdjfsafd\"",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put todo",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dueDate\": \"2022-06-09\",\r\n    \"title\": \"hallo\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/todos/115",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"115"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "\"title\"",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "\"Home\"",
+							"disabled": true
+						},
+						{
+							"key": "dueDate",
+							"value": "\"2021-06-08\"",
+							"disabled": true
+						},
+						{
+							"key": "important",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "completed",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "\"sakdjfsafd\"",
+							"disabled": true
 						}
 					]
 				}
@@ -183,9 +334,16 @@
 					]
 				},
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8080/api/todo/4",
+					"raw": "http://localhost:8080/api/todos/234",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -193,8 +351,87 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"todo",
-						"4"
+						"todos",
+						"234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"sd\",\r\n  \"password\": \"salkfd\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categories",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "m",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ermi2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
 					]
 				}
 			},

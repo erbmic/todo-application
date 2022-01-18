@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles25.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -45,9 +45,8 @@
     <div class="headbox">
         <h1>Listo of "${user.name}"</h1>
         <div class="headtext">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                rebum.</p>
+            <p>To create or edit a todo fill in the desired input fields. A title is required to save the todo. You can set an optional due date, choose one of five categories or add a description to your todo.</p>
+            <p>Use the save button to save the todo, delete button to delete and the cross to get back to the list.</p>
         </div>
     </div>
     <!-- END HEADBOX -->
