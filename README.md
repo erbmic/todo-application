@@ -35,15 +35,15 @@ Kategorien sind in der Applikation fünf verschiedene vorgegeben.
 Diese werden aus Designgründen in der Applikation unter anderem als Icons dargestellt, weshalb der Entscheid getroffen wurde, diese fix im Backend zu definieren.
 Grundsätzlich ist es dynamisch aufgebaut, damit diese nur an einem Ort erweitert werden können.
 
+Viel Spass mit listo --> a Light and Simple ToDo App (Spanisch für fertig!)
+
 ## Design
 
 ### Domänenmodell
 
 ![Domänenmodell](.images/ApplicationModel_v02.drawio.png)
 
-### Page Flow
 
-### Klassendesign
 
 ## Implementierung
 
@@ -90,6 +90,55 @@ In der Edit-View wird ein Todo erstellt oder bearbeitet. Die View wird dynamisch
 Wenn ein bestehendees Todo bearbeitet wird, werden die Felder mit den Werten aus dem XML ausgefüllt. Zusätzlich wird noch die Checkbox und den `Delete-Todo-Button` eingeblendet. Die Kategorien werden auch hier mit einem Dropdown Menu ausgewählt.
 
 ### Backend
+
+Das Backend kann in die folgenden drei Breiche unterteilt werden.
+
+- Model
+- Web Controller
+- REST Controller
+
+#### Model
+###### Account
+Das Model baut auf dem Singleton `Account` auf. Dieses verwaltet die User und die Persistenz.
+Nebst den notwendigen Methoden für das Anlegen und Anmelden der User, wurde eine Methode für das Löschen der User vorbereitet, 
+so wie Methoden für das Validieren von Credentials bei neuen Anmeldungen erstellt.
+
+Die `Valiedierungs-Methoden` können nach Belieben erweitert werden, um z.B. beim Anlegen eines Passworts gewisse Mindestanforderungen zu prüfen
+(aktuell wird nur auf ein nicht leeren String geprüft).
+
+Bei der `Persistenz` gab es immer wieder einige Schwierigkeiten und Tücken, welche mehr Zeit und Augenmerk verlangten als zu Beginn angenommen wurde.
+- Das Marshalling von Map's
+- Fehlende Getter und/oder Setter
+- Marshalling von static field's
+
+###### User
+Jeder User hat aktuell eine `TodoList`, welche alle seine ToDo's, so wie eine Liste mit den Kategorien beinhaltet.
+Ein User könnte dem entsprechend mehrere, unterschiedliche Listen und pro Liste unterschiedliche Kategorien  verwalten (aktuell nicht implementiert).
+
+###### TodoList
+Die TodoList verwaltet alle ToDo's.
+Hier werden alle CRUD so wie Filter und Sortier Operationen auf die ToDO's gehandelt.
+Zudem wird hier die ID für neu Erstellte ToDo's generiert und verteilt.
+
+Eine Spezialität hier ist die `FilteredList`, welche bei einer Anfrage zum Filtern nach einer bestimmen Kategorie abgefüllt wird.
+
+###### CatList
+Die Klasse CatList wurde vorgesehen für das Anlegen und Verwalten eigener Kategorien.
+Aktuell beinhaltet diese fünf vordefinierte Werte.
+
+###### TodoProcessor
+Der TodoProcessor ist eine `Utility Klasse` zur Prozessierung von Eingehenden Daten vom Web und vom REST in neue ToDo Instanzen.
+Hier wird z.B. ein Datum in String vom in ein LocalDate umgewandelt.
+
+#### Web Controller
+Die eingehenden Request's werden von vier Servlet's gehandelt.
+Die Post's werden jeweils mit Hilfe von einem Switch Case ausgeführt.
+
+Ungültige Request's werden jeweils mit `Exceptions` gehandelt. 
+
+#### REST Controller
+Analog zum Web Controller werden hier drei Servlets zum Handling der Requests verwendet.
+Auch hier werden ungültige Requests durch Exceptions gehandelt.
 
 ### REST-API
 

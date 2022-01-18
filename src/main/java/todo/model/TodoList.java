@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import todo.model.todoExceptions.AddTodoException;
-import todo.model.todoExceptions.InvalidTodoDueDateException;
-import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
 import java.util.*;
 import java.time.LocalDate;
@@ -99,7 +97,7 @@ public class TodoList {
 
     public void toggleDone(String todoID) throws NoSuchTodoIDException{
         ToDo todo = getTodo(todoID);
-        todo.setDone(!todo.getDone());
+        todo.setCompleted(!todo.getCompleted());
         Account.saveXml();
     }
 
