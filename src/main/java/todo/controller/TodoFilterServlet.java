@@ -24,6 +24,5 @@ public class TodoFilterServlet extends HttpServlet {
 
         user.getTodoList().filterTodos(button);
         response.sendRedirect("todoList.jsp");
-
     }
 }

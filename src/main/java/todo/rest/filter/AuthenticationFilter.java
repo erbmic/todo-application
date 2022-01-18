@@ -23,9 +23,7 @@ public class AuthenticationFilter extends HttpFilter  {
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         Account account = Account.getAccountInstance();
-
         String url = request.getRequestURI();
 
         if (!request.getRequestURI().equals("/api/users")) {

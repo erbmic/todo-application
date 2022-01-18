@@ -25,8 +25,7 @@ public class UserController extends HttpServlet {
         User user = objectMapper.readValue(request.getReader(), User.class);
         String contentType = request.getContentType();
 
-
-        if (!contentType.equals(JSON_MEDIA_TYPE)) {
+        if (!(contentType == null) && !contentType.equals(JSON_MEDIA_TYPE)) {
             response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported content type
         } else {
             try {
