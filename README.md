@@ -24,7 +24,7 @@ Mit der ToDo App können ToDos pro User erstellt, editiert und gelöscht werden.
 Ein ToDo kann die folgenden Attribute enthalten:
 - Titel*
 - Kategorie
-- Wichtig (Boolean)
+- Wichtigkeit (Boolean)
 - Fälligkeitsdatum
 - Beschreibung
 
@@ -68,6 +68,8 @@ In der View können die folgenden Funktionalitäten gebraucht werden:
 - Todo editieren
 - Todo filtern
 
+Fehlermeldungen werden jeweils rot eingeblendet.
+
 ##### Todo check/uncheck Button
 
 Die Todo Checkbox wurde mittels eines Buttons umgesetzt, um bei einem Klick eine Aktivität im Backend auszulösen. 
@@ -91,7 +93,9 @@ Wenn ein bestehendees Todo bearbeitet wird, werden die Felder mit den Werten aus
 
 ### REST-API
 
-
+Vor der Rest API ist ein Filter implementiert. Dieser wirft eine Exception, wenn ein unauthorisierter User eine Abfrage macht (ausser bei einem POST eines Users).
+Über die API lassen sich über GET, POST, PUT und DELETE Daten einfügen, ändern oder löschen. 
+Mit If-Else-Statements werden dabei alle möglichen Errors abgefangen.
 
 ### Zusätzliche Features
 

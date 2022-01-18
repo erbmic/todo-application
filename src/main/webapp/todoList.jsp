@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles24.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -43,9 +43,8 @@
     <div class="headbox">
         <h1>Listo of "${user.userName}"</h1>
         <div class="headtext">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                rebum.</p>
+            <p>Welcome to Liso. Use the application to check your daily activities. Use the plus button to add new todos to your list. Use the category filter to filter for a specific cetegory.</p>
+            <p>Todos over the due date are marked in red</p>
         </div>
     </div>
     <!-- END HEADBOX -->
@@ -78,6 +77,9 @@
                                                     <div class="smallText">empty cat.</div>
                                                 </c:when>
                                                 <c:when test="${category == '-'}">
+                                                    <div class="smallText">empty cat.</div>
+                                                </c:when>
+                                                <c:when test="${category == ''}">
                                                     <div class="smallText">empty cat.</div>
                                                 </c:when>
                                                 <c:otherwise>
@@ -165,7 +167,6 @@
                                     <td class="center" id="td-edit">
                                         <button id="editTodoButton" name="button" value="editTodo"><i
                                                 class="fas fa-ellipsis-h"></i></button>
-                                            <%--                                    <button id="editTodoButton" name="todoID" value="${todo.id}"><i class="fas fa-pen"></i></button>--%>
                                     </td>
                                 </tr>
                             </form>
