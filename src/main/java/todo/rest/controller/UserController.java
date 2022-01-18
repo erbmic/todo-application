@@ -10,6 +10,7 @@ import todo.model.User;
 import todo.model.userExceptions.InvalidCredentialsException;
 import todo.model.userExceptions.UserAlreadyExistsException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 
@@ -22,14 +23,15 @@ public class UserController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = objectMapper.readValue(request.getReader(), User.class);
-        String contentType = request.getContentType();
+
+       User user = objectMapper.readValue(request.getReader(), User.class);
+       String contentType = request.getContentType();
 
         if (!(contentType == null) && !contentType.equals(JSON_MEDIA_TYPE)) {
             response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported content type
         } else {
             try {
-                account.registerUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getPassword());
+                account.registerUser(user.getFirstName(), user.getLastName(), user.getName(), user.getPassword(), user.getPassword());
                 response.setStatus(HttpServletResponse.SC_CREATED); // 201 created
             } catch (NullPointerException | InvalidCredentialsException ex) {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data

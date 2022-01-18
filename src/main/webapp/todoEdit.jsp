@@ -43,7 +43,7 @@
 
     <!-- HEADBOX -->
     <div class="headbox">
-        <h1>Listo of "${user.userName}"</h1>
+        <h1>Listo of "${user.name}"</h1>
         <div class="headtext">
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
                 et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
@@ -85,14 +85,14 @@
                         <input class="checkbox" type="checkbox"
                                id="editImportant"
                                name="editImportant"
-                               value="editImportant" <c:if test="${todo.important}">checked</c:if>/><label
+                               value="true" <c:if test="${todo.important}">checked</c:if>/><label
                             for="editImportant">Important</label>
 
                         <c:if test="${not empty todo.id}">
                             <input class="checkbox" type="checkbox"
                                    id="editCompletion"
                                    name="editCompletion"
-                                   value="editCompletion" <c:if test="${todo.done}">checked</c:if>/><label
+                                   value="true" <c:if test="${todo.done}">checked</c:if>/><label
                                 for="editCompletion">Completion</label></c:if>
                     </div>
 

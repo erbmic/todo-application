@@ -15,7 +15,6 @@ import todo.model.userExceptions.WrongPasswordException;
 
 import java.io.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @JacksonXmlRootElement(localName = "account")
@@ -106,7 +105,7 @@ public class Account {
     private User findByUserName(String userName) throws NoSuchUserException {
         loadXml();
         return userAccounts.stream()
-                .filter(user -> userName.equals(user.getUserName()))
+                .filter(user -> userName.equals(user.getName()))
                 .findAny()
                 .orElseThrow(NoSuchUserException::new);
     }

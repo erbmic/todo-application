@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class TodoList {
 
-    private long nextId;
+    private long nextId ;
     private CatList catList;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
@@ -22,6 +22,7 @@ public class TodoList {
     private List<ToDo> todosFiltered;
 
     public TodoList() {
+        this.nextId = 1;
         this.catList = new CatList();
         this.todos = new ArrayList<>();
         this.todosFiltered = new ArrayList<>();
@@ -42,19 +43,20 @@ public class TodoList {
         return act;
     }
 
-    public void addTodo(ToDo todo) throws AddTodoException{
+    public ToDo addTodo(ToDo todo) throws AddTodoException{
         todo.setId(generateNextId());
         if (todos.add(todo)){
             sortTodos();
             markOverDue();
             catList.filterCats(todos);
             Account.saveXml();
+            return todo;
         } else {
             throw new AddTodoException();
         }
     }
 
-    public void editTodo(ToDo todo) throws NoSuchTodoIDException {
+    public ToDo editTodo(ToDo todo) throws NoSuchTodoIDException {
         int index = todos.indexOf(todo);
         if (index >= 0) {
             todos.set(index, todo);
@@ -62,17 +64,10 @@ public class TodoList {
             markOverDue();
             catList.filterCats(todos);
             Account.saveXml();
+            return todo;
         } else {
             throw new NoSuchTodoIDException();
         }
-        /*
-        eTodo.setTitle(pTitle);
-        eTodo.setDone(pDone);
-        eTodo.setImportant(pImportant);
-        eTodo.setDueDate(pDueDate);
-        eTodo.setCategory(category);
-        eTodo.setDescription(description);
-         */
     }
 
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
@@ -96,13 +91,10 @@ public class TodoList {
         throw new NoSuchTodoIDException();
     }
 
-    public ToDo getTodo(long todoID) throws NoSuchTodoIDException{
-            for (ToDo todo : todos) {
-                if (todo.getId() == todoID){
-                    return todo;
-                }
-            }
-        throw new NoSuchTodoIDException();
+    public List<ToDo> getTodosOfCat(String category) {
+          return  todos.stream()
+                  .filter(todo -> todo.getCategory().equals(category))
+                  .collect(Collectors.toList());
     }
 
     public void toggleDone(String todoID) throws NoSuchTodoIDException{
