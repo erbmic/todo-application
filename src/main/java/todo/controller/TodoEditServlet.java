@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import todo.model.ToDo;
+import todo.model.TodoProcessor;
 import todo.model.User;
 import todo.model.todoExceptions.AddTodoException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
@@ -40,7 +41,14 @@ public class TodoEditServlet extends HttpServlet {
             case "saveTodo":
                 if (todoID == null || todoID.equals("")){
                     try {
-                        ToDo todo = new ToDo(todoTitle, todoDone, todoImportant, todoCategory, todoDueDate, todoDescription);
+                        ToDo todo = new ToDo(0,
+                                TodoProcessor.processTitle(todoTitle),
+                                TodoProcessor.processDone(todoDone),
+                                TodoProcessor.processImportant(todoImportant),
+                                TodoProcessor.processCategory(todoCategory),
+                                TodoProcessor.processDueDate(todoDueDate),
+                                TodoProcessor.processDescription(todoDescription));
+
                         user.getTodoList().addTodo(todo);
                         msg = "New Todo added.";
                     } catch (InvalidTodoTitleException | InvalidTodoDueDateException | AddTodoException e) {
@@ -50,7 +58,15 @@ public class TodoEditServlet extends HttpServlet {
                     }
                 } else {
                     try{
-                        ToDo todo = new ToDo(todoID, todoTitle, todoDone, todoImportant, todoCategory, todoDueDate, todoDescription);
+                        ToDo todo = new ToDo(
+                                Long.parseLong(todoID),
+                                TodoProcessor.processTitle(todoTitle),
+                                TodoProcessor.processDone(todoDone),
+                                TodoProcessor.processImportant(todoImportant),
+                                TodoProcessor.processCategory(todoCategory),
+                                TodoProcessor.processDueDate(todoDueDate),
+                                TodoProcessor.processDescription(todoDescription));
+
                         user.getTodoList().editTodo(todo);
                     } catch (NoSuchTodoIDException | InvalidTodoTitleException | InvalidTodoDueDateException | NumberFormatException e) {
                         msg = e.getMessage();

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class TodoList {
 
-    private long nextId;
+    private long nextId ;
     private CatList catList;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "todo")
@@ -22,6 +22,7 @@ public class TodoList {
     private List<ToDo> todosFiltered;
 
     public TodoList() {
+        this.nextId = 1;
         this.catList = new CatList();
         this.todos = new ArrayList<>();
         this.todosFiltered = new ArrayList<>();
@@ -65,14 +66,6 @@ public class TodoList {
         } else {
             throw new NoSuchTodoIDException();
         }
-        /*
-        eTodo.setTitle(pTitle);
-        eTodo.setDone(pDone);
-        eTodo.setImportant(pImportant);
-        eTodo.setDueDate(pDueDate);
-        eTodo.setCategory(category);
-        eTodo.setDescription(description);
-         */
     }
 
     public void deleteTodo(String todoID) throws NoSuchTodoIDException{
@@ -96,13 +89,14 @@ public class TodoList {
         throw new NoSuchTodoIDException();
     }
 
-    public ToDo getTodo(long todoID) throws NoSuchTodoIDException{
-            for (ToDo todo : todos) {
-                if (todo.getId() == todoID){
-                    return todo;
-                }
-            }
-        throw new NoSuchTodoIDException();
+    public List<ToDo> getTodosOfCat(String category) {
+         List<ToDo> result = todos.stream()
+                                    .filter(todo -> todo.getCategory().equals(category))
+                                    .collect(Collectors.toList());
+         if (!result.isEmpty()) {
+             return result;
+         }
+         return todos;
     }
 
     public void toggleDone(String todoID) throws NoSuchTodoIDException{
