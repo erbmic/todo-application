@@ -51,7 +51,7 @@ public class ToDo {
     }
 
     private static String processTitle(String title) throws InvalidTodoTitleException {
-        if (!title.isEmpty()) {
+        if (title != null && !title.isEmpty()) {
             return title;
         }
         throw new InvalidTodoTitleException();
