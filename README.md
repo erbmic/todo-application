@@ -5,51 +5,48 @@
 
 # ToDo Webapplication
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
+## Inhaltsverzeichnis
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+* [Allgemein](#allgemein)
+* [Desing](#design)
+  * [Domänenmodell](#domnenmodell)
+  * [Page flow](#page-flow)
+  * [Klassendesign](#klassendesign)
+* [Implementierung](#implementierung)
+  * [Frontend](#frontend)
+  * [Backend](#backend)
+  * [REST-API](#backend)
+  * [Zusätzliche Features](#zustzliche-features)
+* [Verwendung](#verwendung)
+  * [Voraussetzungen](#voraussetzungen)
+* [Installation](#installation)
 
+## Allgemein
 
+## Design
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+### Domänenmodell
 
-<!-- Paste picture -->
+![Domänenmodell](.images/ApplicationModel_v02.drawio.png)
 
-Lorem Ypsum ...
+### Page Flow
 
-### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+### Klassendesign
 
+## Implementierung
 
+### Frontend
 
-<!-- GETTING STARTED -->
-## Getting Started
+### Backend
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### REST-API
 
-### Prerequisites
+### Zusätzliche Features
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+## Verwendung
+
+### Voraussetzungen
+
 
 ### Installation
 
@@ -69,17 +66,4 @@ const API_KEY = 'ENTER YOUR API';
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[domaenenmodell]: .images/ApplicationModel_v02.drawio.png
