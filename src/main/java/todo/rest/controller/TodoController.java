@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import todo.model.ToDo;
 import todo.model.User;
+import todo.model.todoExceptions.AddTodoException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
