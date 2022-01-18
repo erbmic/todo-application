@@ -1,9 +1,15 @@
 package todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import todo.model.todoExceptions.InvalidTodoDueDateException;
+import todo.model.todoExceptions.InvalidTodoTitleException;
+
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class ToDo {
 
@@ -21,13 +27,67 @@ public class ToDo {
 
     public ToDo(){}
 
-    public ToDo(long id, String title, boolean important, String category, LocalDate dueDate, String description) {
-        this.id = id;
-        this.title = title;
-        this.important = important;
+    // Constructor for a new ToDo
+    public ToDo(String title, String done, String important, String category, String dueDate, String description)
+            throws InvalidTodoTitleException, InvalidTodoDueDateException{
+        this.title = processTitle(title);
+        this.done = processDone(done);
+        this.important = processImportant(important);
         this.category = category;
-        this.dueDate = dueDate;
+        this.dueDate = processDueDate(dueDate);
         this.description = description;
+    }
+
+    // Constructor for a existing ToDo
+    public ToDo(String id, String title, String done, String important, String category, String dueDate, String description)
+            throws NumberFormatException, InvalidTodoTitleException, InvalidTodoDueDateException {
+        this.id = Long.parseLong(id);
+        this.title = processTitle(title);
+        this.done = processDone(done);
+        this.important = processImportant(important);
+        this.category = category;
+        this.dueDate = processDueDate(dueDate);
+        this.description = description;
+    }
+
+    private static String processTitle(String title) throws InvalidTodoTitleException {
+        if (title != null && !title.isEmpty()) {
+            return title;
+        }
+        throw new InvalidTodoTitleException();
+    }
+
+    private static boolean processDone(String done){
+        if (done == null){
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean processImportant(String important){
+        if (important == null){
+            return false;
+        }
+        return true;
+    }
+
+    private static LocalDate processDueDate(String dueDate) throws InvalidTodoDueDateException {
+        if (dueDate == null) return null;
+        if (dueDate.equals("")) return null;
+        int year = 0;
+        int month = 0;
+        int day = 0;
+        try(Scanner scan = new Scanner(dueDate)){
+            while(scan.hasNext()){
+                scan.useDelimiter("-");
+                year = scan.nextInt();
+                month = scan.nextInt();
+                day = scan.nextInt();
+            }
+            return LocalDate.of(year, month, day);
+        } catch (Exception e) {
+            throw new InvalidTodoDueDateException();
+        }
     }
 
     public long getId() {
@@ -88,5 +148,18 @@ public class ToDo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ToDo toDo = (ToDo) o;
+        return id == toDo.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
