@@ -239,6 +239,7 @@ button:hover {
     margin: auto;
     display: flex;
     justify-content: center;
+
 }
 
 .listBox {
@@ -424,7 +425,11 @@ button:hover {
 .todolist {
     display: flex;
     justify-content: center;
-    /*background-color: blueviolet;*/
+    /*overflow-y: scroll;*/
+    /*!*background-color: blueviolet;*!*/
+    /*height: 600px;*/
+
+
 }
 
 .todolist table {
@@ -436,6 +441,7 @@ button:hover {
     border-collapse: separate;
     border-spacing: 0 15px;
     text-align: left;
+
 }
 
 .todolist th {
