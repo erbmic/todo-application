@@ -91,7 +91,7 @@
                             <input class="checkbox" type="checkbox"
                                    id="editCompletion"
                                    name="editCompletion"
-                                   value="true" <c:if test="${todo.done}">checked</c:if>/><label
+                                   value="true" <c:if test="${todo.completed}">checked</c:if>/><label
                                 for="editCompletion">Completion</label></c:if>
                     </div>
 

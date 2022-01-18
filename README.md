@@ -35,15 +35,15 @@ Kategorien sind in der Applikation fünf verschiedene vorgegeben.
 Diese werden aus Designgründen in der Applikation unter anderem als Icons dargestellt, weshalb der Entscheid getroffen wurde, diese fix im Backend zu definieren.
 Grundsätzlich ist es dynamisch aufgebaut, damit diese nur an einem Ort erweitert werden können.
 
+Viel Spass mit listo --> a Light and Simple ToDo App (Spanisch für fertig!)
+
 ## Design
 
 ### Domänenmodell
 
 ![Domänenmodell](.images/ApplicationModel_v02.drawio.png)
 
-### Page Flow
 
-### Klassendesign
 
 ## Implementierung
 

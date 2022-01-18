@@ -120,7 +120,7 @@
                                 <tr class=<c:if test="${todo.overDue}">red</c:if>>
                                     <td class="center" id="td-check">
                                         <button class="checkTodoButton" name="button"
-                                                value="checkTodo"><c:if test="${todo.done}"><i
+                                                value="checkTodo"><c:if test="${todo.completed}"><i
                                                 class="fas fa-check"></i></c:if></button>
                                     </td>
 
