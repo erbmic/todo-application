@@ -27,6 +27,8 @@
 
 ### Domänenmodell
 
+![Domänenmodell](.images/ApplicationModel_v02.drawio.png)
+
 ### Page Flow
 
 ### Klassendesign
