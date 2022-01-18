@@ -80,7 +80,7 @@ public class TodoController extends HttpServlet {
                 try {
                     ToDo todo = new ToDo(0,
                             TodoProcessor.processTitle(desTodo.getTitle()),
-                            desTodo.getDone(),
+                            desTodo.getCompleted(),
                             desTodo.getImportant(),
                             TodoProcessor.processCategory(desTodo.getCategory()),
                             desTodo.getDueDate(),
@@ -117,7 +117,7 @@ public class TodoController extends HttpServlet {
                         ToDo todo = new ToDo(
                                 desTodo.getId(),
                                 TodoProcessor.processTitle(desTodo.getTitle()),
-                                desTodo.getDone(),
+                                desTodo.getCompleted(),
                                 desTodo.getImportant(),
                                 TodoProcessor.processCategory(desTodo.getCategory()),
                                 desTodo.getDueDate(),

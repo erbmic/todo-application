@@ -10,7 +10,7 @@ public class ToDo {
     @JacksonXmlProperty(isAttribute = true)
     private long id;
     private String title;
-    private boolean done;
+    private boolean completed;
     private boolean important;
     @JsonIgnore
     private boolean overDue;
@@ -21,10 +21,10 @@ public class ToDo {
 
     public ToDo(){}
 
-    public ToDo(long id, String title, boolean done, boolean important, String category, LocalDate dueDate, String description) {
+    public ToDo(long id, String title, boolean completed, boolean important, String category, LocalDate dueDate, String description) {
         this.id = id;
         this.title =  title;
-        this.done = done;
+        this.completed = completed;
         this.important = important;
         this.category = category;
         this.dueDate = dueDate;
@@ -47,12 +47,12 @@ public class ToDo {
         this.title = title;
     }
 
-    public boolean getDone() {
-        return done;
+    public boolean getCompleted() {
+        return completed;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public boolean getImportant() {
