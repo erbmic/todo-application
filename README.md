@@ -1,8 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
 # ToDo Webapplication
 
 ## Inhaltsverzeichnis
@@ -24,15 +19,21 @@
 ## Allgemein
 
 Dieses Repository enthält eine ToDo Webapplikation die im Kontext eines CAS (Certificate of Advanced Studies) der Berner Fachhochschule implementiert wurde.
-Mit der ToDo App können ToDos pro User erstellt, editiert und gelöscht werden. 
+Mit der ToDo App können ToDos pro User erstellt, editiert und gelöscht werden. Die Daten werden persistent in einem XML im User Verzeichnis abgelegt.
 
 Ein ToDo kann die folgenden Attribute enthalten:
-- Titel
+- Titel*
 - Kategorie
 - Wichtig (Boolean)
 - Fälligkeitsdatum
+- Beschreibung
 
-In der Applikation ist ein 
+In der Applikation ist eine Userauthorisierung implementiert mit welcher sich ein User registrieren und anmelden kann.
+Pro User ist eine Todoliste verfügbar, die mehrere Todos enthalten kann. Die Applikation ist erweiterbar aufgebaut, damit ein User mehrere Todolisten mit jeweiligen Todos speichern kann.
+
+Kategorien sind in der Applikation fünf verschiedene vorgegeben. 
+Diese werden aus Designgründen in der Applikation unter anderem als Icons dargestellt, weshalb der Entscheid getroffen wurde, diese fix im Backend zu definieren.
+Grundsätzlich ist es dynamisch aufgebaut, damit diese nur an einem Ort erweitert werden können.
 
 ## Design
 
@@ -46,47 +47,95 @@ In der Applikation ist ein
 
 ## Implementierung
 
+In diesem Kapitel werden einzelne Implementationen hervorgehoben und beschrieben. Es werden nicht alle Funktionen beschrieben.
+
 ### Frontend
 
 Ein erster Entwurf für das Frontend wurde in der Applikation `Figma` entworfen. Dafür wurden jeweils 4 Views für Mobile und Desktop entworfen - Login-, Register-, TodoEdit- und TodoList-View.
-Generell wurde über das ganze Frontend 2 Fonts geladen, `Roboto` als allgemeine Font und `Font-Awesome` für Icons.
+Generell wurden im Frontend 2 Fonts geladen, `Roboto` als allgemeine Anzeigeschriftart und `Font-Awesome` für Icons. Funktionalitäten wurden jeweils über JSTL (Standard Tag Library) Tags `<c..>` oder über Scripting Elements `<%..%>` aufgerufen.  
 
 #### Login-, Register-View
+
 Login und Register sind mit Formularen gelöst, die jeweils durch ein Button submittet werden. Fehlermeldungen werden jeweils rot eingeblendet.
 
 #### List-View
 
+Die Liste der Todos wird über eine Tabelle angezeigt. Mit einem `<c:forEach>` Tag werden alle Todos des Users als Zeilen in die Tabelle abgefüllt.
+In der View können die folgenden Funktionalitäten gebraucht werden:
+- Todo check/uncheck
+- Todo löschen
+- Neues Todo hinzufügen
+- Todo editieren
+- Todo filtern
 
+##### Todo check/uncheck Button
 
+Die Todo Checkbox wurde mittels eines Buttons umgesetzt, um bei einem Klick eine Aktivität im Backend auszulösen. 
+Der Inhalt des Buttons wird dynamisch aus dem XML ausgelesen und als `Font-Awesome` Icon dargestellt. 
 
+##### Kategorie
+
+Einzelne Kategorien werden in der Todoliste als Icon dargestellt. Diese sind für den User einfacher erkennbar und voneinander trennbar. Wenn keine Kategorie ausgewählt wurde bleibt das Feld leer.
+
+##### Kategorie Filter
+
+Der Filter wird als Dropdown Menu dargestellt, welches aus einzelnen Buttons besteht. So kann jeder Button im Backend eine Aktion auslösen, die neue Daten an das Frontend senden kann.
+Die Filter Auswahl wird dynamisch anhand der in den Todos gespeicherten Kategorien angezeigt.
+
+#### Edit-View
+
+In der Edit-View wird ein Todo erstellt oder bearbeitet. Die View wird dynamisch aufgebaut, je nach dem ob ein Todo bearbeitet oder neu erstellt wird.
+Wenn ein bestehendees Todo bearbeitet wird, werden die Felder mit den Werten aus dem XML ausgefüllt. Zusätzlich wird noch die Checkbox und den `Delete-Todo-Button` eingeblendet. Die Kategorien werden auch hier mit einem Dropdown Menu ausgewählt.
 
 ### Backend
 
 ### REST-API
 
+
+
 ### Zusätzliche Features
+
+#### Responsive
+
+Das Design ist responsive Mobile First aufgebaut. Die Tabelle und das Editmenu passen sich jeweils der Fensterbreite an.
+Sobald die Fensterbreite eine breite eines Mobilen Geräts unterschreitet, ändert das Design in die Mobile View.
+Dabei werden gewisse Abstände verkleinert, den Headtext ausgeblendet und die Buttons wichtigen Buttons werden im unteren Bereich des Displays dargestellt.
+Die Tabelle in der Mobilen View ist Scrollbar.
 
 ## Verwendung
 
 ### Voraussetzungen
 
+Voraussetzung für die Applikation ist ein Webserver, auf der deployed werden kann. 
+In dieser Beschreibung wird beschrieben, wie die Applikation lokal auf einem Computer über die IDE IntelliJ auf einen lokalen TomCat server deployed wird (Tomcat und Intellij müssen installiert sein).
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Git Repository Klonen
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://gitlab.ti.bfh.ch/cas-sd-hs21/group3/todo.git
 ```
-3. Install NPM packages
-```sh
-npm install
-```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+3. Projekt in Intellij öffnen
 
+4. Tomcat Konfiguration hinzufügen
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[domaenenmodell]: .images/ApplicationModel_v02.drawio.png
+   ![AddConfig](.images/add_config.png)
+5. Neue Konfiguration hinzufügen
+
+    ![NewConfig](.images/add_new.png)
+6. Tomcat local auswählen
+7. Lokale Tomcat instanz auswählen
+   
+    ![SetTomcat](.images/set_local_tomcat.png)
+8. `.war` deployen
+
+   ![tar](.images/deploymend.png)
+9. `Todo:war exploded` auswählen
+10. `Applicatin context` löschen
+
+    ![ApplicationContext](.images/context.png)
+11. Run Tomcat
+
+    ![Run](.images/run.png)
+12. Browser [öffnen](http://localhost:8080/)
+
