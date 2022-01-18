@@ -1,10 +1,12 @@
 package todo.model;
 
+import todo.model.categoryException.InvalidCategoryException;
 import todo.model.todoExceptions.InvalidTodoDueDateException;
 import todo.model.todoExceptions.InvalidTodoTitleException;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.Set;
 
 public class TodoProcessor {
 
@@ -23,9 +25,13 @@ public class TodoProcessor {
         return important != null && important.toLowerCase().equals("true");
     }
 
-    public static String processCategory(String category){
-        if (category != null) {
-            return category;
+    public static String processCategory(String category) throws InvalidCategoryException {
+        if (category != null && !category.equals("-")) {
+            Set<String> cats = new CatList().getCats();
+            for (String cat : cats) {
+                if (cat.equals(category)) return category;
+            }
+            throw new InvalidCategoryException();
         }
         return "";
     }

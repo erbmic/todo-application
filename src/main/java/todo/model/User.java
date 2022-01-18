@@ -9,7 +9,7 @@ public class User {
     private String firstName;
     private String lastName;
     @JacksonXmlProperty(localName = "userName")
-    private String userName;
+    private String name;
     @JacksonXmlProperty(localName = "password")
     private String password;
     @JacksonXmlElementWrapper(useWrapping = false)
@@ -19,10 +19,10 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String userName, String password) {
+    public User(String firstName, String lastName, String name, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.name = name;
         this.password = password;
         this.todoList = new TodoList();
     }
@@ -35,10 +35,10 @@ public class User {
 
     public void setLastName(String lastName){this.lastName = lastName;}
 
-    public String getUserName() {return userName;}
+    public String getName() {return name;}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -62,11 +62,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userName.equals(user.userName);
+        return name.equals(user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName);
+        return Objects.hash(name);
     }
 }

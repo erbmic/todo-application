@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import todo.model.ToDo;
 import todo.model.TodoProcessor;
 import todo.model.User;
+import todo.model.categoryException.InvalidCategoryException;
 import todo.model.todoExceptions.AddTodoException;
+import todo.model.todoExceptions.InvalidTodoTitleException;
 import todo.model.todoExceptions.NoSuchTodoIDException;
 
 import java.io.IOException;
@@ -26,24 +28,26 @@ public class TodoController extends HttpServlet {
         String category = request.getParameter("category");
         User user = (User) request.getAttribute("user");
         List<ToDo> toDos = new ArrayList<>();
-        String path = request.getPathInfo();
+        String requestPath = request.getPathInfo();
+        String queryPath = request.getQueryString();
         String acceptedType = request.getHeader("Accept");
 
+
         if (!(acceptedType == null) && !acceptedType.equals("*/*") && !acceptedType.contains(JSON_MEDIA_TYPE)) {
-            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
-        } else if (path == null || path.equals("/")) {
-            toDos = user.getTodoList().getTodos();
-            respondDataAndSetStatusCode(response, toDos);
+            response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE); // 406 unsupported accept type
         } else if (category != null) {
             try {
-                toDos.add(user.getTodoList().getTodo(category));
+                toDos = user.getTodoList().getTodosOfCat(TodoProcessor.processCategory(category));
                 respondDataAndSetStatusCode(response, toDos);
-            } catch (NoSuchTodoIDException e) {
-                response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE); // ------------------ todo
+            } catch (InvalidCategoryException e){
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 bad request
             }
-        } else if (path.substring(1).matches("\\d+")) {
+        } else if (queryPath == null && (requestPath == null || requestPath.equals("/"))) {
+            toDos = user.getTodoList().getTodos();
+            respondDataAndSetStatusCode(response, toDos);
+        } else if (requestPath != null && requestPath.substring(1).matches("\\d+")) {
             try {
-                toDos.add(user.getTodoList().getTodo(path.substring(1)));
+                toDos.add(user.getTodoList().getTodo(requestPath.substring(1)));
                 respondDataAndSetStatusCode(response, toDos);
             } catch (NoSuchTodoIDException e) {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
@@ -66,7 +70,7 @@ public class TodoController extends HttpServlet {
         String acceptedType = request.getHeader("Accept");
 
         try {
-            ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+            ToDo desTodo = objectMapper.readValue(request.getReader(), ToDo.class);
 
             if (!(contentType == null) && !contentType.equals(JSON_MEDIA_TYPE)) {
                 response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
@@ -74,9 +78,21 @@ public class TodoController extends HttpServlet {
                 response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
             } else {
                 try {
-                    user.getTodoList().addTodo(toDo);
+                    ToDo todo = new ToDo(0,
+                            TodoProcessor.processTitle(desTodo.getTitle()),
+                            desTodo.getDone(),
+                            desTodo.getImportant(),
+                            TodoProcessor.processCategory(desTodo.getCategory()),
+                            desTodo.getDueDate(),
+                            TodoProcessor.processDescription(desTodo.getDescription()));
+
+                    user.getTodoList().addTodo(todo);
+
                     response.setStatus(HttpServletResponse.SC_CREATED); // 201 created
-                } catch (AddTodoException e) {
+                    response.setContentType(JSON_MEDIA_TYPE);
+                    objectMapper.writeValue(response.getWriter(), todo);
+
+                } catch (AddTodoException | InvalidTodoTitleException e) {
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
                 }
             }
@@ -92,13 +108,28 @@ public class TodoController extends HttpServlet {
         String contentType = request.getContentType();
 
         try {
-            ToDo toDo = objectMapper.readValue(request.getReader(), ToDo.class);
+            ToDo desTodo = objectMapper.readValue(request.getReader(), ToDo.class);
             if (!(contentType == null) && !contentType.equals(JSON_MEDIA_TYPE)) {
                 response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 415 unsupported accept type
             } else if (path.substring(1).matches("\\d+")) {
                 try {
-                    user.getTodoList().editTodo(toDo);
-                    response.setStatus(HttpServletResponse.SC_OK); // 200
+                    if (Long.parseLong(path.substring(1)) == desTodo.getId()) {
+                        ToDo todo = new ToDo(
+                                desTodo.getId(),
+                                TodoProcessor.processTitle(desTodo.getTitle()),
+                                desTodo.getDone(),
+                                desTodo.getImportant(),
+                                TodoProcessor.processCategory(desTodo.getCategory()),
+                                desTodo.getDueDate(),
+                                TodoProcessor.processDescription(desTodo.getDescription()));
+
+                        user.getTodoList().editTodo(todo);
+                        response.setStatus(HttpServletResponse.SC_OK); // 200
+                        response.setContentType(JSON_MEDIA_TYPE);
+                        objectMapper.writeValue(response.getWriter(), todo);
+                    } else {
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400 invalid data
+                    }
                 } catch (NoSuchTodoIDException e) {
                     response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
                 }

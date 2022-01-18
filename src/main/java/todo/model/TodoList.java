@@ -43,19 +43,20 @@ public class TodoList {
         return act;
     }
 
-    public void addTodo(ToDo todo) throws AddTodoException{
+    public ToDo addTodo(ToDo todo) throws AddTodoException{
         todo.setId(generateNextId());
         if (todos.add(todo)){
             sortTodos();
             markOverDue();
             catList.filterCats(todos);
             Account.saveXml();
+            return todo;
         } else {
             throw new AddTodoException();
         }
     }
 
-    public void editTodo(ToDo todo) throws NoSuchTodoIDException {
+    public ToDo editTodo(ToDo todo) throws NoSuchTodoIDException {
         int index = todos.indexOf(todo);
         if (index >= 0) {
             todos.set(index, todo);
@@ -63,6 +64,7 @@ public class TodoList {
             markOverDue();
             catList.filterCats(todos);
             Account.saveXml();
+            return todo;
         } else {
             throw new NoSuchTodoIDException();
         }
@@ -90,13 +92,9 @@ public class TodoList {
     }
 
     public List<ToDo> getTodosOfCat(String category) {
-         List<ToDo> result = todos.stream()
-                                    .filter(todo -> todo.getCategory().equals(category))
-                                    .collect(Collectors.toList());
-         if (!result.isEmpty()) {
-             return result;
-         }
-         return todos;
+          return  todos.stream()
+                  .filter(todo -> todo.getCategory().equals(category))
+                  .collect(Collectors.toList());
     }
 
     public void toggleDone(String todoID) throws NoSuchTodoIDException{

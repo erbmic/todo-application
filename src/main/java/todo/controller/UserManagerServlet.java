@@ -51,7 +51,7 @@ public class UserManagerServlet extends HttpServlet {
                 break;
             case "login":
                 User user = (User)session.getAttribute("user");
-                if (user != null && user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+                if (user != null && user.getName().equals(userName) && user.getPassword().equals(password)) {
                     response.sendRedirect("todoList.jsp");
                 } else {
                     try {
