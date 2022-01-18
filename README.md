@@ -23,6 +23,17 @@
 
 ## Allgemein
 
+Dieses Repository enthält eine ToDo Webapplikation die im Kontext eines CAS (Certificate of Advanced Studies) der Berner Fachhochschule implementiert wurde.
+Mit der ToDo App können ToDos pro User erstellt, editiert und gelöscht werden. 
+
+Ein ToDo kann die folgenden Attribute enthalten:
+- Titel
+- Kategorie
+- Wichtig (Boolean)
+- Fälligkeitsdatum
+
+In der Applikation ist ein 
+
 ## Design
 
 ### Domänenmodell
@@ -36,6 +47,18 @@
 ## Implementierung
 
 ### Frontend
+
+Ein erster Entwurf für das Frontend wurde in der Applikation `Figma` entworfen. Dafür wurden jeweils 4 Views für Mobile und Desktop entworfen - Login-, Register-, TodoEdit- und TodoList-View.
+Generell wurde über das ganze Frontend 2 Fonts geladen, `Roboto` als allgemeine Font und `Font-Awesome` für Icons.
+
+#### Login-, Register-View
+Login und Register sind mit Formularen gelöst, die jeweils durch ein Button submittet werden. Fehlermeldungen werden jeweils rot eingeblendet.
+
+#### List-View
+
+
+
+
 
 ### Backend
 
