@@ -51,23 +51,28 @@ public class TodoController extends HttpServlet {
 //            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
 //        }
 
-        if (path == null || path.equals("/")) {
-            toDos = user.getTodoList().getTodos();
-        } else if (category != null) {
-            try {
-                toDos.add(user.getTodoList().getTodo(category));
-            } catch (NoSuchTodoIDException e) {
-                response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE); // ------------------ todo
-            }
-        } else if (path.substring(1).matches("\\d+")) {
-            try {
-                toDos.add(user.getTodoList().getTodo(path.substring(1)));
-            } catch (NoSuchTodoIDException e) {
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
+        if ((request.getHeader("Accept") == null) || !request.getHeader("Accept").contains(JSON_MEDIA_TYPE) || !request.getHeader("Accept").equals("*/*")) {
+            if (path == null || path.equals("/")) {
+                toDos = user.getTodoList().getTodos();
+            } else if (category != null) {
+                try {
+                    toDos.add(user.getTodoList().getTodo(category));
+                } catch (NoSuchTodoIDException e) {
+                    response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE); // ------------------ todo
+                }
+            } else if (path.substring(1).matches("\\d+")) {
+                try {
+                    toDos.add(user.getTodoList().getTodo(path.substring(1)));
+                } catch (NoSuchTodoIDException e) {
+                    response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404 not found
+                }
+            } else {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             }
         } else {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.setStatus(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE); // 406 unsupported accept type
         }
+
         response.setStatus(HttpServletResponse.SC_OK); // 200
         response.setContentType(JSON_MEDIA_TYPE);
         objectMapper.writeValue(response.getWriter(), toDos);
