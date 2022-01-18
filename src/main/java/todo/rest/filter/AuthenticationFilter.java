@@ -23,9 +23,7 @@ public class AuthenticationFilter extends HttpFilter  {
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         Account account = Account.getAccountInstance();
-
         String url = request.getRequestURI();
 
         if (!request.getRequestURI().equals("/api/users")) {
@@ -34,7 +32,7 @@ public class AuthenticationFilter extends HttpFilter  {
                 User user = account.loginUser(credentials[0], credentials[1]);
                 request.setAttribute("user", user);
             } catch (Exception ex) {
-                response.setStatus(SC_UNAUTHORIZED);
+                response.setStatus(SC_UNAUTHORIZED); // 401 user not authorized
                 return;
             }
         }
