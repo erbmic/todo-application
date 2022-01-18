@@ -1,3 +1,4 @@
+
 /* ----------- variables ----------- */
 :root {
     --lightGrey: #f0f0f0;
@@ -62,6 +63,8 @@ nav {
 main {
     /*background: antiquewhite;*/
     grid-area: main;
+    overflow: hidden
+
 }
 
 
@@ -109,9 +112,28 @@ a:hover {
 }
 
 
-/* ----------- error message ----------- */
+/* ----------- invisible ----------- */
 .invisible {
     display: none;
+}
+
+
+/* ----------- scrollbar ----------- */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /*box-shadow: inset 0 0 5px grey;*/
+    /*border-radius: 10px;*/
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--darkGrey);
+    border-radius: var(--mainBorderradius);
 }
 
 
@@ -240,6 +262,12 @@ button:hover {
     display: flex;
     justify-content: center;
 
+
+}
+
+tbody {
+    /*overflow-y: auto;*/
+
 }
 
 .listBox {
@@ -310,7 +338,6 @@ button:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
 
 
 .catDropdown {
@@ -425,10 +452,9 @@ button:hover {
 .todolist {
     display: flex;
     justify-content: center;
-    /*overflow-y: scroll;*/
-    /*!*background-color: blueviolet;*!*/
-    /*height: 600px;*/
-
+    /*background-color: blueviolet;*/
+    height: 60%;
+    overflow-y: scroll;
 
 }
 
@@ -874,5 +900,3 @@ input[type=checkbox]:checked:after {
 
 
 }
-
-
