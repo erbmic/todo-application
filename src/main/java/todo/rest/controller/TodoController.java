@@ -131,7 +131,7 @@ public class TodoController extends HttpServlet {
         String path = request.getPathInfo();
 
         if (path == null || path.equals("/")) {
-//            response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED); // 405
+            response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED); // 405
         } else {
             try {
                 String id = path.substring(1);
