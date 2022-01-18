@@ -63,7 +63,7 @@ nav {
 main {
     /*background: antiquewhite;*/
     grid-area: main;
-    /*overflow: hidden*/
+    overflow: hidden
 
 }
 
@@ -453,9 +453,8 @@ tbody {
     display: flex;
     justify-content: center;
     /*background-color: blueviolet;*/
-    /*height: 60%;*/
-    /*overflow-y: scroll;*/
-
+    height: 60%;
+    overflow-y: scroll;
 }
 
 .todolist table {
@@ -690,6 +689,13 @@ input[type=checkbox]:checked:after {
     display: block;
 }
 
+@media screen and (max-height: 500px) {
+    .todolist {
+        height: 40
+    }
+}
+
+
 
 /* ----------- responsive ----------- */
 @media screen and (min-width: 992px) {
@@ -741,7 +747,7 @@ input[type=checkbox]:checked:after {
     /* ----- list of todos ----- */
     .todolist {
         height: 100%;
-        /*overflow-y: visible;*/
+        overflow-y: visible;
         /*background-color: yellow;*/
     }
 
