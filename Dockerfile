@@ -1,5 +1,5 @@
 # Customize public images
-FROM 3.8.4-openjdk-17
+FROM maven:3.8.4-openjdk-17 as builder
 WORKDIR /app
 
 # Build app without runnung unit test
@@ -14,7 +14,7 @@ COPY . /app
 RUN mvn test
 
 # Create application container
-FROM tomcat
+FROM tomcat as todo-app
 RUN rm -rf /usr/local/tomcat/webapps/
-COPY *.war /usr/local/tomcat/webapps/todo.war
+COPY --from=builded /app/target/*.war /usr/local/tomcat/webapps/todo.war
 CMD ["catalina.sh", "run"]
