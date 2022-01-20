@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_ca7a0c00f1774e14a990e1b148997b14 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_803dc12c61074e8d911bacc0a1942838 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_37209a58ac8b4bc2a4148976799d6d82 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_52e531360ccc403eac5d9d12522820cf }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ca7a0c00f1774e14a990e1b148997b14 }}/todo-application:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_37209a58ac8b4bc2a4148976799d6d82 }}/michaelerb/todo-application:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'listo'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_85075c69d1414b3da4e1eb95c29d357b }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ca7a0c00f1774e14a990e1b148997b14 }}/todo-application:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_210aab9f18c842d39aba51ee6cd83a87 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_37209a58ac8b4bc2a4148976799d6d82 }}/michaelerb/todo-application:${{ github.sha }}'
